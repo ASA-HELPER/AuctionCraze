@@ -1,0 +1,29 @@
+{
+  "name": "auctioncraze",
+  "version": "1.0.0",
+  "description": "An real-time auction platform with secure user authentication, role-based access, and smart bidding features. It supports live notifications, document comparison, and an admin dashboard for complete auction management.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Auction",
+    "Bidding",
+    "Bidders",
+    "MERN",
+    "React",
+    "Node",
+    "MongoDB",
+    "Express"
+  ],
+  "author": "Amandeep Singh",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.17.0",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.10"
+  }
+}
