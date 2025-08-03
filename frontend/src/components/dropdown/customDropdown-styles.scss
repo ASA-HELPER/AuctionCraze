@@ -1,0 +1,109 @@
+@import '../../theme/';
+
+.dropdown {
+  &__container {
+    color: $raisin-black;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    width: 100%;
+  }
+
+  &__label.MuiTypography-root {
+    align-self: flex-start;
+    color: $raisin-black;
+    font-family: $primary-font;
+    font-size: $spacing-14;
+    font-weight: bold;
+    line-height: $spacing-22;
+  }
+
+  &__addressDropdown.MuiAutocomplete-root.MuiFormControl-root {
+    background: $raisin-black;
+    padding: $spacing-0;
+    width: 100%;
+  }
+
+  &__textfield {
+    background-color: get-color($neutral, 100);
+    border-radius: $spacing-8;
+    & .MuiInputBase-root {
+      border: $spacing-1 solid get-color($neutral, 100) !important;
+      color: get-color($neutral, 600);
+      font-family: $primary-font;
+      font-size: $spacing-14;
+      font-weight: $font-weight-regular;
+      line-height: $spacing-22;
+      outline: none;
+      padding: $spacing-8 $spacing-16 !important;
+      &.Mui-focused .MuiOutlinedInput-notchedOutline {
+        border: $spacing-1 solid get-color($neutral, 06);
+      }
+    }
+    & .MuiInputBase-input {
+      padding: $spacing-0 !important;
+    }
+    & .MuiFormHelperText-root {
+      color: $persimmon;
+      font-family: $primary-font;
+      font-size: $spacing-12;
+      font-weight: $font-weight-regular;
+      left: -$spacing-2;
+      letter-spacing: $spacing-0-16;
+      margin: $spacing-0 $spacing-0 $spacing-0 $spacing-5;
+    }
+  }
+
+  & .MuiOutlinedInput-root {
+    padding: $spacing-8 $spacing-16;
+  }
+
+  &__errorField {
+    & .MuiInputBase-root {
+      border: $spacing-0-5 solid $persimmon !important;
+      border-radius: $spacing-8;
+      & .MuiOutlinedInput-notchedOutline {
+        border: none !important;
+      }
+    }
+  }
+
+  & .MuiInputBase-root.Mui-expanded {
+    border-color: get-color($neutral, 06) !important;
+    outline: none !important;
+  }
+
+  &__optionContainer {
+    align-items: flex-start;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    gap: $spacing-8;
+    margin: $spacing-0 $spacing-8;
+    &:hover {
+      background-color: $lavender;
+      border-radius: $spacing-6;
+      border: $spacing-1 solid get-color($neutral, 06);
+    }
+  }
+
+  &__optionLabel.MuiTypography-root {
+    color: $raisin-black;
+    font-family: $primary-font;
+    font-size: $spacing-14;
+    font-weight: $font-weight-regular;
+    letter-spacing: $spacing-0-14;
+    line-height: $spacing-22;
+    padding: $spacing-8;
+  }
+
+  &__errorText.MuiTypography-root {
+    color: $persimmon;
+    font-family: $primary-font;
+    font-size: $spacing-12;
+    font-weight: $font-weight-regular;
+    letter-spacing: $spacing-0-16;
+    margin: $spacing-0 $spacing-0 $spacing-0 $spacing-5;
+    text-align: left;
+  }
+}

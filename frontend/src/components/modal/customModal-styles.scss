@@ -1,0 +1,70 @@
+@import '@theme';
+
+.customModal {
+  &__container {
+    background-color: #fff;
+    border-radius: $spacing-12;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-20;
+    height: fit-content;
+    left: 50%;
+    padding: $spacing-24;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 32vw;
+    z-index: 100;
+  }
+
+  &__header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left-header-container {
+    flex-direction: column;
+  }
+
+  &__header-title.MuiTypography-root {
+    color: get-color($neutral, 700);
+    font-family: $primary-font;
+    font-size: $spacing-32;
+    font-weight: $font-weight-semi-bold;
+    line-height: $spacing-45;
+    text-align: left;
+  }
+
+  &__sub-header-title.MuiTypography-root {
+    color: get-color($neutral, 06);
+    font-family: $primary-font;
+    font-size: $spacing-14;
+    font-weight: $font-weight-regular;
+    line-height: $spacing-22;
+    text-align: left;
+  }
+
+  &__iconContainer.MuiButtonBase-root {
+    padding: $spacing-0;
+    position: absolute;
+    right: $spacing-20;
+    top: $spacing-24;
+  }
+}
+
+//Mobile View
+@include sm {
+  .customModal {
+    &__container {
+      width: 90%;
+    }
+
+    &__header-title.MuiTypography-root {
+      color: get-color($neutral, 700);
+      font-size: $spacing-24;
+      line-height: $spacing-36;
+    }
+  }
+}

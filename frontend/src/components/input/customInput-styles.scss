@@ -1,0 +1,173 @@
+@import '../../theme';
+
+//desktopView
+.customInput {
+  &__container.MuiContainer-root {
+    padding: $spacing-0;
+  }
+
+  &__field .MuiInputBase-root {
+    font-family: $primary-font;
+    background-color: white;
+  }
+
+  &__field .MuiInputBase-input {
+    padding: $spacing-0;
+  }
+
+  &__field .MuiOutlinedInput-notchedOutline {
+    border: none;
+  }
+
+  &__field .MuiFormHelperText-root {
+    color: $persimmon;
+    position: absolute;
+    bottom: 0;
+    top: 100%;
+    font-family: $primary-font;
+    font-size: $spacing-12;
+    font-weight: $font-weight-regular;
+    left: -$spacing-2;
+    letter-spacing: $spacing-0-16;
+    margin: $spacing-0 $spacing-0 $spacing-0 $spacing-5;
+  }
+
+  &__valueError .MuiOutlinedInput-notchedOutline {
+    border: none;
+  }
+
+  &__valueError .MuiInputBase-input {
+    color: $persimmon;
+    padding: $spacing-0;
+  }
+
+  &__valueErrorWithBorder .MuiInputBase-root {
+    background-color: $floral-white;
+  }
+
+  &__valueErrorWithBorder .MuiOutlinedInput-notchedOutline {
+    border: $spacing-0-5 solid $persimmon !important;
+  }
+
+  &__labelError.MuiFormLabel-root {
+    color: $persimmon !important;
+  }
+
+  &__label.MuiFormLabel-root {
+    font-family: $primary-font;
+    margin-bottom: $spacing-5;
+  }
+  &__optionalLabel {
+    @extend .customInput__label;
+    margin-left: $spacing-4;
+    color: $silver-foil;
+  }
+
+  &__labelContainer {
+    align-items: center;
+    display: flex;
+  }
+
+  &__errorIconButton.MuiIconButton-root {
+    bottom: $spacing-2;
+    left: $spacing-8;
+    padding: $spacing-0;
+    position: relative;
+  }
+
+  &__row {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-8;
+  }
+
+  &_wrapper {
+    flex: 1.4 !important;
+  }
+
+  &__verticalLine {
+    border: $spacing-0-5 solid $american-silver;
+    height: $spacing-20;
+  }
+
+  &__fieldWithBorder.MuiTextField-root {
+    & .MuiInputBase-root {
+      background-color: get-color($neutral, 100);
+      font-size: $spacing-14;
+      line-height: $spacing-21;
+      padding: $spacing-14 $spacing-16;
+      & .MuiOutlinedInput-notchedOutline,
+      &:hover .MuiOutlinedInput-notchedOutline,
+      &.Mui-focused .MuiOutlinedInput-notchedOutline {
+        border: $spacing-1 solid get-color($neutral, 06);
+      }
+    }
+  }
+
+  &__labelWithBorder.MuiFormLabel-root {
+    color: get-color($neutral, 08);
+    font-size: $spacing-14;
+    line-height: $spacing-21;
+    white-space: normal;
+  }
+
+  &__labelWithoutBorder.MuiFormLabel-root {
+    color: $raisin-black;
+    font-family: $primary-font;
+    font-size: $spacing-16;
+    font-weight: $font-weight-regular;
+    line-height: $spacing-25;
+    text-align: left;
+  }
+
+  &__passwordIcon.MuiButtonBase-root {
+    padding: $spacing-0;
+    .MuiSvgIcon-root {
+      height: $spacing-20;
+    }
+  }
+}
+
+// mobile View
+@include sm {
+  .customInput {
+    &__container.MuiContainer-root {
+      padding-left: $spacing-0;
+    }
+
+    &__field {
+      & .MuiInputBase-root {
+        font-family: $primary-font;
+        font-size: $spacing-14;
+        font-weight: $font-weight-regular;
+        line-height: $spacing-22;
+        padding-left: $spacing-0;
+      }
+    }
+
+    &__valueError {
+      font-family: $primary-font;
+      font-size: $spacing-14;
+      font-weight: $font-weight-regular;
+      line-height: $spacing-22;
+      padding-left: $spacing-0;
+    }
+
+    &__valueError .MuiOutlinedInput-input {
+      font-size: $spacing-14;
+      font-family: $primary-font;
+    }
+
+    &__labelWithoutBorder.MuiFormLabel-root {
+      font-size: $spacing-12;
+      font-weight: $font-weight-regular;
+      line-height: $spacing-19;
+    }
+
+    &__errorIconButton.MuiIconButton-root {
+      width: $spacing-16;
+      height: $spacing-16;
+    }
+  }
+}

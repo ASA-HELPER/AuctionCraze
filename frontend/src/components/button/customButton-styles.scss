@@ -1,0 +1,67 @@
+@import '../../theme/';
+
+@mixin transformBackground($color-value) {
+  background: none;
+  background-color: $color-value;
+  box-shadow: none;
+}
+
+.customButton {
+  &__container.MuiButton-root {
+    align-items: center;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    font-family: $primary-font;
+    font-size: $spacing-16;
+    font-weight: $font-weight-medium;
+    gap: $spacing-12;
+    justify-content: center;
+    line-height: $spacing-20;
+    padding: $spacing-10 $spacing-24;
+    text-align: center;
+    text-transform: capitalize;
+
+    &.MuiButton-containedPrimary {
+      font-weight: $font-weight-medium;
+      background-color: $raisin-black;
+      border-radius: $spacing-6;
+
+      &.Mui-disabled {
+        color: get-color($neutral, 100) !important;
+        background-color: $silver-foil !important;
+      }
+
+      &.MuiButton-focused {
+        background-color: $raisin-black;
+      }
+    }
+
+    &.MuiButton-outlinedPrimary {
+      background-color: transparent !important;
+      color: $anti-flash-white;
+      border-color: $raisin-black;
+      border-radius: $spacing-6;
+
+      &.Mui-disabled {
+        color: $silver-foil !important;
+      }
+    }
+  }
+
+  &__endIcon .MuiButton-icon {
+    color: get-color($neutral, 100) !important;
+  }
+
+  &__loadingIndicator {
+    margin: unset;
+  }
+}
+
+@include sm {
+  .customButton {
+    &__text.MuiTypography-root {
+      font-size: $spacing-14;
+    }
+  }
+}
