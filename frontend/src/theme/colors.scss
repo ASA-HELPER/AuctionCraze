@@ -1,0 +1,105 @@
+$primary: (
+  01: #fe4747,
+  02: #ff3939,
+  03: #ff6b6b,
+  8: #fff5f5,
+);
+
+$neutral: (
+  01: #f7f7f7,
+  02: #ebebeb,
+  03: #c2c2c2,
+  04: #d3d3d3,
+  05: #dddddd,
+  06: #b0b0b0,
+  07: #717171,
+  08: #5e5e5e,
+  100: #ffffff,
+  300: #777980,
+  400: #858d9d,
+  450: #717171,
+  500: #667085,
+  50: #f0f1f3,
+  600: #5e5e5e,
+  700: #1d1f2c,
+);
+
+$shade: (
+  01: #fff,
+  02: #222,
+);
+
+$albaster24: #f3e7e73d;
+$american-silver: #cecece;
+$anti-flash-white: #f2f4f6;
+$baby-blue-eyes: #99c1fd;
+$begonia: #fc7578;
+$black: #000000;
+$black12: #0000001f;
+$black18: #00000030;
+$black3: #00000008;
+$blueberry: #4990fb;
+$box-shadow: #0000004d;
+$bright-gray: #e9e9ea;
+$bubbles: #eaf9f7;
+$caramel: #ffdc99;
+$cerise: #d03560;
+$charleston-green: #2c2b300a;
+$citrine10: #e0c20016;
+$color-wheel: #0e4942;
+$coral-red: #ff3939;
+$cosmic-latte: #fff6e6;
+$crayola: #004cc4;
+$chinese-white: #e0e0e0;
+$cultured: #f4f5f5;
+$dandelion: #ebe43d;
+$dark-gunmetal: #1d1f2c;
+$dark-orchid: #883dcf;
+$davy-grey: #5e5e5e;
+$desire: #eb3d4d;
+$electric-violet: #8700f2;
+$electric-violet14: #8700f214;
+$floral-white: #fff8f5;
+$gainsboro: #dddddd;
+$gallery: #ebebeb;
+$ghost-white: #f9f9fc;
+$granite-gray: #635e5f;
+$gray: #bdbdbd;
+$green: #008a05;
+$kiwi: #7feb3d;
+$lavender-blush: #fff5f5;
+$lavender: #e7d8f5;
+$light-green: #f5faf5;
+$light-silver: #d9d9d9;
+$linen: #ffebeb;
+$magnolia: #f4ecfb;
+$mauvelous: #fa9eaa;
+$maximum-blue-green: #27c2b0;
+$maximum-yellow-red: #f5b948;
+$metallic-pink-50: #f3afbc80;
+$pale-robin-egg-blue: #95ddd4;
+$pastel-red: #ff6b6b29;
+$persian-green: #039f8d;
+$persimmon: #f25700;
+$quartz: #4b4b4b;
+$queen-blue9: #3c5f8917;
+$radical-red-50: #ff385c80;
+$radical-red: #ff385c;
+$raisin-black-40: #222222cc;
+$raisin-black: #222222;
+$raisin-black30: #2222224d;
+$sapphire: #1252b1;
+$shadow: #4859660f;
+$silver-foil: #b0b0b0;
+$silver-sand: #c2c2c2;
+$solitude: #e4efff;
+$success: #178a53;
+$tart-orange: #fe4747;
+$transparent-black: #000000cc;
+$vampire-black: #070e05;
+$white-0: #ffffff00;
+
+// function to get color schemes
+@function get-color($color-name, $variation: 'default') {
+  @return map-get($map: $color-name, $key: $variation);
+}
