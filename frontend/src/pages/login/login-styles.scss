@@ -1,0 +1,14 @@
+@import '../../theme';
+
+.login{
+    &__container{
+        background-color: $raisin-black;
+    }
+}
+
+// Mobile View
+@include sm{
+    .login{
+        
+    }
+}

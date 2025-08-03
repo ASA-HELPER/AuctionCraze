@@ -1,0 +1,14 @@
+@import '../../theme';
+
+.about{
+    &__container{
+        background-color: $raisin-black;
+    }
+}
+
+// Mobile View
+@include sm{
+    .about{
+        
+    }
+}

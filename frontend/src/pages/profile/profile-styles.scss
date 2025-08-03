@@ -1,0 +1,14 @@
+@import '../../theme';
+
+.profile{
+    &__container{
+        background-color: $raisin-black;
+    }
+}
+
+// Mobile View
+@include sm{
+    .profile{
+        
+    }
+}
