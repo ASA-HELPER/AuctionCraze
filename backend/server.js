@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import cloudinary from "cloudinary";
 import dbConnection from "./database/dbConnection.js";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 
 const app = express();
 dotenv.config({ path: "./config/.env" });
@@ -36,6 +37,7 @@ app.use(
 dbConnection();
 
 // custom middlewares
+app.use(errorMiddleware);
 
 // cloudinary
 
