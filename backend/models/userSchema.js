@@ -52,7 +52,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["Auctioneer", "Bidder", "Super Admin"],
+      enum: ["Auctioneer", "Bidder", "Admin"],
       required: true,
     },
     unpaidCommission: {
@@ -86,6 +86,10 @@ userSchema.methods.generateJsonWebToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: process.env.JWT_EXPIRES,
   });
+};
+
+userSchema.methods.isValidObjectId = function (id) {
+  return mongoose.Types.ObjectId.isValid(id);
 };
 
 export const User = mongoose.model("User", userSchema);
