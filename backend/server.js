@@ -8,6 +8,9 @@ import fileUpload from "express-fileupload";
 import cloudinary from "cloudinary";
 import dbConnection from "./database/dbConnection.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+import { BASE_ROUTE, SERVICE_ROUTES } from "./constants/routes.js";
+import userRouter from "./router/userRoutes.js";
+import adminRouter from "./router/adminRoutes.js";
 
 const app = express();
 dotenv.config({ path: "./config/.env" });
@@ -32,6 +35,8 @@ app.use(
 );
 
 // Routers
+app.use(`${BASE_ROUTE}${SERVICE_ROUTES.USER}`, userRouter);
+app.use(`${BASE_ROUTE}${SERVICE_ROUTES.ADMIN}`, adminRouter);
 
 // Database Connection
 dbConnection();
@@ -40,6 +45,11 @@ dbConnection();
 app.use(errorMiddleware);
 
 // cloudinary
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at port ${process.env.PORT}.`.bgCyan.white);
