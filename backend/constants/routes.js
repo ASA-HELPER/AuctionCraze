@@ -1,3 +1,13 @@
+export const BASE_ROUTE = "/api/v1";
+
+export const SERVICE_ROUTES = {
+  USER: "/user",
+  ADMIN: "/admin",
+  BID: "/bid",
+  COMMISSION: "/commission",
+  AUCTION_ITEM: "auctionitem",
+};
+
 export const USER_ROUTES = {
   REGISTER: "/register",
   LOGIN: "/login",
@@ -25,10 +35,10 @@ export const AUCTION_ROUTES = {
   REPUBLISH_ITEM: "/item/republish/:id",
 };
 
-export const SERVICE_ROUTES = {
-  USER: "/user",
-  ADMIN: "/admin",
-  AUCTION_ITEM: "auctionitem",
+export const BID_ROUTES = {
+  PLACE_BID: "/placebid/:id",
 };
 
-export const BASE_ROUTE = "/api/v1";
+export const COMMISSION_ROUTES = {
+  PROOF: "/proof",
+};
