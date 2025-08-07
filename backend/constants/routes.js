@@ -1,3 +1,12 @@
+export const BASE_ROUTE = "/api/v1";
+
+export const SERVICE_ROUTES = {
+  USER: "/user",
+  ADMIN: "/admin",
+  BID: "/bid",
+  COMMISSION: "/commission",
+};
+
 export const USER_ROUTES = {
   REGISTER: "/register",
   LOGIN: "/login",
@@ -16,9 +25,10 @@ export const ADMIN_ROUTES = {
   GET_MONTHLY_REVENUE: "/monthlyincome",
 };
 
-export const SERVICE_ROUTES = {
-  USER: "/user",
-  ADMIN: "/admin",
+export const BID_ROUTES = {
+  PLACE_BID: "/placebid/:id",
 };
 
-export const BASE_ROUTE = "/api/v1";
+export const COMMISSION_ROUTES = {
+  PROOF: "/proof",
+};
