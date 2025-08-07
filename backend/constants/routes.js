@@ -16,9 +16,19 @@ export const ADMIN_ROUTES = {
   GET_MONTHLY_REVENUE: "/monthlyincome",
 };
 
+export const AUCTION_ROUTES = {
+  CREATE: "/create",
+  ALL_ITEMS: "/allitems",
+  AUCTION_DETAILS: "/auction/:id",
+  MY_ITEMS: "/myitems",
+  DELETE_ITEM: "/delete/:id",
+  REPUBLISH_ITEM: "/item/republish/:id",
+};
+
 export const SERVICE_ROUTES = {
   USER: "/user",
   ADMIN: "/admin",
+  AUCTION_ITEM: "auctionitem",
 };
 
 export const BASE_ROUTE = "/api/v1";

@@ -11,6 +11,7 @@ import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import { BASE_ROUTE, SERVICE_ROUTES } from "./constants/routes.js";
 import userRouter from "./router/userRoutes.js";
 import adminRouter from "./router/adminRoutes.js";
+import auctionRouter from "./router/auctionRouter.js";
 
 const app = express();
 dotenv.config({ path: "./config/.env" });
@@ -37,6 +38,7 @@ app.use(
 // Routers
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.USER}`, userRouter);
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.ADMIN}`, adminRouter);
+app.use(`${BASE_ROUTE}${SERVICE_ROUTES.AUCTION_ITEM}`, auctionRouter);
 
 // Database Connection
 dbConnection();
