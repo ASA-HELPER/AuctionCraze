@@ -14,6 +14,8 @@ import adminRouter from "./router/adminRoutes.js";
 import auctionRouter from "./router/auctionRouter.js";
 import bidRouter from "./router/bidRoutes.js";
 import commissionRouter from "./router/commissionRoutes.js";
+import { endedAuctionCron } from "./automation/endedAuctionCron.js";
+import { verifyCommissionCron } from "./automation/verifyCommisionCron.js";
 
 const app = express();
 dotenv.config({ path: "./config/.env" });
@@ -56,6 +58,10 @@ cloudinary.v2.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
+// Running Cron Jobs
+// endedAuctionCron();
+// verifyCommissionCron();
 
 app.listen(process.env.PORT, () => {
   console.log(`Server listening at port ${process.env.PORT}.`.bgCyan.white);
