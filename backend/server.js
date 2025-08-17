@@ -20,6 +20,12 @@ import { verifyCommissionCron } from "./automation/verifyCommisionCron.js";
 const app = express();
 dotenv.config({ path: "./config/.env" });
 
+// Database Connection
+dbConnection();
+
+// custom middlewares
+app.use(errorMiddleware);
+
 // middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -45,12 +51,6 @@ app.use(`${BASE_ROUTE}${SERVICE_ROUTES.ADMIN}`, adminRouter);
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.AUCTION_ITEM}`, auctionRouter);
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.BID}`, bidRouter);
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.COMMISSION}`, commissionRouter);
-
-// Database Connection
-dbConnection();
-
-// custom middlewares
-app.use(errorMiddleware);
 
 // cloudinary
 cloudinary.v2.config({
