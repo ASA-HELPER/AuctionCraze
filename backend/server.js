@@ -21,7 +21,7 @@ const app = express();
 dotenv.config({ path: "./config/.env" });
 
 // Database Connection
-dbConnection();
+await dbConnection();
 
 // custom middlewares
 app.use(errorMiddleware);

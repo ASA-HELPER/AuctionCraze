@@ -11,6 +11,8 @@ const dbConnection = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI, {
       dbName: "AUCTION_CRAZE",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
     isConnected = true;
     console.log("Database connection successful.".bgGreen.white);
