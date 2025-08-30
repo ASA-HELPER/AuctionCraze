@@ -1,7 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { API_ROUTES_PREFIX, API_URL, LOGIN, USER } from "../../constants/api-constants";
+import {
+  API_ROUTES_PREFIX,
+  API_URL,
+  LOGIN,
+  USER,
+  REGISTER,
+} from "../../constants/api-constants";
+import { AppDispatch } from "../store";
+import { IRegisterPayload } from "../../types/api-types";
 
 const userSlice = createSlice({
   name: "user",
@@ -9,10 +17,10 @@ const userSlice = createSlice({
     loading: false,
     isAuthenticated: false,
     user: {},
-    leaderboard:[]
+    leaderboard: [],
   },
   reducers: {
-    registerRequest(state, _action) {
+    registerRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
@@ -22,12 +30,12 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
       state.user = action.payload.user;
     },
-    registerFailed(state, _action) {
+    registerFailed(state) {
       state.loading = false;
       state.isAuthenticated = false;
       state.user = {};
     },
-    loginRequest(state, _action) {
+    loginRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
@@ -37,12 +45,12 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
       state.user = action.payload.user;
     },
-    loginFailed(state, _action) {
+    loginFailed(state) {
       state.loading = false;
       state.isAuthenticated = false;
       state.user = {};
     },
-    fetchUserRequest(state, _action) {
+    fetchUserRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
@@ -52,21 +60,21 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
       state.user = action.payload;
     },
-    fetchUserFailed(state, _action) {
+    fetchUserFailed(state) {
       state.loading = false;
       state.isAuthenticated = false;
       state.user = {};
     },
-    logoutSuccess(state, _action) {
+    logoutSuccess(state) {
       state.isAuthenticated = false;
       state.user = {};
     },
-    logoutFailed(state, _action) {
+    logoutFailed(state) {
       state.loading = false;
       state.isAuthenticated = state.isAuthenticated;
       state.user = state.user;
     },
-    fetchLeaderboardRequest(state, _action) {
+    fetchLeaderboardRequest(state) {
       state.loading = true;
       state.leaderboard = [];
     },
@@ -74,16 +82,38 @@ const userSlice = createSlice({
       state.loading = false;
       state.leaderboard = action.payload;
     },
-    fetchLeaderboardFailed(state, _action) {
+    fetchLeaderboardFailed(state) {
       state.loading = false;
       state.leaderboard = [];
     },
-    clearAllErrors(state, _action) {
+    clearAllErrors(state) {
       state.user = state.user;
       state.isAuthenticated = state.isAuthenticated;
       state.loading = false;
     },
   },
 });
+
+export const register =
+  (data: IRegisterPayload) => async (dispatch: AppDispatch) => {
+    dispatch(userSlice.actions.registerRequest());
+    try {
+      const response = await axios.post(
+        `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${REGISTER}`,
+        data,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      dispatch(userSlice.actions.registerSuccess(response.data.user));
+      toast.success(response.data.message);
+      dispatch(userSlice.actions.clearAllErrors());
+    } catch (error: any) {
+      dispatch(userSlice.actions.registerFailed());
+      toast.error(error.response.data.message);
+      dispatch(userSlice.actions.clearAllErrors());
+    }
+  };
 
 export default userSlice.reducer;
