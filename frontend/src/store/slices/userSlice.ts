@@ -5,11 +5,13 @@ import {
   API_ROUTES_PREFIX,
   API_URL,
   LOGIN,
+  LOGOUT,
   USER,
   REGISTER,
 } from "../../constants/api-constants";
 import { AppDispatch } from "../store";
 import { IRegisterPayload } from "../../types/api-types";
+import { ILoginPayload } from "../../types/api-types";
 
 const userSlice = createSlice({
   name: "user",
@@ -115,5 +117,40 @@ export const register =
       dispatch(userSlice.actions.clearAllErrors());
     }
   };
+
+export const login = (data: ILoginPayload) => async (dispatch: AppDispatch) => {
+  dispatch(userSlice.actions.loginRequest());
+  try {
+    const response = await axios.post(
+      `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${LOGIN}`,
+      data,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    dispatch(userSlice.actions.loginSuccess(response.data.user));
+    toast.success(response.data.message);
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(userSlice.actions.loginFailed(error.response.data.message));
+    toast.error(error.response.data.message);
+    dispatch(userSlice.actions.clearAllErrors());
+  }
+};
+
+export const logout = () => async (dispatch: AppDispatch) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${LOGOUT}`,
+      { withCredentials: true }
+    );
+    dispatch(userSlice.actions.logoutSuccess(response.data.message));
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(userSlice.actions.logoutFailed(error.response.data.message));
+    dispatch(userSlice.actions.clearAllErrors());
+  }
+};
 
 export default userSlice.reducer;
