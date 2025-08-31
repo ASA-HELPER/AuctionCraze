@@ -160,7 +160,7 @@ export const fetchLeaderboard = () => async (dispatch: AppDispatch) => {
       `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${LEADERBOARD}`,
       { withCredentials: true }
     );
-    dispatch(userSlice.actions.fetchLeaderboardSuccess(response.data));
+    dispatch(userSlice.actions.fetchLeaderboardSuccess(response.data.leaderboard));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error: any) {
     dispatch(userSlice.actions.fetchLeaderboardFailed());
