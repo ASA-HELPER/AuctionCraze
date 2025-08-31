@@ -8,10 +8,10 @@ import {
   LOGOUT,
   USER,
   REGISTER,
+  LEADERBOARD,
 } from "../../constants/api-constants";
 import { AppDispatch } from "../store";
-import { IRegisterPayload } from "../../types/api-types";
-import { ILoginPayload } from "../../types/api-types";
+import { IRegisterPayload, ILoginPayload } from "../../types/api-types";
 
 const userSlice = createSlice({
   name: "user",
@@ -149,6 +149,21 @@ export const logout = () => async (dispatch: AppDispatch) => {
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error: any) {
     dispatch(userSlice.actions.logoutFailed(error.response.data.message));
+    dispatch(userSlice.actions.clearAllErrors());
+  }
+};
+
+export const fetchLeaderboard = () => async (dispatch: AppDispatch) => {
+  dispatch(userSlice.actions.fetchLeaderboardRequest());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${LEADERBOARD}`,
+      { withCredentials: true }
+    );
+    dispatch(userSlice.actions.fetchLeaderboardSuccess(response.data));
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(userSlice.actions.fetchLeaderboardFailed());
     dispatch(userSlice.actions.clearAllErrors());
   }
 };
