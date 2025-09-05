@@ -7,6 +7,7 @@ import {
   LOGIN,
   LOGOUT,
   USER,
+  PROFILE,
   REGISTER,
   LEADERBOARD,
 } from "../../constants/api-constants";
@@ -160,10 +161,27 @@ export const fetchLeaderboard = () => async (dispatch: AppDispatch) => {
       `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${LEADERBOARD}`,
       { withCredentials: true }
     );
-    dispatch(userSlice.actions.fetchLeaderboardSuccess(response.data.leaderboard));
+    dispatch(
+      userSlice.actions.fetchLeaderboardSuccess(response.data.leaderboard)
+    );
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error: any) {
     dispatch(userSlice.actions.fetchLeaderboardFailed());
+    dispatch(userSlice.actions.clearAllErrors());
+  }
+};
+
+export const fetchUser = () => async (dispatch: AppDispatch) => {
+  dispatch(userSlice.actions.fetchUserRequest());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${PROFILE}`,
+      { withCredentials: true }
+    );
+    dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(userSlice.actions.fetchUserFailed());
     dispatch(userSlice.actions.clearAllErrors());
   }
 };
