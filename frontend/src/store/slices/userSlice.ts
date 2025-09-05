@@ -8,6 +8,7 @@ import {
   LOGOUT,
   USER,
   REGISTER,
+  PROFILE,
 } from "../../constants/api-constants";
 import { AppDispatch } from "../store";
 import { IRegisterPayload } from "../../types/api-types";
@@ -149,6 +150,21 @@ export const logout = () => async (dispatch: AppDispatch) => {
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error: any) {
     dispatch(userSlice.actions.logoutFailed(error.response.data.message));
+    dispatch(userSlice.actions.clearAllErrors());
+  }
+};
+
+export const fetchUser = () => async (dispatch: AppDispatch) => {
+  dispatch(userSlice.actions.fetchUserRequest());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${PROFILE}`,
+      { withCredentials: true }
+    );
+    dispatch(userSlice.actions.fetchUserSuccess(response.data.user));
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(userSlice.actions.fetchUserFailed());
     dispatch(userSlice.actions.clearAllErrors());
   }
 };
