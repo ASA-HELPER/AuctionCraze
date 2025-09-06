@@ -179,7 +179,7 @@ export const getAllAuctionItems = () => async (dispatch: AppDispatch) => {
 };
 
 export const getMyAuctionItems = () => async (dispatch: AppDispatch) => {
-  dispatch(auctionSlice.actions.getAllAuctionItemRequest());
+  dispatch(auctionSlice.actions.getMyAuctionsRequest());
   try {
     const response = await axios.get(
       `${API_URL}/${API_ROUTES_PREFIX}/${AUCTION_ITEM}/${AUCTION_ROUTES.MY_ITEMS}`,
