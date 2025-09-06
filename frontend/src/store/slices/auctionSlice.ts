@@ -1,6 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { AppDispatch } from "../store";
+import {
+  API_URL,
+  API_ROUTES_PREFIX,
+  AUCTION_ITEM,
+  AUCTION_ROUTES,
+} from "../../constants/api-constants";
+import { NewAuctionPayload } from "../../types/api-types";
 
 const auctionSlice = createSlice({
   name: "auction",
@@ -85,5 +93,68 @@ const auctionSlice = createSlice({
     },
   },
 });
+
+export const createAuction =
+  (data: NewAuctionPayload) => async (dispatch: AppDispatch) => {
+    dispatch(auctionSlice.actions.createAuctionRequest());
+    try {
+      const response = await axios.post(
+        `${API_URL}/${API_ROUTES_PREFIX}/${AUCTION_ITEM}/${AUCTION_ROUTES.CREATE}`,
+        data,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      dispatch(auctionSlice.actions.createAuctionSuccess());
+      toast.success(response.data.message);
+      dispatch(auctionSlice.actions.resetSlice());
+    } catch (error: any) {
+      dispatch(auctionSlice.actions.createAuctionFailed());
+      toast.error(error.response.data.message);
+      dispatch(auctionSlice.actions.resetSlice());
+    }
+  };
+
+export const republishAuction =
+  (data: NewAuctionPayload, id: Number) => async (dispatch: AppDispatch) => {
+    dispatch(auctionSlice.actions.republishItemRequest());
+    try {
+      const response = await axios.put(
+        `${API_URL}/${API_ROUTES_PREFIX}/${AUCTION_ITEM}/${AUCTION_ROUTES.REPUBLISH_ITEM}/${id}`,
+        data,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+      dispatch(auctionSlice.actions.republishItemSuccess());
+      toast.success(response.data.message);
+      dispatch(auctionSlice.actions.resetSlice());
+    } catch (error: any) {
+      dispatch(auctionSlice.actions.republishItemFailed());
+      toast.error(error.response.data.message);
+      dispatch(auctionSlice.actions.resetSlice());
+    }
+  };
+
+export const deleteAuction = (id: Number) => async (dispatch: AppDispatch) => {
+  dispatch(auctionSlice.actions.deleteAuctionItemRequest());
+  try {
+    const response = await axios.delete(
+      `${API_URL}/${API_ROUTES_PREFIX}/${AUCTION_ITEM}/${AUCTION_ROUTES.DELETE_ITEM}/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
+    dispatch(auctionSlice.actions.deleteAuctionItemSuccess());
+    toast.success(response.data.message);
+    dispatch(auctionSlice.actions.resetSlice());
+  } catch (error: any) {
+    dispatch(auctionSlice.actions.deleteAuctionItemFailed());
+    toast.error(error.response.data.message);
+    dispatch(auctionSlice.actions.resetSlice());
+  }
+};
 
 export default auctionSlice.reducer;

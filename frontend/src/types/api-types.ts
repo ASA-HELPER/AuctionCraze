@@ -21,3 +21,14 @@ export interface ILoginPayload {
   email: string;
   password: string;
 }
+
+export interface NewAuctionPayload {
+  title: string;
+  description: string;
+  category: string;
+  condition: string;
+  startingBid: number;
+  startTime: string;
+  endTime: string;
+  image: File;
+}

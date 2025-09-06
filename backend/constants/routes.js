@@ -5,7 +5,7 @@ export const SERVICE_ROUTES = {
   ADMIN: "/admin",
   BID: "/bid",
   COMMISSION: "/commission",
-  AUCTION_ITEM: "auctionitem",
+  AUCTION_ITEM: "/auctionitem",
 };
 
 export const USER_ROUTES = {
