@@ -157,4 +157,64 @@ export const deleteAuction = (id: Number) => async (dispatch: AppDispatch) => {
   }
 };
 
+export const getAllAuctionItems = () => async (dispatch: AppDispatch) => {
+  dispatch(auctionSlice.actions.getAllAuctionItemRequest());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${AUCTION_ITEM}/${AUCTION_ROUTES.ALL_ITEMS}`,
+      {
+        withCredentials: true,
+      }
+    );
+    dispatch(
+      auctionSlice.actions.getAllAuctionItemSuccess(response.data.items)
+    );
+    toast.success(response.data.message);
+    dispatch(auctionSlice.actions.resetSlice());
+  } catch (error: any) {
+    dispatch(auctionSlice.actions.getAllAuctionItemFailed());
+    toast.error(error.response.data.message);
+    dispatch(auctionSlice.actions.resetSlice());
+  }
+};
+
+export const getMyAuctionItems = () => async (dispatch: AppDispatch) => {
+  dispatch(auctionSlice.actions.getMyAuctionsRequest());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${AUCTION_ITEM}/${AUCTION_ROUTES.MY_ITEMS}`,
+      {
+        withCredentials: true,
+      }
+    );
+    dispatch(auctionSlice.actions.getMyAuctionsSuccess(response.data.items));
+    toast.success(response.data.message);
+    dispatch(auctionSlice.actions.resetSlice());
+  } catch (error: any) {
+    dispatch(auctionSlice.actions.getMyAuctionsFailed());
+    toast.error(error.response.data.message);
+    dispatch(auctionSlice.actions.resetSlice());
+  }
+};
+
+export const getAuctionDetail =
+  (id: Number) => async (dispatch: AppDispatch) => {
+    dispatch(auctionSlice.actions.getAuctionDetailRequest());
+    try {
+      const response = await axios.get(
+        `${API_URL}/${API_ROUTES_PREFIX}/${AUCTION_ITEM}/${AUCTION_ROUTES.AUCTION_DETAILS}/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
+      dispatch(auctionSlice.actions.getAuctionDetailSuccess(response.data));
+      toast.success(response.data.message);
+      dispatch(auctionSlice.actions.resetSlice());
+    } catch (error: any) {
+      dispatch(auctionSlice.actions.getAuctionDetailFailed());
+      toast.error(error.response.data.message);
+      dispatch(auctionSlice.actions.resetSlice());
+    }
+  };
+
 export default auctionSlice.reducer;
