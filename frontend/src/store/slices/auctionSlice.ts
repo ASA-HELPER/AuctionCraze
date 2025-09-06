@@ -151,7 +151,7 @@ export const deleteAuction = (id: Number) => async (dispatch: AppDispatch) => {
     toast.success(response.data.message);
     dispatch(auctionSlice.actions.resetSlice());
   } catch (error: any) {
-    dispatch(auctionSlice.actions.getAllAuctionItemFailed());
+    dispatch(auctionSlice.actions.deleteAuctionItemFailed());
     toast.error(error.response.data.message);
     dispatch(auctionSlice.actions.resetSlice());
   }
