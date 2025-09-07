@@ -7,11 +7,15 @@ export const REGISTER = "register";
 export const PROFILE = "profile";
 export const LEADERBOARD = "leaderboard";
 export const AUCTION_ITEM = "auctionitem";
+export const COMMISSION = "commission";
 export const AUCTION_ROUTES = {
   CREATE: "create",
   ALL_ITEMS: "allitems",
   MY_ITEMS: "myitems",
   AUCTION_DETAILS: "auction",
   DELETE_ITEM: "delete",
-  REPUBLISH_ITEM: "item/republish"
+  REPUBLISH_ITEM: "item/republish",
+};
+export const COMMISSION_ROUTES = {
+  PROOF: "proof",
 };
