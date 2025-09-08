@@ -32,3 +32,8 @@ export interface NewAuctionPayload {
   endTime: string;
   image: File;
 }
+
+export interface ProofOfCommissionPayload {
+  amount: number;
+  comment: string;
+}
