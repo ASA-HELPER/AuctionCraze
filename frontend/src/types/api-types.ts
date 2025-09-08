@@ -37,3 +37,7 @@ export interface ProofOfCommissionPayload {
   amount: number;
   comment: string;
 }
+
+export interface PlaceBidPayload {
+  amount: number;
+}

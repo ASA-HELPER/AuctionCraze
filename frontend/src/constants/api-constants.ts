@@ -8,6 +8,7 @@ export const PROFILE = "profile";
 export const LEADERBOARD = "leaderboard";
 export const AUCTION_ITEM = "auctionitem";
 export const COMMISSION = "commission";
+export const BID = "bid";
 export const AUCTION_ROUTES = {
   CREATE: "create",
   ALL_ITEMS: "allitems",
@@ -18,4 +19,8 @@ export const AUCTION_ROUTES = {
 };
 export const COMMISSION_ROUTES = {
   PROOF: "proof",
+};
+
+export const BID_ROUTES = {
+  PLACE_BID: "placebid",
 };
