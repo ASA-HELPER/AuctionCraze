@@ -181,7 +181,7 @@ export const deletePaymentProof =
   (id: number) => async (dispatch: AppDispatch) => {
     dispatch(adminSlice.actions.requestForDeletePaymentProof());
     try {
-      const response = await axios.get(
+      const response = await axios.delete(
         `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.DELETE_PAYMENT_PROOF}/${id}`,
         { withCredentials: true }
       );
@@ -199,7 +199,7 @@ export const deleteAuctionItem =
   (id: number) => async (dispatch: AppDispatch) => {
     dispatch(adminSlice.actions.requestForAuctionItemDelete());
     try {
-      const response = await axios.get(
+      const response = await axios.delete(
         `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.DELETE_AUCTION_ITEM}/${id}`,
         { withCredentials: true }
       );
