@@ -23,9 +23,6 @@ dotenv.config({ path: "./config/.env" });
 // Database Connection
 await dbConnection();
 
-// custom middlewares
-app.use(errorMiddleware);
-
 // middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -51,6 +48,9 @@ app.use(`${BASE_ROUTE}${SERVICE_ROUTES.ADMIN}`, adminRouter);
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.AUCTION_ITEM}`, auctionRouter);
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.BID}`, bidRouter);
 app.use(`${BASE_ROUTE}${SERVICE_ROUTES.COMMISSION}`, commissionRouter);
+
+// custom middlewares
+app.use(errorMiddleware);
 
 // cloudinary
 cloudinary.v2.config({
