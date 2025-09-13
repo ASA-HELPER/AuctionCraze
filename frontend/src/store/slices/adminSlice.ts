@@ -116,11 +116,14 @@ export const getMonthlyRevenue = () => async (dispatch: AppDispatch) => {
       `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_MONTHLY_REVENUE}`,
       { withCredentials: true }
     );
-    dispatch(adminSlice.actions.successForMonthlyRevenue(response.data.totalMonthlyRevenue));
-    dispatch(adminSlice.actions.clearAllErrors());
+    dispatch(
+      adminSlice.actions.successForMonthlyRevenue(
+        response.data.totalMonthlyRevenue
+      )
+    );
   } catch (error: any) {
     dispatch(adminSlice.actions.failedForMonthlyRevenue());
-    dispatch(adminSlice.actions.clearAllErrors());
+    console.error(error.response.data.message);
   }
 };
 
@@ -132,10 +135,9 @@ export const getAllUsers = () => async (dispatch: AppDispatch) => {
       { withCredentials: true }
     );
     dispatch(adminSlice.actions.successForAllUsers(response.data));
-    dispatch(adminSlice.actions.clearAllErrors());
   } catch (error: any) {
     dispatch(adminSlice.actions.failureForAllUsers());
-    dispatch(adminSlice.actions.clearAllErrors());
+    console.error(error.response.data.message);
   }
 };
 
@@ -146,27 +148,32 @@ export const getAllPaymentProofs = () => async (dispatch: AppDispatch) => {
       `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_ALL_PAYMENT_PROOFS}`,
       { withCredentials: true }
     );
-    dispatch(adminSlice.actions.successForPaymentProofs(response.data.paymentProofs));
-    dispatch(adminSlice.actions.clearAllErrors());
+    dispatch(
+      adminSlice.actions.successForPaymentProofs(response.data.paymentProofs)
+    );
   } catch (error: any) {
     dispatch(adminSlice.actions.failureForPaymentProofs());
-    dispatch(adminSlice.actions.clearAllErrors());
+    console.error(error.response.data.message);
   }
 };
 
-export const getSinglePaymentProofDetail = (id: number) => async (dispatch: AppDispatch) => {
-  dispatch(adminSlice.actions.requestForSinglePaymentProofDetail());
-  try {
-    const response = await axios.get(
-      `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_PAYMENT_PROOF_DETAIL}/${id}`,
-      { withCredentials: true }
-    );
-    dispatch(adminSlice.actions.successForSinglePaymentProofDetail(response.data.paymentProofDetail));
-    dispatch(adminSlice.actions.clearAllErrors());
-  } catch (error: any) {
-    dispatch(adminSlice.actions.failureForSinglePaymentProofDetail());
-    dispatch(adminSlice.actions.clearAllErrors());
-  }
-};
+export const getSinglePaymentProofDetail =
+  (id: number) => async (dispatch: AppDispatch) => {
+    dispatch(adminSlice.actions.requestForSinglePaymentProofDetail());
+    try {
+      const response = await axios.get(
+        `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_PAYMENT_PROOF_DETAIL}/${id}`,
+        { withCredentials: true }
+      );
+      dispatch(
+        adminSlice.actions.successForSinglePaymentProofDetail(
+          response.data.paymentProofDetail
+        )
+      );
+    } catch (error: any) {
+      dispatch(adminSlice.actions.failureForSinglePaymentProofDetail());
+      console.error(error.response.data.message);
+    }
+  };
 
 export default adminSlice.reducer;
