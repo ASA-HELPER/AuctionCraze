@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $primary: (
   01: #fe4747,
   02: #ff3939,
@@ -100,6 +102,6 @@ $vampire-black: #070e05;
 $white-0: #ffffff00;
 
 // function to get color schemes
-@function get-color($color-name, $variation: 'default') {
-  @return map-get($map: $color-name, $key: $variation);
+@function get-color($color-name, $variation) {
+  @return map.get($color-name, $variation);
 }

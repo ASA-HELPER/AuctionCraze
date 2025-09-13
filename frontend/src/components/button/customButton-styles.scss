@@ -1,4 +1,4 @@
-@import '../../theme/';
+@use '../../theme' as *;
 
 @mixin transformBackground($color-value) {
   background: none;
