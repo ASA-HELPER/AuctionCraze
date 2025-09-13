@@ -105,7 +105,9 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   // const user = await User.findOne({ email: email.trim().toLowerCase() }).select(
   //   "+password"
   // );
-  const user = await User.findOne({ email: "user4@gmail.com" });
+  const user = await User.findOne({ email: "user4@gmail.com" }).select(
+    "+password"
+  );
   console.log("user:", user);
   if (!user) {
     return next(new ErrorHandler("Invalid credentials.", 400));
