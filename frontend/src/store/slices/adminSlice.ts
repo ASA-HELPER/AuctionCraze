@@ -176,4 +176,7 @@ export const getSinglePaymentProofDetail =
     }
   };
 
+export const clearAllAdminSliceErrors = () => (dispatch: AppDispatch) => {
+  dispatch(adminSlice.actions.clearAllErrors());
+};
 export default adminSlice.reducer;
