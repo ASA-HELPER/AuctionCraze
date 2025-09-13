@@ -1,6 +1,13 @@
 import axios from "axios";
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
+import {
+  API_URL,
+  API_ROUTES_PREFIX,
+  ADMIN,
+  ADMIN_ROUTES,
+} from "../../constants/api-constants";
+import { AppDispatch } from "../store";
 
 const adminSlice = createSlice({
   name: "admin",
@@ -101,5 +108,65 @@ const adminSlice = createSlice({
     },
   },
 });
+
+export const getMonthlyRevenue = () => async (dispatch: AppDispatch) => {
+  dispatch(adminSlice.actions.requestForMonthlyRevenue());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_MONTHLY_REVENUE}`,
+      { withCredentials: true }
+    );
+    dispatch(adminSlice.actions.successForMonthlyRevenue(response.data.totalMonthlyRevenue));
+    dispatch(adminSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(adminSlice.actions.failedForMonthlyRevenue());
+    dispatch(adminSlice.actions.clearAllErrors());
+  }
+};
+
+export const getAllUsers = () => async (dispatch: AppDispatch) => {
+  dispatch(adminSlice.actions.requestForAllUsers());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_ALL_USERS}`,
+      { withCredentials: true }
+    );
+    dispatch(adminSlice.actions.successForAllUsers(response.data));
+    dispatch(adminSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(adminSlice.actions.failureForAllUsers());
+    dispatch(adminSlice.actions.clearAllErrors());
+  }
+};
+
+export const getAllPaymentProofs = () => async (dispatch: AppDispatch) => {
+  dispatch(adminSlice.actions.requestForPaymentProofs());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_ALL_PAYMENT_PROOFS}`,
+      { withCredentials: true }
+    );
+    dispatch(adminSlice.actions.successForPaymentProofs(response.data.paymentProofs));
+    dispatch(adminSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(adminSlice.actions.failureForPaymentProofs());
+    dispatch(adminSlice.actions.clearAllErrors());
+  }
+};
+
+export const getSinglePaymentProofDetail = (id: number) => async (dispatch: AppDispatch) => {
+  dispatch(adminSlice.actions.requestForSinglePaymentProofDetail());
+  try {
+    const response = await axios.get(
+      `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.GET_PAYMENT_PROOF_DETAIL}/${id}`,
+      { withCredentials: true }
+    );
+    dispatch(adminSlice.actions.successForSinglePaymentProofDetail(response.data.paymentProofDetail));
+    dispatch(adminSlice.actions.clearAllErrors());
+  } catch (error: any) {
+    dispatch(adminSlice.actions.failureForSinglePaymentProofDetail());
+    dispatch(adminSlice.actions.clearAllErrors());
+  }
+};
 
 export default adminSlice.reducer;
