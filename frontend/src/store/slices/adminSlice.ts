@@ -8,6 +8,7 @@ import {
   ADMIN_ROUTES,
 } from "../../constants/api-constants";
 import { AppDispatch } from "../store";
+import { getAllAuctionItems } from "./auctionSlice";
 
 const adminSlice = createSlice({
   name: "admin",
@@ -172,6 +173,66 @@ export const getSinglePaymentProofDetail =
       );
     } catch (error: any) {
       dispatch(adminSlice.actions.failureForSinglePaymentProofDetail());
+      console.error(error.response.data.message);
+    }
+  };
+
+export const deletePaymentProof =
+  (id: number) => async (dispatch: AppDispatch) => {
+    dispatch(adminSlice.actions.requestForDeletePaymentProof());
+    try {
+      const response = await axios.delete(
+        `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.DELETE_PAYMENT_PROOF}/${id}`,
+        { withCredentials: true }
+      );
+      dispatch(adminSlice.actions.successForDeletePaymentProof());
+      dispatch(getAllPaymentProofs());
+      toast.success(response.data.message);
+    } catch (error: any) {
+      dispatch(adminSlice.actions.failureForDeletePaymentProof());
+      toast.error(error.response.data.message);
+      console.error(error.response.data.message);
+    }
+  };
+
+export const deleteAuctionItem =
+  (id: number) => async (dispatch: AppDispatch) => {
+    dispatch(adminSlice.actions.requestForAuctionItemDelete());
+    try {
+      const response = await axios.delete(
+        `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.DELETE_AUCTION_ITEM}/${id}`,
+        { withCredentials: true }
+      );
+      dispatch(adminSlice.actions.successForAuctionItemDelete());
+      dispatch(getAllAuctionItems());
+      toast.success(response.data.message);
+    } catch (error: any) {
+      dispatch(adminSlice.actions.failureForAuctionItemDelete());
+      toast.error(error.response.data.message);
+      console.error(error.response.data.message);
+    }
+  };
+
+export const updatePaymentProof =
+  (id: number, status: boolean, amount: number) =>
+  async (dispatch: AppDispatch) => {
+    dispatch(adminSlice.actions.requestForUpdatePaymentProof());
+    try {
+      const response = await axios.put(
+        `${API_URL}/${API_ROUTES_PREFIX}/${ADMIN}/${ADMIN_ROUTES.UPDATE_PROOF_STATUS}/${id}`,
+        { status, amount },
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      dispatch(adminSlice.actions.successForUpdatePaymentProof());
+      dispatch(getAllPaymentProofs());
+      toast.success(response.data.message);
+      dispatch(adminSlice.actions.clearAllErrors());
+    } catch (error: any) {
+      dispatch(adminSlice.actions.failureForUpdatePaymentProof());
+      toast.error(error.response.data.message);
       console.error(error.response.data.message);
     }
   };
