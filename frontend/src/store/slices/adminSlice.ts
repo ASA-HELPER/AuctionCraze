@@ -229,6 +229,7 @@ export const updatePaymentProof =
       dispatch(adminSlice.actions.successForUpdatePaymentProof());
       dispatch(getAllPaymentProofs());
       toast.success(response.data.message);
+      dispatch(adminSlice.actions.clearAllErrors());
     } catch (error: any) {
       dispatch(adminSlice.actions.failureForUpdatePaymentProof());
       toast.error(error.response.data.message);
