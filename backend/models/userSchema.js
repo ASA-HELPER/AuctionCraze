@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       selected: false,
-      minLength: [8, "Password must caontain at least 8 characters."],
+      minLength: [8, "Password must contain at least 8 characters."],
     },
     email: {
       type: String,
@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema(
     address: String,
     phone: {
       type: String,
-      minLength: [11, "Phone Number must caontain exact 11 digits."],
-      maxLength: [11, "Phone Number must caontain exact 11 digits."],
+      minLength: [11, "Phone Number must contain exact 11 digits."],
+      maxLength: [11, "Phone Number must contain exact 11 digits."],
     },
     profileImage: {
       public_id: {

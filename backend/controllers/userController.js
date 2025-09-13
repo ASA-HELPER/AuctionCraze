@@ -100,13 +100,17 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   if (!email || !password) {
     return next(new ErrorHandler("Please fill full form."));
   }
+  console.log("email:", email);
+  console.log("password:", password);
   const user = await User.findOne({ email: email.toLowerCase() }).select(
     "+password"
   );
+  console.log("user:", user);
   if (!user) {
     return next(new ErrorHandler("Invalid credentials.", 400));
   }
   const isPasswordMatch = await user.comparePassword(password);
+  console.log("isPasswordMatch:", isPasswordMatch);
   if (!isPasswordMatch) {
     return next(new ErrorHandler("Invalid credentials.", 400));
   }
