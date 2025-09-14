@@ -1,0 +1,14 @@
+@use '../../theme' as *;
+
+.dashboard{
+    &__container{
+        background-color: $raisin-black;
+    }
+}
+
+// Mobile View
+@include sm{
+    .dashboard{
+        
+    }
+}

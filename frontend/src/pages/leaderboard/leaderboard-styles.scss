@@ -1,0 +1,14 @@
+@use '../../theme' as *;
+
+.leaderboard{
+    &__container{
+        background-color: $raisin-black;
+    }
+}
+
+// Mobile View
+@include sm{
+    .leaderboard{
+        
+    }
+}
