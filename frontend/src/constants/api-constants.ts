@@ -10,6 +10,7 @@ export const LEADERBOARD = "leaderboard";
 export const AUCTION_ITEM = "auctionitem";
 export const COMMISSION = "commission";
 export const BID = "bid";
+
 export const AUCTION_ROUTES = {
   CREATE: "create",
   ALL_ITEMS: "allitems",
@@ -18,6 +19,7 @@ export const AUCTION_ROUTES = {
   DELETE_ITEM: "delete",
   REPUBLISH_ITEM: "item/republish",
 };
+
 export const COMMISSION_ROUTES = {
   PROOF: "proof",
 };
@@ -25,6 +27,7 @@ export const COMMISSION_ROUTES = {
 export const BID_ROUTES = {
   PLACE_BID: "placebid",
 };
+
 export const ADMIN_ROUTES = {
   DELETE_AUCTION_ITEM: "auctionitem/delete",
   GET_ALL_PAYMENT_PROOFS: "paymentproofs/getall",
