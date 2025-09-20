@@ -67,4 +67,6 @@ export interface IInputProps {
   value?: string;
   /** variant: is an optional prop and it dictates the variant of the input field */
   variant?: InputVariant;
+  /** name: is an optional prop and it dictates the name of the input field */
+  name?: string;
 }

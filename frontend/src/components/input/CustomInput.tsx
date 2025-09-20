@@ -50,6 +50,7 @@ const CustomInput = (props: IInputProps) => {
     size = InputSizes.Small,
     value = '',
     variant = InputVariant.Outlined,
+    name = '',
   } = props;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -99,6 +100,7 @@ const CustomInput = (props: IInputProps) => {
         multiline={isMultiline}
         onChange={handleInputChange}
         value={value}
+        name={name}
       />
     );
   };
