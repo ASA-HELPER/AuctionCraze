@@ -10,6 +10,7 @@ import CustomDropdown from "../../components/dropdown/CustomDropdown";
 import { BANKNAMES, ROLES } from "../../constants/common-constants";
 import registerCopy from "./register.copy";
 import CustomButton from "../../components/button/CustomButton";
+import AvatarPreview from "../../assets/AvatarPreview.png";
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -20,26 +21,20 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [bankAccountNumber, setBankAccountNumber] = useState<string>("");
-  const [bankAccountName, setBankAccountName] = useState<string>("");
-  const [bankName, setBankName] = useState("");
+  const [bankName, setBankName] = useState<string | null>("");
+  const [bankAccountUserName, setBankAccountUserName] = useState("");
   const [easypaisaAccountNumber, setEasypaisaAccountNumber] = useState("");
   const [paypalEmail, setPaypalEmail] = useState("");
-  const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState<File | null>(null);
 
-  const profileHandler = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setProfileImage(file);
-    };
-  };
-
-  const handleFileChange = (
-    e: React.ChangeEvent<HTMLFormElement | HTMLInputElement>
-  ) => {
-    if (e.target.files && e.target.files[0]) {
-      setProfileImage(e.target.files[0]);
+  const profileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setProfileImage(file);
+      };
     }
   };
 
@@ -47,16 +42,21 @@ const Register = () => {
     const formData = new FormData();
     formData.append("userName", userName);
     formData.append("email", email);
-    formData.append("phone", phone);
+    formData.append("password", password);
     formData.append("phone", phone);
     formData.append("address", address);
-    formData.append("role", role);
-    formData.append("profileImage", profileImage);
-    formData.append("bankAccountNumber", bankAccountNumber);
-    formData.append("bankAccountName", bankAccountName);
-    formData.append("bankName", bankName);
-    formData.append("easypaisaAccountNumber", easypaisaAccountNumber);
-    formData.append("paypalEmail", paypalEmail);
+    formData.append("role", String(role));
+    if(profileImage){
+      formData.append("profileImage", profileImage);
+    }
+    if(role === ROLES[0]){
+      formData.append("bankAccountNumber", bankAccountNumber);
+      formData.append("bankName", String(bankName));
+      formData.append("bankAccountName", bankAccountUserName)
+      formData.append("easypaisaAccountNumber", easypaisaAccountNumber);
+      formData.append("paypalEmail", paypalEmail);
+    }
+    console.log(formData);
     dispatch(register(formData));
   };
 
@@ -70,14 +70,18 @@ const Register = () => {
               Profile Image
             </Typography>
             <img
-              src={profileImage ? profileImage : "/avatarHolder.jpg"}
+              src={
+                profileImage
+                  ? URL.createObjectURL(profileImage)
+                  : AvatarPreview
+              }
               alt="avatar"
               className="register__image"
             />
             <div className="relative">
               <input
                 type="file"
-                onChange={handleFileChange}
+                onChange={profileHandler}
                 className="avatar-update-btn"
               />
             </div>
@@ -112,7 +116,7 @@ const Register = () => {
         />
         <CustomDropdown
           data={ROLES}
-          placeholder={"Select Role"}
+          placeholder={registerCopy.selectRole}
           setValue={(value) => setRole(value)}
           value={role}
           label={registerCopy.role}
@@ -135,6 +139,13 @@ const Register = () => {
           label={registerCopy.address}
           inputLabelClass="register__inputLabels"
         />
+        <CustomDropdown
+          data={BANKNAMES}
+          placeholder={registerCopy.selectBankName}
+          setValue={(value) => setBankName(value)}
+          value={bankName}
+          label={registerCopy.bankName}
+        />
         <CustomInput
           value={bankAccountNumber}
           handleChange={(e) => setBankAccountNumber(e.target.value)}
@@ -144,12 +155,14 @@ const Register = () => {
           label={registerCopy.bankAccountNumber}
           inputLabelClass="register__inputLabels"
         />
-        <CustomDropdown
-          data={BANKNAMES}
-          placeholder={"Select project tech stack"}
-          setValue={(value) => setBankAccountName(value)}
-          value={bankAccountName}
-          label={registerCopy.bankName}
+        <CustomInput
+          value={bankAccountUserName}
+          handleChange={(e) => setBankAccountUserName(e.target.value)}
+          preset={InputPresets.Text}
+          variant={InputVariant.Outlined}
+          hasBorder
+          label={registerCopy.bankAccountUserName}
+          inputLabelClass="register__inputLabels"
         />
         <CustomInput
           value={easypaisaAccountNumber}
