@@ -1,14 +1,36 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.login{
-    &__container{
-        background-color: $raisin-black;
-    }
+.login {
+  &__container {
+    border: $spacing-1 solid $raisin-black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: $spacing-20;
+    gap: $spacing-10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__forgotPassword {
+    color: $davy-grey;
+    text-decoration: none;
+  }
+
+  &__title {
+    font-family: $primary-font;
+  }
 }
 
-// Mobile View
-@include sm{
-    .login{
-        
+@include sm {
+  .login {
+    &__container {
+      height: 50vh;
+      width: 80%;
     }
+  }
 }
