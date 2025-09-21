@@ -2,7 +2,6 @@
 
 .about {
   &__container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
@@ -16,30 +15,13 @@
 
   &__title.MuiTypography-root {
     text-transform: uppercase;
-    background-image: linear-gradient(
-      -225deg,
-      #231557 0%,
-      #44107a 29%,
-      #ff1361 67%,
-      #fff800 100%
-    );
     background-size: auto auto;
     background-clip: border-box;
     background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 2s linear infinite;
+    color: $blueberry;
     display: inline-block;
     font-size: $spacing-50;
-  }
-
-  @keyframes textclip {
-    to {
-      background-position: 200% center;
-    }
+    font-weight:$font-weight-bold;
   }
 
   &__separator {
@@ -49,7 +31,11 @@
   }
 
   &__content {
-    margin-top: $spacing-20;
+    margin: $spacing-20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   &__grid {
@@ -57,6 +43,10 @@
     grid-template-columns: 1fr 1fr;
     gap: $spacing-20;
     margin-bottom: $spacing-20;
+
+    &--full {
+      grid-template-columns: 1fr;
+    }
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -67,20 +57,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 50%;
+    width: 100%;
   }
 
   &__image {
-    background-color: white;
-    padding: 1rem;
-    transform: rotate(25deg);
-    height: $spacing-100;
-    width: $spacing-100;
-
-    @media (min-width: 600px) {
-      height: $spacing-300;
-    }
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
+
 
   &__textContainer {
     display: flex;
@@ -91,11 +77,26 @@
     line-height: 1.5;
   }
 
+  &__heading.MuiTypography-root{
+    color: $blueberry;
+    font-size: $spacing-30;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__subheading.MuiTypography-root {
+    font-weight: bold;
+    font-weight: $font-weight-semi-bold;
+    color: $dandelion;
+  }
+
   &__description {
     color: $chinese-white;
     text-align: justify;
     font-style: $primary-font;
+    font-weight: $font-weight-regular;
   }
+
   &__list {
     margin: 0;
     padding: 0 1rem;
@@ -103,14 +104,6 @@
 
     li {
       margin-bottom: 1rem;
-    }
-
-    &__subheading {
-      font-weight: bold;
-    }
-
-    &__description {
-      margin-top: 0.25rem;
     }
   }
 }

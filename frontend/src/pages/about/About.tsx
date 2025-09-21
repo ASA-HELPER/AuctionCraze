@@ -12,10 +12,10 @@ const About = () => {
     description: string | Record<string, string>,
     image?: string
   ) => (
-    <div className="about__grid">
+    <div className={`about__grid ${!image && "about__grid--full"}`}>
       {image && (
         <div className="about__imageContainer">
-          <img src={image} alt={`${heading}`} />
+          <img src={image} alt={`${heading}`} className="about__image" />
         </div>
       )}
       <div className="about__textContainer">
