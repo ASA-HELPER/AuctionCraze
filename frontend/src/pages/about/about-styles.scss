@@ -1,14 +1,116 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.about{
-    &__container{
-        background-color: $raisin-black;
-    }
-}
+.about {
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    align-items: center;
+  }
 
-// Mobile View
-@include sm{
-    .about{
-        
+  &__header {
+    position: relative;
+    text-align: center;
+  }
+
+  &__title.MuiTypography-root {
+    text-transform: uppercase;
+    background-image: linear-gradient(
+      -225deg,
+      #231557 0%,
+      #44107a 29%,
+      #ff1361 67%,
+      #fff800 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: $spacing-50;
+  }
+
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
     }
+  }
+
+  &__separator {
+    margin-top: $spacing-10;
+    border-top: $spacing-5 solid #ddd;
+    width: 100%;
+  }
+
+  &__content {
+    margin-top: $spacing-20;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-20;
+    margin-bottom: $spacing-20;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+  }
+
+  &__image {
+    background-color: white;
+    padding: 1rem;
+    transform: rotate(25deg);
+    height: $spacing-100;
+    width: $spacing-100;
+
+    @media (min-width: 600px) {
+      height: $spacing-300;
+    }
+  }
+
+  &__textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $spacing-10;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  &__description {
+    color: $chinese-white;
+    text-align: justify;
+    font-style: $primary-font;
+  }
+  &__list {
+    margin: 0;
+    padding: 0 1rem;
+    list-style: disc;
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    &__subheading {
+      font-weight: bold;
+    }
+
+    &__description {
+      margin-top: 0.25rem;
+    }
+  }
 }
