@@ -15,11 +15,8 @@ const Profile = () => {
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.user
   );
-
-
   
   const navigateTo = useNavigate();
-  console.log(user);
   useEffect(() => {
     if (!isAuthenticated) {
       navigateTo(ROUTES.HOME);
@@ -30,7 +27,7 @@ const Profile = () => {
     <div className="profile__container">
       <Typography className="profile__title">Profile</Typography>
       <div className="profile__subcontainer">
-        {/* <div className="profile__imageContainer">
+        <div className="profile__imageContainer">
           <div className="profile__imageSubcontainer">
             <Typography className="profile__imgLabels">
               Profile Image
@@ -45,7 +42,7 @@ const Profile = () => {
               className="profile__image"
             />
           </div>
-        </div> */}
+        </div>
         <CustomInput
           value={user && user.userName}
           handleChange={() => {}}
