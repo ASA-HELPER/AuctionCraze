@@ -62,12 +62,12 @@ const Register = () => {
 
   return (
     <div className="register__container">
-      <Typography className="register__title">Register</Typography>
+      <Typography className="register__title">{registerCopy.register}</Typography>
       <div className="register__subcontainer">
         <div className="register__imageContainer">
           <div className="register__imageSubcontainer">
             <Typography className="register__imgLabels">
-              Profile Image
+              {registerCopy.profileImage}
             </Typography>
             <img
               src={
@@ -182,7 +182,7 @@ const Register = () => {
           label={registerCopy.paypalEmail}
           inputLabelClass="register__inputLabels"
         />
-        <CustomButton handleClick={handleRegister} title="Register" />
+        <CustomButton handleClick={handleRegister} title={registerCopy.register} />
       </div>
     </div>
   );

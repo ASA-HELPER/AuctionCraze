@@ -12,6 +12,4 @@ export default {
     paypalEmail: "Paypal Email",
     selectRole: "Select Role",
     selectBankName: "Select Bank Name",
-    register: "Register",
-    profileImage: "Profile Image",
 }

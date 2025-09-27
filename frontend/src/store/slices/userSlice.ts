@@ -130,7 +130,7 @@ export const login = (data: ILoginPayload) => async (dispatch: AppDispatch) => {
         headers: { "Content-Type": "application/json" },
       }
     );
-    dispatch(userSlice.actions.loginSuccess(response.data.user));
+    dispatch(userSlice.actions.loginSuccess(response.data));
     toast.success(response.data.message);
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error: any) {
