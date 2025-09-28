@@ -1,14 +1,86 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.contact{
-    &__container{
-        background-color: $raisin-black;
-    }
-}
+.contact {
+  &__container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: $american-silver;
+    gap: 3rem;
+    align-items: center;
+  }
 
-// Mobile View
-@include sm{
-    .contact{
-        
+  &__header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__title.MuiTypography-root {
+    text-transform: uppercase;
+    background-image: linear-gradient(
+      -225deg,
+      #231557 0%,
+      #44107a 29%,
+      #ff1361 67%,
+      #fff800 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 50px;
+  }
+
+  &__separator {
+    margin-top: $spacing-10;
+    border-top: $spacing-5 solid #ddd;
+    width: 100%;
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__input {
+    & .MuiInputBase-root {
+      font-size: 1rem;
     }
+  }
+
+  &__submit-button {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button.MuiButtonBase-root {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-6 $spacing-20;
+    background-color: $coral-red;
+    color: $chinese-white;
+  }
+
+  &__button.MuiButtonBase-root:hover {
+    border-color: $coral-red;
+    color: $coral-red;
+    background-color: $raisin-black;
+  }
 }
