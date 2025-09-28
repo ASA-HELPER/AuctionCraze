@@ -46,13 +46,13 @@ const Register = () => {
     formData.append("phone", phone);
     formData.append("address", address);
     formData.append("role", String(role));
-    if(profileImage){
+    if (profileImage) {
       formData.append("profileImage", profileImage);
     }
-    if(role === ROLES[0]){
+    if (role === ROLES[0]) {
       formData.append("bankAccountNumber", bankAccountNumber);
       formData.append("bankName", String(bankName));
-      formData.append("bankAccountName", bankAccountUserName)
+      formData.append("bankAccountName", bankAccountUserName);
       formData.append("easypaisaAccountNumber", easypaisaAccountNumber);
       formData.append("paypalEmail", paypalEmail);
     }
@@ -71,9 +71,7 @@ const Register = () => {
             </Typography>
             <img
               src={
-                profileImage
-                  ? URL.createObjectURL(profileImage)
-                  : AvatarPreview
+                profileImage ? URL.createObjectURL(profileImage) : AvatarPreview
               }
               alt="avatar"
               className="register__image"

@@ -6,4 +6,7 @@ export default {
   subject: "Subject",
   message: "Message",
   buttonText: "SEND MESSAGE",
+  successMessage: "Thank You! Your message has been sent successfully.",
+  failureMessage: "Failed to send message.",
+  loadingButtonText: "Sending Message..."
 };
