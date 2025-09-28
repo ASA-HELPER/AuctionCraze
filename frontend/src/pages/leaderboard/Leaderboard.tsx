@@ -23,15 +23,15 @@ const Leaderboard = () => {
   const transformedLeaderboardData = leaderboard.map((item) => ({
     id: item._id,
     name: item.name,
-    iconImage: item.iconImage,
-    bidExpenditure: item.bidExpenditure,
+    iconImage: item.profileImage?.url,
+    bidExpenditure: item.moneySpent,
     auctionsWon: item.auctionsWon,
   }));
 
   const BIDDER_LEADERBOARD_TABLE_FIELDS: ExtendedColumn[] = [
     {
       field: "iconImage",
-      headerName: "Profile Pic",
+      headerName: leaderboardCopy.profilePic,
       flex: 1,
       renderCell: (params) => (
         <img
@@ -49,17 +49,17 @@ const Leaderboard = () => {
     },
     {
       field: "name",
-      headerName: "Username",
+      headerName: leaderboardCopy.username,
       flex: 1,
     },
     {
       field: "bidExpenditure",
-      headerName: "Bid Expenditure",
+      headerName: leaderboardCopy.bidExpenditure,
       flex: 1,
     },
     {
       field: "auctionsWon",
-      headerName: "Auctions Won",
+      headerName: leaderboardCopy.auctionsWon,
       flex: 1,
     },
   ];
