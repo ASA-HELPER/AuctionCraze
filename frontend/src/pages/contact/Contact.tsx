@@ -22,7 +22,6 @@ const Contact = () => {
   const handleMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    console.log("Enter function");
 
     try {
       const templateParams: ITemplateParams = {
@@ -34,7 +33,6 @@ const Contact = () => {
       };
 
       const flag = await sendEmail(templateParams);
-      console.log("Flag: ", flag);
 
       if (flag) {
         toast.success(contactCopy.successMessage);

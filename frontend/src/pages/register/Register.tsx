@@ -56,13 +56,14 @@ const Register = () => {
       formData.append("easypaisaAccountNumber", easypaisaAccountNumber);
       formData.append("paypalEmail", paypalEmail);
     }
-    console.log(formData);
     dispatch(register(formData));
   };
 
   return (
     <div className="register__container">
-      <Typography className="register__title">{registerCopy.register}</Typography>
+      <Typography className="register__title">
+        {registerCopy.register}
+      </Typography>
       <div className="register__subcontainer">
         <div className="register__imageContainer">
           <div className="register__imageSubcontainer">
@@ -180,7 +181,10 @@ const Register = () => {
           label={registerCopy.paypalEmail}
           inputLabelClass="register__inputLabels"
         />
-        <CustomButton handleClick={handleRegister} title={registerCopy.register} />
+        <CustomButton
+          handleClick={handleRegister}
+          title={registerCopy.register}
+        />
       </div>
     </div>
   );
