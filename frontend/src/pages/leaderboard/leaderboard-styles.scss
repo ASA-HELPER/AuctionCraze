@@ -3,6 +3,16 @@
 .leaderboard{
     &__container{
         background-color: $raisin-black;
+        display: flex;
+        flex-direction: column;
+        padding: $spacing-0 $spacing-10;
+        gap: $spacing-20;
+    }
+
+    &__headerContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
