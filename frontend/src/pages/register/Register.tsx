@@ -46,23 +46,24 @@ const Register = () => {
     formData.append("phone", phone);
     formData.append("address", address);
     formData.append("role", String(role));
-    if(profileImage){
+    if (profileImage) {
       formData.append("profileImage", profileImage);
     }
-    if(role === ROLES[0]){
+    if (role === ROLES[0]) {
       formData.append("bankAccountNumber", bankAccountNumber);
       formData.append("bankName", String(bankName));
-      formData.append("bankAccountName", bankAccountUserName)
+      formData.append("bankAccountName", bankAccountUserName);
       formData.append("easypaisaAccountNumber", easypaisaAccountNumber);
       formData.append("paypalEmail", paypalEmail);
     }
-    console.log(formData);
     dispatch(register(formData));
   };
 
   return (
     <div className="register__container">
-      <Typography className="register__title">{registerCopy.register}</Typography>
+      <Typography className="register__title">
+        {registerCopy.register}
+      </Typography>
       <div className="register__subcontainer">
         <div className="register__imageContainer">
           <div className="register__imageSubcontainer">
@@ -71,9 +72,7 @@ const Register = () => {
             </Typography>
             <img
               src={
-                profileImage
-                  ? URL.createObjectURL(profileImage)
-                  : AvatarPreview
+                profileImage ? URL.createObjectURL(profileImage) : AvatarPreview
               }
               alt="avatar"
               className="register__image"
@@ -182,7 +181,10 @@ const Register = () => {
           label={registerCopy.paypalEmail}
           inputLabelClass="register__inputLabels"
         />
-        <CustomButton handleClick={handleRegister} title={registerCopy.register} />
+        <CustomButton
+          handleClick={handleRegister}
+          title={registerCopy.register}
+        />
       </div>
     </div>
   );
