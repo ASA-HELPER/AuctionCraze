@@ -1,17 +1,22 @@
-import { FC, SyntheticEvent, useState } from 'react';
-import { DEFAULT_LIMIT, DEFAULT_PAGE, DEFAULT_TOTAL_RECORDS } from '../../constants/table-constants';
-import KeyboardArrowDownIcon from '@mui/icons-material/ArrowDownward';
-import KeyboardArrowUpIcon from '@mui/icons-material/ArrowUpward';
-import { Box } from '@mui/material';
-import { DataGrid, DataGridProps } from '@mui/x-data-grid';
-import { ExtendedColumn, IRow, IAction } from '../../types/table-types';
+import { FC, SyntheticEvent, useState } from "react";
+import {
+  DEFAULT_LIMIT,
+  DEFAULT_PAGE,
+  DEFAULT_TOTAL_RECORDS,
+} from "../../constants/table-constants";
+import KeyboardArrowDownIcon from "@mui/icons-material/ArrowDownward";
+import KeyboardArrowUpIcon from "@mui/icons-material/ArrowUpward";
+import { Box } from "@mui/material";
+import { DataGrid, DataGridProps } from "@mui/x-data-grid";
+import { ExtendedColumn, IRow, IAction } from "../../types/table-types";
 
-import getActions, { TABLE_ACTIONS } from './CustomTableActions';
-import AMTableFooter from './CustomTableFooter';
-import './customTable-styles.scss';
-import CustomSpinner from './../spinner/CustomSpinner';
+import getActions, { TABLE_ACTIONS } from "./CustomTableActions";
+import AMTableFooter from "./CustomTableFooter";
+import "./customTable-styles.scss";
+import CustomSpinner from "./../spinner/CustomSpinner";
 
-interface ICustomTableProps extends Omit<DataGridProps, 'pagination' | 'columns'> {
+interface ICustomTableProps
+  extends Omit<DataGridProps, "pagination" | "columns"> {
   /* actions: actions is an optional object with delete, edit, and view keys */
   actions?: IAction;
   /** columns: is an required boolean prop that defines columns of the table. */
@@ -38,7 +43,7 @@ interface ICustomTableProps extends Omit<DataGridProps, 'pagination' | 'columns'
 
 interface SortingState {
   field: string;
-  direction: 'asc' | 'desc';
+  direction: "asc" | "desc";
 }
 
 const commonColumnProps: Partial<ExtendedColumn> = {
@@ -46,7 +51,7 @@ const commonColumnProps: Partial<ExtendedColumn> = {
   minWidth: 150,
 };
 
-const CustomTable: FC<ICustomTableProps> = props => {
+const CustomTable: FC<ICustomTableProps> = (props) => {
   const {
     columns,
     page = DEFAULT_PAGE,
@@ -65,16 +70,19 @@ const CustomTable: FC<ICustomTableProps> = props => {
   const [sortingState, setSortingState] = useState<SortingState[]>([]);
 
   const handleHeaderClick = (field: string, onHeaderClick?: () => void) => {
-    setSortingState(prevState => {
-      const existingState = prevState.find(state => state.field === field);
+    setSortingState((prevState) => {
+      const existingState = prevState.find((state) => state.field === field);
       if (existingState) {
-        return prevState.map(state =>
+        return prevState.map((state) =>
           state.field === field
-            ? { ...state, direction: state.direction === 'asc' ? 'desc' : 'asc' }
-            : state,
+            ? {
+                ...state,
+                direction: state.direction === "asc" ? "desc" : "asc",
+              }
+            : state
         );
       } else {
-        return [...prevState, { field, direction: 'asc' }];
+        return [...prevState, { field, direction: "asc" }];
       }
     });
 
@@ -83,18 +91,23 @@ const CustomTable: FC<ICustomTableProps> = props => {
     }
   };
 
-  const sortedColumn = columns?.map(column => {
+  const sortedColumn = columns?.map((column) => {
     if (column.sort) {
-      const currentSortState = sortingState.find(state => state.field === column.field);
+      const currentSortState = sortingState.find(
+        (state) => state.field === column.field
+      );
       return {
         ...column,
         renderHeader: () => (
           <span
             className="sortable-header"
-            onClick={() => handleHeaderClick(column.field, column.onHeaderClick)}>
+            onClick={() =>
+              handleHeaderClick(column.field, column.onHeaderClick)
+            }
+          >
             {column.headerName}
             <span className="customTable__sortIcon">
-              {currentSortState?.direction === 'asc' ? (
+              {currentSortState?.direction === "asc" ? (
                 <KeyboardArrowUpIcon fontSize="small" />
               ) : (
                 <KeyboardArrowDownIcon fontSize="small" />
@@ -107,11 +120,12 @@ const CustomTable: FC<ICustomTableProps> = props => {
     return column;
   });
 
-  const filteredActions = actions && TABLE_ACTIONS.filter(action => actions[action.key]);
+  const filteredActions =
+    actions && TABLE_ACTIONS.filter((action) => actions[action.key]);
   const isActionActive = filteredActions && filteredActions.length > 0;
 
-  let updatedColumns = sortedColumn?.map(column => {
-    const headerAlign = column.type === 'number' ? 'right' : 'left';
+  let updatedColumns = sortedColumn?.map((column) => {
+    const headerAlign = column.type === "number" ? "right" : "left";
     return {
       ...commonColumnProps,
       ...column,
@@ -124,11 +138,11 @@ const CustomTable: FC<ICustomTableProps> = props => {
       ...updatedColumns,
       {
         ...commonColumnProps,
-        headerAlign: 'center',
-        field: 'actions',
-        headerName: 'Actions',
+        headerAlign: "center",
+        field: "actions",
+        headerName: "Actions",
         flex: 0.5,
-        type: 'actions',
+        type: "actions",
         getActions: getActions(filteredActions, handleActionClick),
       },
     ];
@@ -138,10 +152,10 @@ const CustomTable: FC<ICustomTableProps> = props => {
     <Box className="customTable__tableContainer">
       <DataGrid
         classes={{
-          cell: 'customTable__rowCell',
-          columnHeader: 'customTable__headers',
-          root: 'customTable__container',
-          row: 'customTable__row',
+          cell: "customTable__rowCell",
+          columnHeader: "customTable__headers",
+          root: "customTable__container",
+          row: "customTable__row",
         }}
         columns={updatedColumns}
         disableColumnFilter
@@ -163,7 +177,9 @@ const CustomTable: FC<ICustomTableProps> = props => {
               totalRecords={totalRecords}
             />
           ),
-          noRowsOverlay: () => <div>No Data Available</div>,
+          noRowsOverlay: () => (
+            <div className="customTable__emptyData">No Data Available</div>
+          ),
           loadingOverlay: () => <CustomSpinner spinnerSize={40} />,
         }}
         loading={loading}
