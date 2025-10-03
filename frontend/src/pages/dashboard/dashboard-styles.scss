@@ -1,14 +1,46 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.dashboard{
-    &__container{
-        background-color: $raisin-black;
-    }
+.dashboard {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    background-color: $chinese-white;
+    padding: $spacing-20;
+    align-items: center;
+  }
+
+  &__subContainer {
+    width: 100%;
+  }
+
+  &__title.MuiTypography-root {
+    text-transform: uppercase;
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: $blueberry;
+    display: inline-block;
+    font-size: $spacing-50;
+    font-weight: $font-weight-bold;
+    text-align: center;
+  }
+
+  &__subTitle.MuiTypography-root {
+    color: $blueberry;
+    font-size: $spacing-30;
+    font-weight: $font-weight-bold;
+  }
+
+  &__tableImage {
+    width: $spacing-40;
+    height: $spacing-40;
+    object-fit: "cover";
+    align-self: "center";
+  }
 }
 
 // Mobile View
-@include sm{
-    .dashboard{
-        
-    }
+@include sm {
+  .dashboard {
+  }
 }

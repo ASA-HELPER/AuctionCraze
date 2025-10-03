@@ -25,6 +25,8 @@ import { ROUTES } from "./constants/route-constants";
 import { useEffect } from "react";
 import { fetchLeaderboard, fetchUser } from "./store/slices/userSlice";
 import { getAllAuctionItems } from "./store/slices/auctionSlice";
+import { SideDrawer } from "./components";
+import UpdatePaymentProof from "./pages/dashboard/components/updatePaymentProof/UpdatePaymentProof";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -37,6 +39,7 @@ function App() {
 
   return (
     <Router>
+      <SideDrawer />
       <Routes>
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.SIGN_UP} element={<Register />} />
@@ -49,6 +52,10 @@ function App() {
         <Route
           path={ROUTES.AUCTION_DETAILS()}
           element={<ViewAuctionDetails />}
+        />
+        <Route
+          path={ROUTES.PAYMENT_DETAILS()}
+          element={<UpdatePaymentProof />}
         />
 
         <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />

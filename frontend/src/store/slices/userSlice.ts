@@ -109,7 +109,7 @@ export const register =
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-      dispatch(userSlice.actions.registerSuccess(response.data.user));
+      dispatch(userSlice.actions.registerSuccess(response.data));
       toast.success(response.data.message);
       dispatch(userSlice.actions.clearAllErrors());
     } catch (error: any) {

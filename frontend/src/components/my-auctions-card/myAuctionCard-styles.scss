@@ -1,0 +1,186 @@
+@use "../../theme" as *;
+
+.myAuctionCard {
+  &__container {
+    flex-grow: 1;
+    flex-basis: 100%;
+    background-color: $silver-foil;
+    border-radius: $spacing-8;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: $spacing-300;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: $spacing-8 $spacing-12;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+
+  &__title {
+    font-family: $primary-font;
+    font-weight: $font-weight-semi-bold;
+    font-size: $spacing-18;
+    margin-bottom: $spacing-2;
+    &:hover {
+      color: $persimmon;
+    }
+  }
+
+  &__startingBid,
+  &__timer {
+    font-family: $primary-font;
+    font-weight: $font-weight-regular;
+    font-size: $spacing-14;
+    color: $raisin-black;
+  }
+
+  &__highlight {
+    color: $persimmon;
+    font-weight: $font-weight-bold;
+    margin-left: $spacing-1;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+    margin-top: $spacing-4;
+  }
+
+  &__viewBtn,
+  &__deleteBtn,
+  &__republishBtn {
+    padding: $spacing-8 $spacing-16;
+    border-radius: $spacing-6;
+    font-size: $spacing-18;
+    font-weight: $font-weight-semi-bold;
+    text-align: center;
+    color: $silver-foil;
+    transition: all 0.3s;
+  }
+
+  &__viewBtn {
+    background-color: $chinese-white;
+    &:hover {
+      background-color: $black;
+    }
+  }
+
+  &__deleteBtn {
+    background-color: $persimmon;
+    &:hover {
+      background-color: $coral-red;
+    }
+  }
+
+  &__republishBtn {
+    background-color: $blueberry;
+    &:hover {
+      background-color: $blueberry;
+    }
+  }
+
+  &__drawer {
+    position: fixed;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.53);
+    display: flex;
+    align-items: flex-end;
+    transition: all 0.3s;
+
+    &--open {
+      bottom: 0;
+    }
+  }
+
+  &__drawerContent {
+    background-color: $silver-foil;
+    width: 100%;
+    transition: all 0.3s;
+  }
+
+  &__drawerInner {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: $spacing-8 $spacing-12;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+  }
+
+  &__drawerTitle {
+    font-size: $spacing-24;
+    font-weight: $font-weight-semi-bold;
+    color: $persimmon;
+    text-align: center;
+  }
+
+  &__drawerDesc {
+    font-size: $spacing-14;
+    color: $raisin-black;
+  }
+
+  &__drawerForm {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+  }
+
+  &__drawerField {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+
+    label {
+      font-size: $spacing-16;
+      color: $raisin-black;
+    }
+  }
+
+  &__datePicker {
+    font-size: $spacing-16;
+    padding: $spacing-4 0;
+    border-bottom: 1px solid $chinese-white;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+  }
+
+  &__republishSubmit {
+    background-color: $electric-violet;
+    color: $silver-foil;
+    font-weight: $font-weight-semi-bold;
+    font-size: $spacing-18;
+    padding: $spacing-8 $spacing-16;
+    border-radius: $spacing-6;
+    transition: all 0.3s;
+    &:hover {
+      background-color: $electric-violet;
+    }
+  }
+
+  &__cancelBtn {
+    background-color: $dandelion;
+    color: $silver-foil;
+    font-weight: $font-weight-semi-bold;
+    font-size: $spacing-18;
+    padding: $spacing-8 $spacing-16;
+    border-radius: $spacing-6;
+    transition: all 0.3s;
+    &:hover {
+      background-color: $dandelion;
+    }
+  }
+}

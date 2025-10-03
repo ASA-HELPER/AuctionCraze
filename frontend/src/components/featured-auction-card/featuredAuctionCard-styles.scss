@@ -1,0 +1,57 @@
+@use "../../theme" as *;
+
+.featureAuctionCard {
+  &__container {
+    flex-grow: 1;
+    flex-basis: 100%;
+    background-color: $silver-foil;
+    border-radius: $spacing-8;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: $spacing-8 $spacing-12;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+  }
+
+  &__title {
+    font-family: $primary-font;
+    font-weight: $font-weight-semi-bold;
+    font-size: $spacing-18;
+    line-height: $spacing-22;
+    margin-bottom: $spacing-2;
+    transition: color 0.2s;
+    &:hover {
+      color: $persimmon;
+    }
+  }
+
+  &__startingBid,
+  &__timer {
+    font-family: $primary-font;
+    font-weight: $font-weight-regular;
+    font-size: $spacing-14;
+    color: $raisin-black;
+  }
+
+  &__highlight {
+    color: $persimmon;
+    font-weight: $font-weight-bold;
+    margin-left: $spacing-1;
+  }
+}
