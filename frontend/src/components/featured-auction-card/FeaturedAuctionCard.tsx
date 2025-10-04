@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./featuredAuctionCard-styles.scss";
 import { IFeatureAuctionCardProps } from "../../types/card-types";
+import { ROUTES } from "../../constants/route-constants";
 
 const FeatureAuctionCard = ({
   imgSrc,
@@ -54,7 +55,10 @@ const FeatureAuctionCard = ({
   };
 
   return (
-    <Link to={`/auction/item/${id}`} className="featureAuctionCard__container">
+    <Link
+      to={ROUTES.AUCTION_ITEM(String(id))}
+      className="featureAuctionCard__container"
+    >
       <img src={imgSrc} alt={title} className="featureAuctionCard__image" />
       <div className="featureAuctionCard__content">
         <h5 className="featureAuctionCard__title">{title}</h5>

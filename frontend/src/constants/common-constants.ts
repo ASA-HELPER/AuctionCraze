@@ -44,3 +44,16 @@ export const monthLabels = [
   "November",
   "December",
 ];
+
+export const howItWorksList = [
+  { title: "Post Items", description: "Auctioneer posts items for bidding." },
+  { title: "Place Bids", description: "Bidders place bids on listed items." },
+  {
+    title: "Win Notification",
+    description: "Highest bidder receives a winning email.",
+  },
+  {
+    title: "Payment & Fees",
+    description: "Bidder pays; auctioneer pays 5% fee.",
+  },
+];
