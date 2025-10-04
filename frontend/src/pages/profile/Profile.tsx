@@ -15,7 +15,7 @@ const Profile = () => {
   const { user, isAuthenticated } = useSelector(
     (state: RootState) => state.user
   );
-  
+
   const navigateTo = useNavigate();
   useEffect(() => {
     if (!isAuthenticated) {
@@ -35,7 +35,7 @@ const Profile = () => {
             <img
               src={
                 user && user.profileImage
-                  ? URL.createObjectURL(user && user.profileImage)
+                  ? user.profileImage.url
                   : AvatarPreview
               }
               alt="avatar"

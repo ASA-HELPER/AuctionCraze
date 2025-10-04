@@ -4,6 +4,11 @@ import "./contact-styles.scss";
 import CustomInput from "../../components/input/CustomInput";
 import CustomButton from "../../components/button/CustomButton";
 import contactCopy from "./contact.copy";
+import { ITemplateParams } from "../../types/common-types";
+import { sendEmail } from "../../utils/sendEmail";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/route-constants";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [senderName, setSenderName] = useState("");
@@ -11,14 +16,39 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigateTo = useNavigate();
 
   const handleMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSenderName("");
-    setEmail("");
-    setPhone("");
-    setSubject("");
-    setMessage("");
+    setLoading(true);
+
+    try {
+      const templateParams: ITemplateParams = {
+        senderName,
+        subject,
+        email,
+        message,
+        phone,
+      };
+
+      const flag = await sendEmail(templateParams);
+
+      if (flag) {
+        toast.success(contactCopy.successMessage);
+        navigateTo(ROUTES.HOME);
+      } else {
+        toast.error(contactCopy.failureMessage);
+      }
+
+      setSenderName("");
+      setEmail("");
+      setPhone("");
+      setSubject("");
+      setMessage("");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -66,8 +96,11 @@ const Contact = () => {
         </div>
         <div className="contact__submit-button">
           <CustomButton
-            title={contactCopy.buttonText}
+            title={
+              loading ? contactCopy.loadingButtonText : contactCopy.buttonText
+            }
             className="contact__button"
+            type="submit"
           />
         </div>
       </form>

@@ -1,0 +1,13 @@
+@use "../../../../theme" as *;
+
+.updatePaymentProof {
+  &__container {
+    background-color: $chinese-white;
+  }
+}
+
+// Mobile View
+@include sm {
+  .updatePaymentProof {
+  }
+}

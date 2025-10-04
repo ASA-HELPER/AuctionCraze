@@ -30,8 +30,8 @@ const HowItWorks = () => {
   );
   return (
     <div className="howItWorks__container">
-      <div className="about__header">
-        <Typography className="about__title">{howItWorksCopy.title}</Typography>
+      <div className="howItWorks__header">
+        <Typography className="howItWorks__title">{howItWorksCopy.title}</Typography>
       </div>
       <div className="howItWorks__content">
         {howItWorksItem(

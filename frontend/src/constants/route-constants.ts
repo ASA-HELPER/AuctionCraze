@@ -11,6 +11,7 @@ export const ROUTES = {
   MY_AUCTIONS: "/auctions/mine",
   AUCTION_ITEM: (id = ":id") => `/auctions/${id}`,
   AUCTION_DETAILS: (id = ":id") => `/auctions/${id}/details`,
+  PAYMENT_DETAILS: (id = ":id") => `/payments/details/${id}`,
 
   // User
   DASHBOARD: "/dashboard",
