@@ -36,6 +36,7 @@ export interface NewAuctionPayload {
 export interface ProofOfCommissionPayload {
   amount: number;
   comment: string;
+  proof: File;
 }
 
 export interface PlaceBidPayload {
