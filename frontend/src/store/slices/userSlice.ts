@@ -112,6 +112,7 @@ export const register =
       dispatch(userSlice.actions.registerSuccess(response.data));
       toast.success(response.data.message);
       dispatch(userSlice.actions.clearAllErrors());
+      return true;
     } catch (error: any) {
       dispatch(userSlice.actions.registerFailed());
       toast.error(error.response.data.message);
