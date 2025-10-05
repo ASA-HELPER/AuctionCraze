@@ -1,0 +1,20 @@
+@use "../../theme" as *;
+
+.layout {
+  &__container {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+  }
+
+  &__content {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  @media (min-width: 1024px) {
+    &__content {
+      width: 70%;
+    }
+  }
+}

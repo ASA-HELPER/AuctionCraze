@@ -33,6 +33,17 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
+
+  &__emptyData.MuiTypography-root {
+    color: $raisin-black !important;
+    font-size: $spacing-20;
+    font-family: $primary-font;
+    font-weight: $font-weight-semi-bold;
+    color: $chinese-white;
+    border-radius: $spacing-10;
+    text-align: center;
+    align-self: center;
+  }
 }
 
 @include sm {

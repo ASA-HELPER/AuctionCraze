@@ -5,6 +5,7 @@ export default {
   },
   section2: {
     title: "Featured Auctions",
+    noDataAvailable: "No Auctions Available",
   },
   section3: {
     title: "Top 10 Bidder's",

@@ -7,3 +7,4 @@ export { default as Table } from "./table/CustomTable";
 export { default as SideDrawer } from "./sidedrawer/CustomSideDrawer";
 export { default as FeaturedAuctionCard } from "./featured-auction-card/FeaturedAuctionCard";
 export { default as MyAuctionCard } from "./my-auctions-card/MyAuctionCard";
+export { default as Layout } from "./layout/Layout";
