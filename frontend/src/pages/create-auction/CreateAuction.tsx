@@ -5,17 +5,49 @@ import createAuctionCopy from "./createAuction.copy";
 import CustomInput from "../../components/input/CustomInput";
 import { InputPresets, InputVariant } from "../../constants/input-constants";
 import CustomDropdown from "../../components/dropdown/CustomDropdown";
-import { ROLES } from "../../constants/common-constants";
 import DatePicker from "react-datepicker";
+import CustomButton from "../../components/button/CustomButton";
+import { useAppDispatch } from "../../hooks/storeHooks";
+import FileUploadPreview from "../../assets/FileUploadPreview.jpg";
+import { createAuction } from "../../store/slices/auctionSlice";
+import { CATEGORY, CONDITION } from "../../constants/common-constants";
 
 const CreateAuction = () => {
+  const dispatch = useAppDispatch();
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [condition, setCondition] = useState("");
+  const [category, setCategory] = useState<string | null>("");
+  const [condition, setCondition] = useState<string | null>("");
   const [startBid, setStartBid] = useState("");
   const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [image, setImage] = useState<File | null>();
+
+  const imageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setImage(file);
+      };
+    }
+  };
+
+  const handleCreateAuction = () => {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("category", String(category));
+    formData.append("condition", String(condition));
+    formData.append("startingBid", startBid);
+    formData.append("description", description);
+    formData.append("startTime", String(startDate));
+    formData.append("endTime", String(endDate));
+    if (image) {
+      formData.append("image", image);
+    }
+    dispatch(createAuction(formData));
+  };
 
   return (
     <div className="createAuction__container">
@@ -33,7 +65,7 @@ const CreateAuction = () => {
             inputLabelClass="createAuction__inputLabels"
           />
           <CustomDropdown
-            data={ROLES}
+            data={CATEGORY}
             setValue={(value) => setCategory(value)}
             placeholder={createAuctionCopy.selectCategory}
             value={category}
@@ -42,7 +74,7 @@ const CreateAuction = () => {
         </div>
         <div className="createAuction__bodysubcontainer">
           <CustomDropdown
-            data={ROLES}
+            data={CONDITION}
             setValue={(value) => setCondition(value)}
             placeholder={createAuctionCopy.selectCondition}
             value={condition}
@@ -68,7 +100,7 @@ const CreateAuction = () => {
           inputLabelClass="createAuction__inputLabels"
           isMultiline={true}
         />
-        <div className="createAuction__bodysubcontainer"> 
+        <div className="createAuction__bodysubcontainer">
           <div>
             <InputLabel shrink htmlFor="start-time-picker">
               Auction Starting Time
@@ -96,14 +128,27 @@ const CreateAuction = () => {
           </div>
         </div>
         <div>
-          <Typography variant="h4">{createAuctionCopy.auctionItemImage}</Typography>
+          <Typography variant="h4">
+            {createAuctionCopy.auctionItemImage}
+          </Typography>
           <div className="createAuction__uploadcontainer">
-            <input type="file"
+            <img
+              src={image ? URL.createObjectURL(image) : FileUploadPreview}
+              alt="image"
+              className="createAuction__image"
+            />
+            <input
+              type="file"
               accept="image/svg+xml, image/png, image/jpeg, image/gif"
-              />
+              onChange={imageHandler}
+            />
             <Typography>{createAuctionCopy.clickUpload}</Typography>
             <Typography>SVG, PNG, JPG or GIF (MAX: 800x400px)</Typography>
           </div>
+          <CustomButton
+            title={createAuctionCopy.createAuction}
+            handleClick={handleCreateAuction}
+          />
         </div>
       </div>
     </div>
