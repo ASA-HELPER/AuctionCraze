@@ -1,4 +1,4 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
 @mixin transformBackground($color-value) {
   background: none;
@@ -21,6 +21,7 @@
     padding: $spacing-10 $spacing-24;
     text-align: center;
     text-transform: capitalize;
+    max-width: $spacing-1200;
 
     &.MuiButton-containedPrimary {
       font-weight: $font-weight-medium;

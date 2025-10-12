@@ -1,14 +1,208 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.viewAuctionDetails{
-    &__container{
-        background-color: $raisin-black;
-    }
-}
+.auctionDetails {
+  &__container {
+    width: 100%;
+    padding: $spacing-20 $spacing-5;
+    padding-left: $spacing-320;
+    display: flex;
+    flex-direction: column;
+    background-color: get-color($neutral, 100);
+  }
 
-// Mobile View
-@include sm{
-    .viewAuctionDetails{
-        
+  &__breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-8;
+    font-size: $spacing-16;
+    margin-bottom: $spacing-16;
+  }
+
+  &__link {
+    font-weight: bold;
+    transition: all 0.3s;
+    color: $raisin-black;
+    text-decoration: none;
+
+    &:hover {
+      color: $persimmon;
     }
+  }
+
+  &__icon {
+    color: get-color($neutral, 400);
+  }
+
+  &__text {
+    color: get-color($neutral, 600);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-16;
+
+    @media (min-width: 1536px) {
+      flex-direction: row;
+    }
+  }
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-12;
+  }
+
+  &__itemSection {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-16;
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+    }
+  }
+
+  &__imageBox {
+    background-color: $chinese-white;
+    width: 100%;
+    max-width: $spacing-160;
+    height: $spacing-160;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-20;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__itemInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: $spacing-16;
+  }
+
+  &__title {
+    color: $raisin-black;
+    font-weight: bold;
+    font-size: $spacing-24;
+    margin-bottom: $spacing-8;
+  }
+
+  &__detail {
+    font-size: $spacing-18;
+    font-weight: bold;
+    color: $raisin-black;
+  }
+
+  &__highlight {
+    color: $persimmon;
+  }
+
+  &__subheading {
+    font-size: $spacing-18;
+    font-weight: bold;
+    color: $raisin-black;
+  }
+
+  &__divider {
+    border: none;
+    border-top: 1px solid get-color($neutral, 700);
+    margin: $spacing-8 0;
+  }
+
+  &__descriptionItem {
+    font-size: $spacing-18;
+    margin: $spacing-8 0;
+  }
+
+  &__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__bidsHeader {
+    background-color: get-color($neutral, 200);
+    padding: $spacing-12 $spacing-16;
+    font-weight: bold;
+    font-size: $spacing-20;
+  }
+
+  &__bidsContainer {
+    background-color: $chinese-white;
+    padding: $spacing-16;
+  }
+
+  &__bidder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-8 0;
+    border-bottom: 1px solid get-color($neutral, 100);
+  }
+
+  &__bidderInfo {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: $spacing-12;
+  }
+
+  &__bidderImage {
+    width: $spacing-48;
+    height: $spacing-48;
+    border-radius: 50%;
+    display: block;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__bidderName {
+    font-size: $spacing-18;
+    font-weight: bold;
+  }
+
+  &__bidAmount {
+    flex: 1;
+    text-align: center;
+    font-size: $spacing-16;
+  }
+
+  &__rank {
+    flex: 1;
+    text-align: end;
+    font-size: $spacing-18;
+    font-weight: bold;
+
+    &--first {
+      color: $coral-red;
+    }
+
+    &--second {
+      color: $blueberry;
+    }
+
+    &--third {
+      color: $persimmon;
+    }
+
+    &--other {
+      color: $gray;
+    }
+  }
+
+  &__statusImage {
+    width: 100%;
+    max-height: $spacing-300;
+    object-fit: contain;
+  }
 }

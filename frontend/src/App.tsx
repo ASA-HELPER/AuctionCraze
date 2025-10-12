@@ -25,8 +25,8 @@ import { ROUTES } from "./constants/route-constants";
 import { useEffect } from "react";
 import { fetchLeaderboard, fetchUser } from "./store/slices/userSlice";
 import { getAllAuctionItems } from "./store/slices/auctionSlice";
-import { SideDrawer } from "./components";
 import UpdatePaymentProof from "./pages/dashboard/components/updatePaymentProof/UpdatePaymentProof";
+import { Layout } from "./components";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,37 +39,41 @@ function App() {
 
   return (
     <Router>
-      <SideDrawer />
-      <Routes>
-        <Route path={ROUTES.HOME} element={<Home />} />
-        <Route path={ROUTES.SIGN_UP} element={<Register />} />
-        <Route path={ROUTES.LOGIN} element={<Login />} />
+      <Layout>
+        <Routes>
+          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.SIGN_UP} element={<Register />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
 
-        <Route path={ROUTES.AUCTIONS} element={<Auctions />} />
-        <Route path={ROUTES.CREATE_AUCTION} element={<CreateAuction />} />
-        <Route path={ROUTES.MY_AUCTIONS} element={<ViewMyAuctions />} />
-        <Route path={ROUTES.AUCTION_ITEM()} element={<AuctionItem />} />
-        <Route
-          path={ROUTES.AUCTION_DETAILS()}
-          element={<ViewAuctionDetails />}
-        />
-        <Route
-          path={ROUTES.PAYMENT_DETAILS()}
-          element={<UpdatePaymentProof />}
-        />
+          <Route path={ROUTES.AUCTIONS} element={<Auctions />} />
+          <Route path={ROUTES.CREATE_AUCTION} element={<CreateAuction />} />
+          <Route path={ROUTES.MY_AUCTIONS} element={<ViewMyAuctions />} />
+          <Route path={ROUTES.AUCTION_ITEM()} element={<AuctionItem />} />
+          <Route
+            path={ROUTES.AUCTION_DETAILS()}
+            element={<ViewAuctionDetails />}
+          />
+          <Route
+            path={ROUTES.PAYMENT_DETAILS()}
+            element={<UpdatePaymentProof />}
+          />
 
-        <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
-        <Route path={ROUTES.PROFILE} element={<Profile />} />
+          <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+          <Route path={ROUTES.PROFILE} element={<Profile />} />
 
-        <Route path={ROUTES.ABOUT} element={<About />} />
-        <Route path={ROUTES.HOW_IT_WORKS} element={<HowItWorks />} />
-        <Route path={ROUTES.LEADERBOARD} element={<Leaderboard />} />
+          <Route path={ROUTES.ABOUT} element={<About />} />
+          <Route path={ROUTES.HOW_IT_WORKS} element={<HowItWorks />} />
+          <Route path={ROUTES.LEADERBOARD} element={<Leaderboard />} />
 
-        <Route path={ROUTES.CONTACT} element={<Contact />} />
-        <Route path={ROUTES.SUBMIT_COMMISSION} element={<SubmitCommission />} />
+          <Route path={ROUTES.CONTACT} element={<Contact />} />
+          <Route
+            path={ROUTES.SUBMIT_COMMISSION}
+            element={<SubmitCommission />}
+          />
 
-        <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
-      </Routes>
+          <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
+        </Routes>
+      </Layout>
       <ToastContainer position="top-right" theme="dark" />
     </Router>
   );

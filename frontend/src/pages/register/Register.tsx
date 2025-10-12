@@ -11,9 +11,12 @@ import { BANKNAMES, ROLES } from "../../constants/common-constants";
 import registerCopy from "./register.copy";
 import CustomButton from "../../components/button/CustomButton";
 import AvatarPreview from "../../assets/AvatarPreview.png";
+import { ROUTES } from "../../constants/route-constants";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPasswrod] = useState("");
@@ -38,7 +41,7 @@ const Register = () => {
     }
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     const formData = new FormData();
     formData.append("userName", userName);
     formData.append("email", email);
@@ -56,7 +59,10 @@ const Register = () => {
       formData.append("easypaisaAccountNumber", easypaisaAccountNumber);
       formData.append("paypalEmail", paypalEmail);
     }
-    dispatch(register(formData));
+    const isUserRegistered = await dispatch(register(formData));
+    if (isUserRegistered) {
+      navigate(ROUTES.LOGIN);
+    }
   };
 
   return (
@@ -138,49 +144,53 @@ const Register = () => {
           label={registerCopy.address}
           inputLabelClass="register__inputLabels"
         />
-        <CustomDropdown
-          data={BANKNAMES}
-          placeholder={registerCopy.selectBankName}
-          setValue={(value) => setBankName(value)}
-          value={bankName}
-          label={registerCopy.bankName}
-        />
-        <CustomInput
-          value={bankAccountNumber}
-          handleChange={(e) => setBankAccountNumber(e.target.value)}
-          preset={InputPresets.Text}
-          variant={InputVariant.Outlined}
-          hasBorder
-          label={registerCopy.bankAccountNumber}
-          inputLabelClass="register__inputLabels"
-        />
-        <CustomInput
-          value={bankAccountUserName}
-          handleChange={(e) => setBankAccountUserName(e.target.value)}
-          preset={InputPresets.Text}
-          variant={InputVariant.Outlined}
-          hasBorder
-          label={registerCopy.bankAccountUserName}
-          inputLabelClass="register__inputLabels"
-        />
-        <CustomInput
-          value={easypaisaAccountNumber}
-          handleChange={(e) => setEasypaisaAccountNumber(e.target.value)}
-          preset={InputPresets.Text}
-          variant={InputVariant.Outlined}
-          hasBorder
-          label={registerCopy.easyPaisaAccountNumber}
-          inputLabelClass="register__inputLabels"
-        />
-        <CustomInput
-          value={paypalEmail}
-          handleChange={(e) => setPaypalEmail(e.target.value)}
-          preset={InputPresets.Email}
-          variant={InputVariant.Outlined}
-          hasBorder
-          label={registerCopy.paypalEmail}
-          inputLabelClass="register__inputLabels"
-        />
+        {role == ROLES[0] && (
+          <>
+            <CustomDropdown
+              data={BANKNAMES}
+              placeholder={registerCopy.selectBankName}
+              setValue={(value) => setBankName(value)}
+              value={bankName}
+              label={registerCopy.bankName}
+            />
+            <CustomInput
+              value={bankAccountNumber}
+              handleChange={(e) => setBankAccountNumber(e.target.value)}
+              preset={InputPresets.Text}
+              variant={InputVariant.Outlined}
+              hasBorder
+              label={registerCopy.bankAccountNumber}
+              inputLabelClass="register__inputLabels"
+            />
+            <CustomInput
+              value={bankAccountUserName}
+              handleChange={(e) => setBankAccountUserName(e.target.value)}
+              preset={InputPresets.Text}
+              variant={InputVariant.Outlined}
+              hasBorder
+              label={registerCopy.bankAccountUserName}
+              inputLabelClass="register__inputLabels"
+            />
+            <CustomInput
+              value={easypaisaAccountNumber}
+              handleChange={(e) => setEasypaisaAccountNumber(e.target.value)}
+              preset={InputPresets.Text}
+              variant={InputVariant.Outlined}
+              hasBorder
+              label={registerCopy.easyPaisaAccountNumber}
+              inputLabelClass="register__inputLabels"
+            />
+            <CustomInput
+              value={paypalEmail}
+              handleChange={(e) => setPaypalEmail(e.target.value)}
+              preset={InputPresets.Email}
+              variant={InputVariant.Outlined}
+              hasBorder
+              label={registerCopy.paypalEmail}
+              inputLabelClass="register__inputLabels"
+            />
+          </>
+        )}
         <CustomButton
           handleClick={handleRegister}
           title={registerCopy.register}

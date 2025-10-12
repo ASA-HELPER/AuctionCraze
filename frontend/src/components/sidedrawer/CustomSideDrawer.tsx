@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RiAuctionFill } from "react-icons/ri";
 import { MdLeaderboard, MdDashboard } from "react-icons/md";
 import { SiGooglesearchconsole } from "react-icons/si";
@@ -15,12 +15,15 @@ import "./customSideDrawer-styles.scss";
 import { logout } from "../../store/slices/userSlice";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { ROUTES } from "../../constants/route-constants";
-import { navbarMenuItems } from "../../constants/common-constants";
+import { navbarMenuItems, ROLES } from "../../constants/common-constants";
+import { RootState } from "../../store/store";
 
 const CustomSideDrawer = () => {
   const [show, setShow] = useState(false);
 
-  const { isAuthenticated, user } = useSelector((state: any) => state.user);
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.user
+  );
 
   const dispatch = useAppDispatch();
   const handleLogout = () => {
@@ -30,6 +33,19 @@ const CustomSideDrawer = () => {
   const handleLinkClick = () => {
     setShow(false);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setShow(false);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -64,7 +80,7 @@ const CustomSideDrawer = () => {
                 <MdLeaderboard /> {navbarMenuItems[1].label}
               </Link>
             </li>
-            {isAuthenticated && user && user.role === "Auctioneer" && (
+            {isAuthenticated && user && user.role === ROLES[0] && (
               <>
                 <li>
                   <Link

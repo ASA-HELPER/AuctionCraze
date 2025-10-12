@@ -198,7 +198,7 @@ export const getMyAuctionItems = () => async (dispatch: AppDispatch) => {
 };
 
 export const getAuctionDetail =
-  (id: Number) => async (dispatch: AppDispatch) => {
+  (id: String) => async (dispatch: AppDispatch) => {
     dispatch(auctionSlice.actions.getAuctionDetailRequest());
     try {
       const response = await axios.get(
