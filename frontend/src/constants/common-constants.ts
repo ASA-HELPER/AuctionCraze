@@ -28,7 +28,7 @@ export const AUCTIONCATEGORIES = [
 "Books & Manuscripts",
 ];
 
-export const CONDITION = ["Old", "New", "Antique"];
+export const CONDITION = ["New", "Used"];
 
 export const navbarMenuItems = [
   { label: "Auctions", path: ROUTES.AUCTIONS },
