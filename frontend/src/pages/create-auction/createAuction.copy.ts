@@ -13,4 +13,6 @@ export default {
     auctionStartTime: "Auction Starting Time",
     auctionEndTime: "Auction End Time",
     imageFormat: "SVG, PNG, JPG or GIF (MAX: 800x400px)",
+    buttonText: "Create Auction",
+    loadingButtonText: "Creating Auction..."
 }

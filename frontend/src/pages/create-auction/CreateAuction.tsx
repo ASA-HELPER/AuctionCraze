@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./createAuction-styles.scss";
-import { InputLabel, TextField, Typography } from "@mui/material";
+import { InputLabel, Typography } from "@mui/material";
 import createAuctionCopy from "./createAuction.copy";
 import CustomInput from "../../components/input/CustomInput";
 import { InputPresets, InputVariant } from "../../constants/input-constants";
@@ -18,6 +18,7 @@ import {
 import { ROUTES } from "../../constants/route-constants";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const CreateAuction = () => {
   const dispatch = useAppDispatch();
@@ -26,17 +27,17 @@ const CreateAuction = () => {
   const [condition, setCondition] = useState<string | null>("");
   const [startBid, setStartBid] = useState("");
   const [description, setDescription] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
+  const [startTime, setStartTime] = useState<Date | null>(null);
+  const [endTime, setEndTime] = useState<Date | null>(null);
+
   const [image, setImage] = useState<File | null>();
 
-  const { isAuthenticated, user } = useSelector((state:any) => state.user);
+  const { loading } = useSelector((state: RootState) => state.auction);
+
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.user
+  );
   const navigateTo = useNavigate();
-  useEffect(() => {
-    if (!isAuthenticated || user.role !== ROLES[0]) {
-      navigateTo(ROUTES.HOME);
-    }
-  }, [isAuthenticated]);
 
   const imageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -49,20 +50,28 @@ const CreateAuction = () => {
     }
   };
 
-  const handleCreateAuction = () => {
+  const handleCreateAuction = (e?: React.MouseEvent<HTMLElement>) => {
+    e?.preventDefault();
     const formData = new FormData();
     formData.append("title", title);
     formData.append("category", String(category));
     formData.append("condition", String(condition));
     formData.append("startingBid", startBid);
     formData.append("description", description);
-    formData.append("startTime", startTime);
-    formData.append("endTime", endTime);
+    formData.append("startTime", startTime ? startTime.toISOString() : "");
+    formData.append("endTime", endTime ? endTime.toISOString() : "");
+
     if (image) {
       formData.append("image", image);
     }
     dispatch(createAuction(formData));
   };
+
+  useEffect(() => {
+    if (!isAuthenticated || user.role !== ROLES[0]) {
+      navigateTo(ROUTES.HOME);
+    }
+  }, [isAuthenticated]);
 
   return (
     <div className="createAuction__container">
@@ -162,7 +171,11 @@ const CreateAuction = () => {
             <Typography>{createAuctionCopy.imageFormat}</Typography>
           </div>
           <CustomButton
-            title={createAuctionCopy.createAuction}
+            title={
+              loading
+                ? createAuctionCopy.loadingButtonText
+                : createAuctionCopy.buttonText
+            }
             handleClick={handleCreateAuction}
           />
         </div>

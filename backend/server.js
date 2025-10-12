@@ -11,7 +11,7 @@ import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import { BASE_ROUTE, SERVICE_ROUTES } from "./constants/routes.js";
 import userRouter from "./router/userRoutes.js";
 import adminRouter from "./router/adminRoutes.js";
-import auctionRouter from "./router/auctionRouter.js";
+import auctionRouter from "./router/auctionRoutes.js";
 import bidRouter from "./router/bidRoutes.js";
 import commissionRouter from "./router/commissionRoutes.js";
 import { endedAuctionCron } from "./automation/endedAuctionCron.js";
