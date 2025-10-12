@@ -1,0 +1,18 @@
+export default {
+    createAuction: "Create Auction",
+    auctionDetail: "Auction Detail",
+    title: "Title",
+    selectCategory: "Select Category",
+    category: "Category",
+    condition: "Condition",
+    selectCondition: "Select Condition",
+    startBid: "Starting Bid",
+    description: "Description",
+    auctionItemImage: "Auction Item Image",
+    clickUpload: "Click to upload or drag and drop",
+    auctionStartTime: "Auction Starting Time",
+    auctionEndTime: "Auction End Time",
+    imageFormat: "SVG, PNG, JPG or GIF (MAX: 800x400px)",
+    buttonText: "Create Auction",
+    loadingButtonText: "Creating Auction..."
+}

@@ -15,6 +15,21 @@ export const BANKNAMES = ["HDFC", "ICICI", "AXIS"];
 
 export const ROLES = ["Auctioneer", "Bidder"];
 
+export const AUCTIONCATEGORIES = [
+"Electronics",
+"Furniture",
+"Art & Antiques",
+"Jewelry & Watches",
+"Automobiles",
+"Real Estate",
+"Collectibles",
+"Fashion & Accessories",
+"Sports Memorabilia",
+"Books & Manuscripts",
+];
+
+export const CONDITION = ["New", "Used"];
+
 export const navbarMenuItems = [
   { label: "Auctions", path: ROUTES.AUCTIONS },
   { label: "Leaderboard", path: ROUTES.LEADERBOARD },

@@ -108,6 +108,7 @@ export const createAuction =
       );
       dispatch(auctionSlice.actions.createAuctionSuccess());
       toast.success(response.data.message);
+      dispatch(getAllAuctionItems());
       dispatch(auctionSlice.actions.resetSlice());
     } catch (error: any) {
       dispatch(auctionSlice.actions.createAuctionFailed());
@@ -130,6 +131,8 @@ export const republishAuction =
       );
       dispatch(auctionSlice.actions.republishItemSuccess());
       toast.success(response.data.message);
+      dispatch(getMyAuctionItems());
+      dispatch(getAllAuctionItems());
       dispatch(auctionSlice.actions.resetSlice());
     } catch (error: any) {
       dispatch(auctionSlice.actions.republishItemFailed());
@@ -149,6 +152,8 @@ export const deleteAuction = (id: Number) => async (dispatch: AppDispatch) => {
     );
     dispatch(auctionSlice.actions.deleteAuctionItemSuccess());
     toast.success(response.data.message);
+    dispatch(getMyAuctionItems());
+    dispatch(getAllAuctionItems());
     dispatch(auctionSlice.actions.resetSlice());
   } catch (error: any) {
     dispatch(auctionSlice.actions.deleteAuctionItemFailed());

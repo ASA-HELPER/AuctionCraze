@@ -2,7 +2,25 @@
 
 .createAuction{
     &__container{
-        background-color: $raisin-black;
+        background-color: $chinese-white;
+        padding: $spacing-30;
+    }
+    &__bodysubcontainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: $spacing-10;
+    }
+    &__uploadcontainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px dashed #ccc;
+        text-align: center;
+    }
+    &__image{
+        width: $spacing-500;
+        height: $spacing-500;
     }
 }
 
