@@ -10,4 +10,7 @@ export default {
     description: "Description",
     auctionItemImage: "Auction Item Image",
     clickUpload: "Click to upload or drag and drop",
+    auctionStartTime: "Auction Starting Time",
+    auctionEndTime: "Auction End Time",
+    imageFormat: "SVG, PNG, JPG or GIF (MAX: 800x400px)",
 }

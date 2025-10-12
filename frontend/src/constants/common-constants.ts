@@ -15,7 +15,18 @@ export const BANKNAMES = ["HDFC", "ICICI", "AXIS"];
 
 export const ROLES = ["Auctioneer", "Bidder"];
 
-export const CATEGORY = ["Car Auction", "Property Auction", "Art Auction", "Jewelry Auction"];
+export const AUCTIONCATEGORIES = [
+"Electronics",
+"Furniture",
+"Art & Antiques",
+"Jewelry & Watches",
+"Automobiles",
+"Real Estate",
+"Collectibles",
+"Fashion & Accessories",
+"Sports Memorabilia",
+"Books & Manuscripts",
+];
 
 export const CONDITION = ["Old", "New", "Antique"];
 

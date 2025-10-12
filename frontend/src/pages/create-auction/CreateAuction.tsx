@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./createAuction-styles.scss";
 import { InputLabel, TextField, Typography } from "@mui/material";
 import createAuctionCopy from "./createAuction.copy";
@@ -10,7 +10,14 @@ import CustomButton from "../../components/button/CustomButton";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import FileUploadPreview from "../../assets/FileUploadPreview.jpg";
 import { createAuction } from "../../store/slices/auctionSlice";
-import { CATEGORY, CONDITION } from "../../constants/common-constants";
+import {
+  AUCTIONCATEGORIES,
+  CONDITION,
+  ROLES,
+} from "../../constants/common-constants";
+import { ROUTES } from "../../constants/route-constants";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CreateAuction = () => {
   const dispatch = useAppDispatch();
@@ -19,9 +26,17 @@ const CreateAuction = () => {
   const [condition, setCondition] = useState<string | null>("");
   const [startBid, setStartBid] = useState("");
   const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [image, setImage] = useState<File | null>();
+
+  const { isAuthenticated, user } = useSelector((state:any) => state.user);
+  const navigateTo = useNavigate();
+  useEffect(() => {
+    if (!isAuthenticated || user.role !== ROLES[0]) {
+      navigateTo(ROUTES.HOME);
+    }
+  }, [isAuthenticated]);
 
   const imageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -41,8 +56,8 @@ const CreateAuction = () => {
     formData.append("condition", String(condition));
     formData.append("startingBid", startBid);
     formData.append("description", description);
-    formData.append("startTime", String(startDate));
-    formData.append("endTime", String(endDate));
+    formData.append("startTime", startTime);
+    formData.append("endTime", endTime);
     if (image) {
       formData.append("image", image);
     }
@@ -65,7 +80,7 @@ const CreateAuction = () => {
             inputLabelClass="createAuction__inputLabels"
           />
           <CustomDropdown
-            data={CATEGORY}
+            data={AUCTIONCATEGORIES}
             setValue={(value) => setCategory(value)}
             placeholder={createAuctionCopy.selectCategory}
             value={category}
@@ -98,32 +113,33 @@ const CreateAuction = () => {
           label={createAuctionCopy.description}
           hasBorder
           inputLabelClass="createAuction__inputLabels"
-          isMultiline={true}
+          isMultiline
         />
         <div className="createAuction__bodysubcontainer">
           <div>
             <InputLabel shrink htmlFor="start-time-picker">
-              Auction Starting Time
+              {createAuctionCopy.auctionStartTime}
             </InputLabel>
             <DatePicker
-              id="start-time-picker"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              selected={startTime}
+              onChange={(date) => setStartTime(date)}
               showTimeSelect
-              customInput={<TextField variant="standard" fullWidth />}
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              dateFormat={"MMMM d, yyyy h,mm aa"}
             />
           </div>
           <div>
             <InputLabel shrink htmlFor="end-time-picker">
-              Auction End Time
+              {createAuctionCopy.auctionEndTime}
             </InputLabel>
-
             <DatePicker
-              id="end-time-picker"
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
+              selected={endTime}
+              onChange={(date) => setEndTime(date)}
               showTimeSelect
-              customInput={<TextField variant="standard" fullWidth />}
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              dateFormat={"MMMM d, yyyy h,mm aa"}
             />
           </div>
         </div>
@@ -143,7 +159,7 @@ const CreateAuction = () => {
               onChange={imageHandler}
             />
             <Typography>{createAuctionCopy.clickUpload}</Typography>
-            <Typography>SVG, PNG, JPG or GIF (MAX: 800x400px)</Typography>
+            <Typography>{createAuctionCopy.imageFormat}</Typography>
           </div>
           <CustomButton
             title={createAuctionCopy.createAuction}
