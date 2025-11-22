@@ -2,18 +2,14 @@
 
 .login {
   &__container {
-    border: $spacing-1 solid $raisin-black;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    padding: $spacing-20;
+    padding: $spacing-30;
     gap: $spacing-10;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: $chinese-white;
+    justify-content: center;
   }
 
   &__forgotPassword {
@@ -21,16 +17,16 @@
     text-decoration: none;
   }
 
-  &__title {
+  &__title.MuiTypography-root {
+    font-size: $spacing-30;
     font-family: $primary-font;
+    font-weight: bold;
+    text-align: center;
+    color: $persimmon;
+    align-self: center;
   }
-}
 
-@include sm {
-  .login {
-    &__container {
-      height: 50vh;
-      width: 80%;
-    }
+  &__buttonStyle.MuiButtonBase-root {
+    background-color: $persimmon !important;
   }
 }
