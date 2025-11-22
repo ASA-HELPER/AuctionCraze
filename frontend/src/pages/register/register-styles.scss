@@ -16,7 +16,7 @@
     font-family: $primary-font;
     font-weight: bold;
     text-align: center;
-    color: $persimmon;
+    color: $coral-red;
     align-self: center;
   }
 
@@ -50,7 +50,9 @@
   }
 
   &__buttonStyle.MuiButtonBase-root {
-    background-color: $persimmon !important;
+    background-color: $coral-red !important;
+    width: 30%;
+    align-self: center;
   }
 
   &__image {
@@ -79,6 +81,10 @@
 
     &__image {
       align-self: center;
+    }
+
+    &__buttonStyle.MuiButtonBase-root {
+      width: 100%;
     }
   }
 }

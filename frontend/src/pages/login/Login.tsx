@@ -37,30 +37,32 @@ const Login = () => {
   return (
     <div className="login__container">
       <Typography className="login__title">{loginCopy.title}</Typography>
-      <CustomInput
-        value={email}
-        placeholder={loginCopy.email}
-        preset={InputPresets.Email}
-        handleChange={(e) => setEmail(e.target.value)}
-        variant={InputVariant.Outlined}
-        hasBorder
-      />
-      <CustomInput
-        value={password}
-        placeholder={loginCopy.password}
-        preset={InputPresets.Password}
-        handleChange={(e) => setPassword(e.target.value)}
-        variant={InputVariant.Outlined}
-        hasBorder
-      />
-      <CustomButton
-        onClick={handleLogin}
-        title={loginCopy.buttonTitle}
-        buttonClass="login__buttonStyle"
-      />
-      {/* <Link to="/password/forgot" className="login__forgotPassword">
+      <div className="login__subContainer">
+        <CustomInput
+          value={email}
+          placeholder={loginCopy.email}
+          preset={InputPresets.Email}
+          handleChange={(e) => setEmail(e.target.value)}
+          variant={InputVariant.Outlined}
+          hasBorder
+        />
+        <CustomInput
+          value={password}
+          placeholder={loginCopy.password}
+          preset={InputPresets.Password}
+          handleChange={(e) => setPassword(e.target.value)}
+          variant={InputVariant.Outlined}
+          hasBorder
+        />
+        <CustomButton
+          onClick={handleLogin}
+          title={loginCopy.buttonTitle}
+          buttonClass="login__buttonStyle"
+        />
+        {/* <Link to="/password/forgot" className="login__forgotPassword">
         Forgot your password?
-      </Link> */}
+        </Link> */}
+      </div>
     </div>
   );
 };
