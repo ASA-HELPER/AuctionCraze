@@ -16,10 +16,10 @@ const HowItWorks = () => {
     description: string,
     Icon: SvgIconComponent
   ) => (
-    <div>
+    <div className="howItWorks__content">
       <Icon />
       <div className="howItWorks__textContainer">
-        <Typography variant="body1" className="howItWorks__heading">
+        <Typography variant="h5" className="howItWorks__heading">
           {heading}
         </Typography>
         <Typography variant="body1" className="howItWorks__description">
@@ -31,9 +31,9 @@ const HowItWorks = () => {
   return (
     <div className="howItWorks__container">
       <div className="howItWorks__header">
-        <Typography className="howItWorks__title">{howItWorksCopy.title}</Typography>
+        <Typography variant="h3" className="howItWorks__title">{howItWorksCopy.title}</Typography>
       </div>
-      <div className="howItWorks__content">
+      <div className="howItWorks__contentContainer">
         {howItWorksItem(
           howItWorksCopy.heading1,
           howItWorksCopy.description1,
