@@ -1,4 +1,4 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
 .dropdown {
   &__container {
@@ -36,7 +36,7 @@
       font-weight: $font-weight-regular;
       line-height: $spacing-22;
       outline: none;
-      padding: $spacing-8 $spacing-16 !important;
+      padding: $spacing-14 $spacing-16 !important;
       &.Mui-focused .MuiOutlinedInput-notchedOutline {
         border: $spacing-1 solid get-color($neutral, 06);
       }

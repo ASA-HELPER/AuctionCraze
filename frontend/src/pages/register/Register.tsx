@@ -71,11 +71,11 @@ const Register = () => {
         {registerCopy.register}
       </Typography>
       <div className="register__subcontainer">
+        <Typography className="register__imgLabels">
+          {registerCopy.profileImage}
+        </Typography>
         <div className="register__imageContainer">
           <div className="register__imageSubcontainer">
-            <Typography className="register__imgLabels">
-              {registerCopy.profileImage}
-            </Typography>
             <img
               src={
                 profileImage ? URL.createObjectURL(profileImage) : AvatarPreview
@@ -194,6 +194,7 @@ const Register = () => {
         <CustomButton
           handleClick={handleRegister}
           title={registerCopy.register}
+          buttonClass="register__buttonStyle"
         />
       </div>
     </div>

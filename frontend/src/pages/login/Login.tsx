@@ -10,6 +10,7 @@ import CustomButton from "../../components/button/CustomButton";
 import { login } from "../../store/slices/userSlice";
 import loginCopy from "./login.copy";
 import { ROUTES } from "../../constants/route-constants";
+import { Typography } from "@mui/material";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +36,7 @@ const Login = () => {
 
   return (
     <div className="login__container">
-      <h1 className="login__title">Login</h1>
+      <Typography className="login__title">{loginCopy.title}</Typography>
       <CustomInput
         value={email}
         placeholder={loginCopy.email}
@@ -52,7 +53,11 @@ const Login = () => {
         variant={InputVariant.Outlined}
         hasBorder
       />
-      <CustomButton onClick={handleLogin} title={loginCopy.buttonTitle} />
+      <CustomButton
+        onClick={handleLogin}
+        title={loginCopy.buttonTitle}
+        buttonClass="login__buttonStyle"
+      />
       {/* <Link to="/password/forgot" className="login__forgotPassword">
         Forgot your password?
       </Link> */}

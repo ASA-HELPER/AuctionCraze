@@ -1,78 +1,84 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.register{
-    &__container{
-        display: flex;
-        flex-direction: column;
-        padding: $spacing-30;
-        gap: $spacing-10;
-        width: 100%;
-        background-color: $chinese-white;
-    }
+.register {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-30;
+    gap: $spacing-10;
+    width: 100%;
+    height: 100%;
+    background-color: $chinese-white;
+  }
 
-    &__title.MuiTypography-root{
-        font-size: $spacing-30;
-        font-family: $primary-font;
-        font-weight: bold;
-        text-align: center;
-        color: $raisin-black;
-    }
+  &__title.MuiTypography-root {
+    font-size: $spacing-30;
+    font-family: $primary-font;
+    font-weight: bold;
+    text-align: center;
+    color: $persimmon;
+    align-self: center;
+  }
 
-    &__subcontainer{
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-10;
-        justify-content: center;
-        align-items: center;
-    }
+  &__subcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-10;
+    justify-content: center;
+    align-items: center;
+  }
 
-    &__imageContainer{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-    }
+  &__imageContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
 
-    &__imageSubcontainer{
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-10;
-    }
+  &__imageSubcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-10;
+  }
 
-    &__imgLabels.MuiTypography-root{
-        color: $raisin-black;
-        font-family: $primary-font;
-        font-weight: bold;
-        font-size: $spacing-14;
-        align-self: flex-start;
-    }
+  &__imgLabels.MuiTypography-root {
+    color: $raisin-black;
+    font-family: $primary-font;
+    font-weight: bold;
+    font-size: $spacing-14;
+    align-self: flex-start;
+  }
 
-    &__image{
-        width: $spacing-200;
-        height: $spacing-200;
-        border-radius: $spacing-30;
-    }
+  &__buttonStyle.MuiButtonBase-root {
+    background-color: $persimmon !important;
+  }
 
-    &__inputLabels.MuiFormLabel-root{
-        color: $raisin-black;
-        font-family: $primary-font;
-        font-weight: bold;
-        font-size: $spacing-14;
-    }
+  &__image {
+    width: $spacing-200;
+    height: $spacing-200;
+    border-radius: $spacing-30;
+  }
+
+  &__inputLabels.MuiFormLabel-root {
+    color: $raisin-black;
+    font-family: $primary-font;
+    font-weight: bold;
+    font-size: $spacing-14;
+  }
 }
 
-@include sm{
-    .register{
-        &__imageContainer{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: $spacing-10;
-            width: 100%;
-        }
-
-        &__image{
-            align-self: center;
-        }
+@include sm {
+  .register {
+    &__imageContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: $spacing-10;
+      width: 100%;
     }
+
+    &__image {
+      align-self: center;
+    }
+  }
 }
