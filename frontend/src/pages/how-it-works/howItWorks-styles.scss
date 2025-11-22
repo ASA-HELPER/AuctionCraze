@@ -1,8 +1,38 @@
 @use '../../theme' as *;
 
 .howItWorks{
-    &__container{
+    &__container {
+        background-color: $chinese-white;
+    }
+
+    &__header {
+        color: $coral-red;
+    }
+
+    &__content {
+        margin: $spacing-5 0;
+        padding: $spacing-10 $spacing-10;
+        border-radius: $spacing-5;
+        background-color: $ghost-white;
+        color: $raisin-black;
+
+        svg {
+            color: $ghost-white;
+            background-color: $raisin-black;
+            border-radius: 50%;
+        }
+        h5 {
+            color: $coral-red;
+        }
+    }
+
+    &__content:hover {
         background-color: $raisin-black;
+        color: $ghost-white;
+
+        svg {
+            background-color: $coral-red;
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 export default {
   title: "Discover How AuctionCraze Works",
-  heading1: "user Registration",
+  heading1: "User Registration",
   description1:
     "Users must register or log in to perform operations such as posting auctions, bidding on items, accessing the dashboard, and sending payment proof.",
   heading2: "Role Selection",
