@@ -26,5 +26,5 @@ export default {
   heading5: "Join Our Community",
   description5:
     "Whether you are a buyer seeking unique finds, a seller reaching new markets, or an enthusiast exploring opportunities, AuctionCraze welcomes you to be part of our growing community. Together, let’s transform the way the world experiences online auctions.",
-  title: "ABOUT US",
+  title: "About Us",
 };

@@ -57,7 +57,7 @@ const About = () => {
   return (
     <div className="about__container">
       <div className="about__header">
-        <Typography className="about__title">{aboutCopy.title}</Typography>
+        <Typography variant="h3" className="about__title">{aboutCopy.title}</Typography>
       </div>
       <div className="about__content">
         {aboutSubitem(

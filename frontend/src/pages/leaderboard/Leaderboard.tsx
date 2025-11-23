@@ -67,7 +67,7 @@ const Leaderboard = () => {
   return (
     <div className="leaderboard__container">
       <div className="leaderboard__headerContainer">
-        <Typography className="leaderboard__headerTitle" variant="h1">
+        <Typography className="leaderboard__headerTitle" variant="h3">
           {leaderboardCopy.biddersLeaderboard}
         </Typography>
       </div>

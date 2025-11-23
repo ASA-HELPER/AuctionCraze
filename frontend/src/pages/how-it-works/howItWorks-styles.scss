@@ -3,6 +3,7 @@
 .howItWorks{
     &__container {
         background-color: $chinese-white;
+        padding: $spacing-10;
     }
 
     &__header {
@@ -13,7 +14,7 @@
         margin: $spacing-5 0;
         padding: $spacing-10 $spacing-10;
         border-radius: $spacing-5;
-        background-color: $ghost-white;
+        background-color: $chinese-white;
         color: $raisin-black;
 
         svg {

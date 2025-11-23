@@ -6,6 +6,7 @@
     flex-direction: column;
     overflow-x: hidden;
     align-items: center;
+    background-color: $chinese-white;
   }
 
   &__header {
@@ -14,13 +15,11 @@
   }
 
   &__title.MuiTypography-root {
-    text-transform: uppercase;
     background-size: auto auto;
     background-clip: border-box;
     background-size: 200% auto;
-    color: $blueberry;
+    color: $coral-red;
     display: inline-block;
-    font-size: $spacing-50;
     font-weight:$font-weight-bold;
   }
 
@@ -87,11 +86,11 @@
   &__subheading.MuiTypography-root {
     font-weight: bold;
     font-weight: $font-weight-semi-bold;
-    color: $dandelion;
+    color: $blueberry;
   }
 
   &__description {
-    color: $chinese-white;
+    color: $raisin-black;
     text-align: justify;
     font-style: $primary-font;
     font-weight: $font-weight-regular;
