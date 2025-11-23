@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FeaturedAuctions from "./components/featured-auctions/FeaturedAuctions";
 import TopLeadersList from "./components/top-leaders-list/TopLeadersList";
 import HowItWorksList from "./components/how-it-works-list/HowItWorksList";

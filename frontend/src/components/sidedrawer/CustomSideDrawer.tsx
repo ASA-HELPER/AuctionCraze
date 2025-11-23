@@ -17,6 +17,8 @@ import { useAppDispatch } from "../../hooks/storeHooks";
 import { ROUTES } from "../../constants/route-constants";
 import { navbarMenuItems, ROLES } from "../../constants/common-constants";
 import { RootState } from "../../store/store";
+import customSideDrawerCopy from "./customSideDrawer.copy";
+import { ADMIN } from "../../constants/api-constants";
 
 const CustomSideDrawer = () => {
   const [show, setShow] = useState(false);
@@ -58,7 +60,10 @@ const CustomSideDrawer = () => {
         <div className="sideDrawer__content">
           <Link to={ROUTES.HOME} onClick={handleLinkClick}>
             <h4 className="sideDrawer__logo">
-              Auction<span className="sideDrawer__logoHighlight">Craze</span>
+              {customSideDrawerCopy.title.firstPart}
+              <span className="sideDrawer__logoHighlight">
+                {customSideDrawerCopy.title.secondPart}
+              </span>
             </h4>
           </Link>
           <ul className="sideDrawer__menu">
@@ -68,7 +73,7 @@ const CustomSideDrawer = () => {
                 className="sideDrawer__menuLink"
                 onClick={handleLinkClick}
               >
-                <RiAuctionFill /> {navbarMenuItems[0].label}
+                <RiAuctionFill size={20} /> {navbarMenuItems[0].label}
               </Link>
             </li>
             <li>
@@ -77,7 +82,7 @@ const CustomSideDrawer = () => {
                 className="sideDrawer__menuLink"
                 onClick={handleLinkClick}
               >
-                <MdLeaderboard /> {navbarMenuItems[1].label}
+                <MdLeaderboard size={20} /> {navbarMenuItems[1].label}
               </Link>
             </li>
             {isAuthenticated && user && user.role === ROLES[0] && (
@@ -88,7 +93,7 @@ const CustomSideDrawer = () => {
                     className="sideDrawer__menuLink"
                     onClick={handleLinkClick}
                   >
-                    <FaFileInvoiceDollar /> {navbarMenuItems[5].label}
+                    <FaFileInvoiceDollar size={20} /> {navbarMenuItems[5].label}
                   </Link>
                 </li>
                 <li>
@@ -97,7 +102,7 @@ const CustomSideDrawer = () => {
                     className="sideDrawer__menuLink"
                     onClick={handleLinkClick}
                   >
-                    <IoIosCreate /> {navbarMenuItems[4].label}
+                    <IoIosCreate size={20} /> {navbarMenuItems[4].label}
                   </Link>
                 </li>
                 <li>
@@ -106,19 +111,19 @@ const CustomSideDrawer = () => {
                     className="sideDrawer__menuLink"
                     onClick={handleLinkClick}
                   >
-                    <FaEye /> {navbarMenuItems[6].label}
+                    <FaEye size={20} /> {navbarMenuItems[6].label}
                   </Link>
                 </li>
               </>
             )}
-            {isAuthenticated && user && user.role === "Admin" && (
+            {isAuthenticated && user && user.role === ADMIN && (
               <li>
                 <Link
                   to={navbarMenuItems[8].path}
                   className="sideDrawer__menuLink"
                   onClick={handleLinkClick}
                 >
-                  <MdDashboard /> {navbarMenuItems[8].label}
+                  <MdDashboard size={20} /> {navbarMenuItems[8].label}
                 </Link>
               </li>
             )}
@@ -128,14 +133,14 @@ const CustomSideDrawer = () => {
             <div className="sideDrawer__authButtons">
               <Link
                 to={navbarMenuItems[9].path}
-                className="sideDrawer__signUp"
+                className="sideDrawer__login"
                 onClick={handleLinkClick}
               >
                 {navbarMenuItems[9].label}
               </Link>
               <Link
                 to={navbarMenuItems[10].path}
-                className="sideDrawer__login"
+                className="sideDrawer__signUp"
                 onClick={handleLinkClick}
               >
                 {navbarMenuItems[10].label}
@@ -143,7 +148,9 @@ const CustomSideDrawer = () => {
             </div>
           ) : (
             <div className="sideDrawer__authButtons" onClick={handleLogout}>
-              <button className="sideDrawer__logout">Logout</button>
+              <button className="sideDrawer__logout">
+                {customSideDrawerCopy.buttonTitle}
+              </button>
             </div>
           )}
 
@@ -157,7 +164,7 @@ const CustomSideDrawer = () => {
                   className="sideDrawer__menuLink"
                   onClick={handleLinkClick}
                 >
-                  <FaUserCircle /> {navbarMenuItems[7].label}
+                  <FaUserCircle size={20} /> {navbarMenuItems[7].label}
                 </Link>
               </li>
             )}
@@ -167,7 +174,7 @@ const CustomSideDrawer = () => {
                 className="sideDrawer__menuLink"
                 onClick={handleLinkClick}
               >
-                <SiGooglesearchconsole /> {navbarMenuItems[2].label}
+                <SiGooglesearchconsole size={20} /> {navbarMenuItems[2].label}
               </Link>
             </li>
             <li>
@@ -176,7 +183,7 @@ const CustomSideDrawer = () => {
                 className="sideDrawer__menuLink"
                 onClick={handleLinkClick}
               >
-                <BsFillInfoSquareFill /> {navbarMenuItems[3].label}
+                <BsFillInfoSquareFill size={20} /> {navbarMenuItems[3].label}
               </Link>
             </li>
             <li>
@@ -185,7 +192,7 @@ const CustomSideDrawer = () => {
                 className="sideDrawer__menuLink"
                 onClick={handleLinkClick}
               >
-                <TiContacts /> {navbarMenuItems[11].label}
+                <TiContacts size={20} /> {navbarMenuItems[11].label}
               </Link>
             </li>
           </ul>
@@ -193,6 +200,7 @@ const CustomSideDrawer = () => {
           <IoMdCloseCircleOutline
             onClick={() => setShow(!show)}
             className="sideDrawer__closeIcon"
+            size={20}
           />
         </div>
       </div>

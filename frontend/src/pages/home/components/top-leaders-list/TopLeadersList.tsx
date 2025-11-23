@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./topLeadersList-styles.scss";
 import { RootState } from "../../../../store/store";
@@ -7,8 +7,10 @@ import { Typography } from "@mui/material";
 import { ExtendedColumn } from "../../../../types/table-types";
 import CustomTable from "./../../../../components/table/CustomTable";
 import homeCopy from "../../home.copy";
+import CustomButton from "../../../../components/button/CustomButton";
 
 const TopLeadersList = () => {
+  const navigate = useNavigate();
   const { leaderboard, loading } = useSelector(
     (state: RootState) => state.user
   );
@@ -57,6 +59,10 @@ const TopLeadersList = () => {
     },
   ];
 
+  const handleButtonClick = () => {
+    navigate("/leaderboard");
+  };
+
   return (
     <div className="topLeadersList__container">
       <div className="topLeadersList__headerContainer">
@@ -69,9 +75,11 @@ const TopLeadersList = () => {
         rows={transformedLeaderboardData}
         loading={loading}
       />
-      <Link to="/leaderboard" className="topLeadersList__link">
-        {homeCopy.section3.linkText}
-      </Link>
+      <CustomButton
+        title={homeCopy.section3.linkText}
+        handleClick={handleButtonClick}
+        buttonClass="topLeadersList__buttonStyle"
+      />
     </div>
   );
 };

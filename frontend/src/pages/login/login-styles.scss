@@ -5,11 +5,19 @@
     display: flex;
     flex-direction: column;
     padding: $spacing-30;
-    gap: $spacing-10;
     width: 100%;
     height: 100%;
     background-color: $chinese-white;
     justify-content: center;
+  }
+
+  &__subContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    gap: $spacing-10;
+    align-self: center;
   }
 
   &__forgotPassword {
@@ -22,11 +30,28 @@
     font-family: $primary-font;
     font-weight: bold;
     text-align: center;
-    color: $persimmon;
+    color: $coral-red;
     align-self: center;
   }
 
   &__buttonStyle.MuiButtonBase-root {
-    background-color: $persimmon !important;
+    background-color: $coral-red !important;
+    align-self: center;
+  }
+}
+
+@include sm {
+  .login {
+    &__subContainer {
+      width: 100%;
+    }
+  }
+}
+
+@include md {
+  .login {
+    &__subContainer {
+      width: 70%;
+    }
   }
 }

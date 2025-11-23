@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-20;
-    margin-top: 2rem;
+    margin-top: $spacing-10;
     width: 100%;
   }
 
@@ -32,22 +32,9 @@
     }
   }
 
-  &__link {
-    background-color: $blueberry;
-    font-size: $spacing-20;
-    font-family: $primary-font;
-    font-weight: $font-weight-semi-bold;
-    padding: $spacing-10;
-    max-width: max-content;
-    color: $chinese-white;
-    border-radius: $spacing-10;
-    text-align: center;
+  &__buttonStyle.MuiButtonBase-root {
+    background-color: $coral-red !important;
+    width: max-content;
     align-self: center;
-  }
-}
-
-// Mobile View
-@include sm {
-  .topLeadersList {
   }
 }
