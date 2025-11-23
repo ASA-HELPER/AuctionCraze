@@ -6,7 +6,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: $american-silver;
+    background-color: $chinese-white;
     gap: 3rem;
     align-items: center;
     padding: $spacing-20;
@@ -19,13 +19,11 @@
   }
 
   &__title.MuiTypography-root {
-   text-transform: uppercase;
     background-size: auto auto;
     background-clip: border-box;
     background-size: 200% auto;
-    color: $blueberry;
+    color: $coral-red;
     display: inline-block;
-    font-size: $spacing-50;
     font-weight:$font-weight-bold;
   }
 
@@ -65,7 +63,7 @@
     align-items: center;
     gap: $spacing-3;
     padding: $spacing-6 $spacing-20;
-    background-color: $blueberry;
+    background-color: $coral-red;
     color: $chinese-white;
   }
 

@@ -4,14 +4,16 @@
     &__container{
         display: flex;
         flex-direction: column;
-        padding: $spacing-0 $spacing-10;
+        padding: $spacing-10;
         gap: $spacing-20;
+        background-color: $chinese-white;
     }
 
     &__headerContainer{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        color: $coral-red;
     }
 }
 

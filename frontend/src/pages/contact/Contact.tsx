@@ -54,7 +54,7 @@ const Contact = () => {
   return (
     <div className="contact__container">
       <div className="contact__header">
-        <Typography className="contact__title">{contactCopy.title}</Typography>
+        <Typography variant="h3" className="contact__title">{contactCopy.title}</Typography>
       </div>
 
       <form onSubmit={handleMessage} className="contact__form">
