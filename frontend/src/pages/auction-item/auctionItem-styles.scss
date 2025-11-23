@@ -1,6 +1,22 @@
 @use "../../theme" as *;
 
 .auctionItem {
+  &__container {
+    padding: $spacing-10 $spacing-20;
+    background-color: $chinese-white;
+    height: 100%;
+  }
+
+  &__breadcrumbLink {
+    font-weight: $font-weight-semi-bold;
+    color: $raisin-black;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $coral-red;
+    }
+  }
+
   &__breadcrumb {
     display: flex;
     flex-wrap: wrap;
@@ -8,109 +24,191 @@
     align-items: center;
     margin-bottom: 1rem;
 
-    &-link {
-      font-weight: 600;
-      color: inherit;
-      transition: all 0.3s;
-
-      &:hover {
-        color: #d6482b;
-      }
-    }
-
     &-separator {
-      color: #9ca3af;
+      color: $granite-gray;
     }
 
     &-current {
-      color: #6b7280;
+      color: $granite-gray;
     }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: $spacing-20;
+    justify-content: space-between;
 
     @media (min-width: 1024px) {
       flex-direction: row;
+      > div {
+        flex: 0 0 45%;
+      }
     }
   }
 
-  &__details {
-    flex: 1;
+  &__detailsContainer {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: $spacing-10;
+    padding: $spacing-10;
+  }
 
-    &__top {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+  &__detailsContainerTopSection {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-10;
+  }
 
-      @media (min-width: 1024px) {
-        flex-direction: row;
-      }
+  &__detailsContainerBottomSection {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-10;
+    padding: $spacing-10;
+  }
+
+  &__image {
+    width: $spacing-200;
+    height: $spacing-200;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  &__bidUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-20;
+  }
+
+  &__bidAction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $coral-red;
+    padding: $spacing-10;
+  }
+
+  &__bidInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-20;
+  }
+
+  &__bidInputField {
+    background-color: $chinese-white;
+    border: none;
+    color: $raisin-black;
+    padding: $spacing-4;
+  }
+
+  &__bidIcon {
+    color: $ghost-white;
+    background-color: $raisin-black;
+    border-radius: 50%;
+    padding: $spacing-5;
+    font-size: $spacing-30;
+  }
+
+  &__title.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidName.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidRank.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-10;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidInputFieldLabel.MuiTypography-root {
+    color: $chinese-white;
+    font-size: $spacing-16;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__bidsList {
+    display: flex;
+    flex-direction: column;
+    background-color: $bright-gray;
+    padding: $spacing-10;
+    gap: $spacing-20;
+  }
+
+  &__condition.MuiTypography-root,
+  &__minBid.MuiTypography-root {
+    color: $raisin-black;
+    font-size: $spacing-16;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+    span {
+      color: $coral-red;
     }
+  }
 
-    &__image-container {
-      background: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      width: 100%;
-      @media (min-width: 1024px) {
-        width: 10rem;
-        height: 10rem;
-      }
+  &__description {
+    list-style: disc;
+    padding-left: $spacing-20;
+  }
 
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-    }
+  &__descriptionItem {
+    color: $raisin-black;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
 
-    &__info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      padding-bottom: 1rem;
+  &__divider {
+    margin: 0.5rem 0;
+    border-top: $spacing-1 solid $raisin-black;
+  }
 
-      & > h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
+  &__bidStartEndMessage.MuiTypography-root,
+  &__noBids.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+    text-align: center;
+    padding-top: $spacing-10;
+  }
 
-      p {
-        font-size: 1.125rem;
-        font-weight: 600;
+  &__statusImg {
+    width: 100%;
+    height: 60vh;
+  }
 
-        span {
-          color: #d6482b;
-        }
-      }
-    }
+  &__bidAvatar {
+    width: $spacing-50;
+    height: $spacing-50;
+    border-radius: 50%;
+    display: none;
 
-    &__description-title {
-      font-weight: bold;
-      font-size: 1.125rem;
-    }
-
-    &__divider {
-      margin: 0.5rem 0;
-      border-top: 1px solid #374151;
-    }
-
-    &__description {
-      list-style: disc;
-      padding-left: 1rem;
-
-      &-item {
-        margin: 0.25rem 0;
-        font-size: 1.125rem;
-      }
+    @media (min-width: 768px) {
+      display: block;
     }
   }
 
@@ -118,16 +216,11 @@
     flex: 1;
 
     &-header {
-      background: #e5e7eb;
-      padding: 1rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-
-    &-list {
-      background: white;
-      padding: 1rem;
-      min-height: 20rem;
+      background: $american-silver;
+      color: $coral-red;
+      padding: $spacing-10;
+      font-size: $spacing-20;
+      font-weight: $font-weight-semi-bold;
     }
 
     &-item {
@@ -135,28 +228,6 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.5rem 0;
-
-      &-user {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-
-        &-avatar {
-          width: 3rem;
-          height: 3rem;
-          border-radius: 50%;
-          display: none;
-
-          @media (min-width: 768px) {
-            display: block;
-          }
-        }
-
-        &-name {
-          font-size: 1.125rem;
-          font-weight: 600;
-        }
-      }
     }
 
     &__no-bids {
@@ -165,24 +236,19 @@
       padding: 1rem 0;
     }
 
-    &__status-img {
-      width: 100%;
-      max-height: 40rem;
-    }
-
     &__bid-action {
-      background: #d6482b;
+      background: $coral-red;
       display: flex;
       justify-content: space-between;
-      padding: 1rem;
-      color: white;
-      font-weight: 600;
-      font-size: 1.5rem;
+      padding: $spacing-10;
+      color: $chinese-white;
+      font-weight: $font-weight-semi-bold;
+      font-size: $spacing-16;
 
       &-input {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: $spacing-5;
 
         @media (min-width: 640px) {
           flex-direction: row;
@@ -208,10 +274,6 @@
           background: #222;
         }
       }
-
-      &-message {
-        font-size: 1.25rem;
-      }
     }
   }
 }
@@ -219,5 +281,9 @@
 // Mobile View
 @include sm {
   .auctionItem {
+    &__image {
+      width: $spacing-100;
+      height: $spacing-100;
+    }
   }
 }
