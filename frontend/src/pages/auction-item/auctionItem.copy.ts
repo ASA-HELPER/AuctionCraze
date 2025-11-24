@@ -17,4 +17,6 @@ export default {
   noBidAvailable: "No bids for this auction",
   auctionNotStarted: "Auction has not started yet!",
   auctionEnded: "Auction has ended!",
+  bidErrorMessage: "Please login to make bid!",
+  minimumBidAmountMessage: "The minimum bid amount is ",
 };
