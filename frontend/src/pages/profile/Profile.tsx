@@ -28,7 +28,6 @@ const Profile = () => {
       <Typography variant="h3" className="profile__title">Profile</Typography>
       <div className="profile__subcontainer">
         <div className="profile__imageContainer">
-          <div className="profile__imageSubcontainer">
             <Typography className="profile__imgLabels">
               Profile Image
             </Typography>
@@ -41,7 +40,6 @@ const Profile = () => {
               alt="avatar"
               className="profile__image"
             />
-          </div>
         </div>
         <CustomInput
           value={user && user.userName}
