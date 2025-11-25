@@ -25,7 +25,7 @@ const Profile = () => {
 
   return (
     <div className="profile__container">
-      <Typography className="profile__title">Profile</Typography>
+      <Typography variant="h3" className="profile__title">Profile</Typography>
       <div className="profile__subcontainer">
         <div className="profile__imageContainer">
           <div className="profile__imageSubcontainer">

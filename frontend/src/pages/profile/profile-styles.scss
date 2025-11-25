@@ -11,9 +11,10 @@
     }
 
     &__title.MuiTypography-root{
-        font-size: $spacing-30;
+        color: $coral-red;
         font-family: $primary-font;
         font-weight: bold;
+        align-self: center;
     }
 
     &__subcontainer{
@@ -27,7 +28,7 @@
     &__imageContainer{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
     }
 
