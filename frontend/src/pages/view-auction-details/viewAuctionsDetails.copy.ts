@@ -7,6 +7,7 @@ export default {
   minimumBid: "Minimum Bid: ",
   subheading: "Auction Item Description",
   bidsHeading: "BIDS",
+  rupees: "Rs.",
   bidderRanks: {
     first: "1st",
     second: "2nd",

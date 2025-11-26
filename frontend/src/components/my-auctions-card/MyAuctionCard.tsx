@@ -11,6 +11,7 @@ import {
 } from "../../store/slices/auctionSlice";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import CustomButton from "../button/CustomButton";
+import { ROUTES } from "../../constants/route-constants";
 
 const MyAuctionCard = ({
   imgSrc,
@@ -71,6 +72,7 @@ const MyAuctionCard = ({
 
   const handleViewAuction = () => {
     navigateTo(`/auction/details/${id}`);
+    navigateTo(ROUTES.AUCTION_DETAILS(id));
   };
 
   return (

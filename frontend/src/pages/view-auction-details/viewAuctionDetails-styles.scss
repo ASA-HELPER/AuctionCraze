@@ -2,31 +2,34 @@
 
 .auctionDetails {
   &__container {
-    width: 100%;
-    padding: $spacing-20 $spacing-5;
-    padding-left: $spacing-320;
-    display: flex;
-    flex-direction: column;
-    background-color: get-color($neutral, 100);
+    padding: $spacing-10 $spacing-20;
+    background-color: $chinese-white;
+    height: 100%;
   }
 
-  &__breadcrumbs {
+  &__breadcrumb {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
-    gap: $spacing-8;
-    font-size: $spacing-16;
-    margin-bottom: $spacing-16;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    &-separator {
+      color: $granite-gray;
+    }
+
+    &-current {
+      color: $granite-gray;
+    }
   }
 
-  &__link {
-    font-weight: bold;
-    transition: all 0.3s;
+  &__breadcrumbLink {
+    font-weight: $font-weight-semi-bold;
     color: $raisin-black;
-    text-decoration: none;
+    transition: all 0.3s;
 
     &:hover {
-      color: $persimmon;
+      color: $coral-red;
     }
   }
 
@@ -41,134 +44,188 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: $spacing-16;
-
-    @media (min-width: 1536px) {
-      flex-direction: row;
-    }
-  }
-
-  &__left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-12;
-  }
-
-  &__itemSection {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-16;
+    gap: $spacing-20;
+    justify-content: space-between;
 
     @media (min-width: 1024px) {
       flex-direction: row;
+      > div {
+        flex: 0 0 45%;
+      }
     }
   }
 
-  &__imageBox {
-    background-color: $chinese-white;
-    width: 100%;
-    max-width: $spacing-160;
-    height: $spacing-160;
+  &__detailsContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: $spacing-20;
+    flex-direction: column;
+    gap: $spacing-10;
+    padding: $spacing-10;
+  }
+
+  &__detailsContainerTopSection {
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-10;
+  }
+
+  &__detailsContainerBottomSection {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-10;
+    padding: $spacing-10;
   }
 
   &__image {
-    width: 100%;
-    height: auto;
+    width: $spacing-200;
+    height: $spacing-200;
   }
 
-  &__itemInfo {
+  &__info {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding-bottom: $spacing-16;
+    justify-content: space-evenly;
   }
 
-  &__title {
-    color: $raisin-black;
-    font-weight: bold;
-    font-size: $spacing-24;
-    margin-bottom: $spacing-8;
+  &__bidUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-20;
   }
 
-  &__detail {
-    font-size: $spacing-18;
-    font-weight: bold;
-    color: $raisin-black;
+  &__bidAction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $coral-red;
+    padding: $spacing-10;
   }
 
-  &__highlight {
-    color: $persimmon;
+  &__bidInput {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-20;
   }
 
-  &__subheading {
-    font-size: $spacing-18;
-    font-weight: bold;
-    color: $raisin-black;
-  }
-
-  &__divider {
+  &__bidInputField {
+    background-color: $chinese-white;
     border: none;
-    border-top: 1px solid get-color($neutral, 700);
-    margin: $spacing-8 0;
+    color: $raisin-black;
+    padding: $spacing-4;
   }
 
-  &__descriptionItem {
-    font-size: $spacing-18;
-    margin: $spacing-8 0;
+  &__bidIcon {
+    color: $ghost-white;
+    background-color: $raisin-black;
+    border-radius: 50%;
+    padding: $spacing-5;
+    font-size: $spacing-30;
   }
 
-  &__right {
-    flex: 1;
+  &__title.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidName.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidRank.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-10;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidInputFieldLabel.MuiTypography-root {
+    color: $chinese-white;
+    font-size: $spacing-16;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__bidItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__bidsList {
     display: flex;
     flex-direction: column;
+    background-color: $bright-gray;
+    padding: $spacing-10;
+    gap: $spacing-20;
   }
 
   &__bidsHeader {
-    background-color: get-color($neutral, 200);
-    padding: $spacing-12 $spacing-16;
-    font-weight: bold;
+    background: $american-silver;
+    color: $coral-red;
+    padding: $spacing-10;
     font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
   }
 
-  &__bidsContainer {
-    background-color: $chinese-white;
-    padding: $spacing-16;
-  }
-
-  &__bidder {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: $spacing-8 0;
-    border-bottom: 1px solid get-color($neutral, 100);
-  }
-
-  &__bidderInfo {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    gap: $spacing-12;
-  }
-
-  &__bidderImage {
-    width: $spacing-48;
-    height: $spacing-48;
-    border-radius: 50%;
-    display: block;
-
-    @media (max-width: 768px) {
-      display: none;
+  &__condition.MuiTypography-root,
+  &__minBid.MuiTypography-root {
+    color: $raisin-black;
+    font-size: $spacing-16;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+    span {
+      color: $coral-red;
     }
   }
 
-  &__bidderName {
-    font-size: $spacing-18;
-    font-weight: bold;
+  &__description {
+    list-style: disc;
+    padding-left: $spacing-20;
+  }
+
+  &__descriptionItem {
+    color: $raisin-black;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
+  &__divider {
+    margin: 0.5rem 0;
+    border-top: $spacing-1 solid $raisin-black;
+  }
+
+  &__bidStartEndMessage.MuiTypography-root,
+  &__noBids.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-20;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+    text-align: center;
+    padding-top: $spacing-10;
+  }
+
+  &__statusImg {
+    width: 100%;
+    height: 60vh;
+  }
+
+  &__bidAvatar {
+    width: $spacing-50;
+    height: $spacing-50;
+    border-radius: 50%;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
   }
 
   &__bidAmount {

@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaGreaterThan } from "react-icons/fa";
+import auctionNotStarted from "../../assets/auctionNotStarted.png";
+import auctionEndedImg from "../../assets/auctionEnded.png";
 
 import "./viewAuctionDetails-styles.scss";
 import { getAuctionDetail } from "../../store/slices/auctionSlice";
@@ -11,6 +13,7 @@ import { RootState } from "../../store/store";
 import { ROUTES } from "../../constants/route-constants";
 import viewAuctionsDetailsCopy from "./viewAuctionsDetails.copy";
 import { ROLES } from "../../constants/common-constants";
+import { Typography } from "@mui/material";
 
 const ViewAuctionDetails = () => {
   const { id } = useParams();
@@ -34,15 +37,15 @@ const ViewAuctionDetails = () => {
   }, [isAuthenticated, id, dispatch, navigateTo, user.role]);
 
   const renderBreadcrumbs = () => (
-    <div className="auctionDetails__breadcrumbs">
-      <Link to={ROUTES.HOME} className="auctionDetails__link">
+    <div className="auctionDetails__breadcrumb">
+      <Link to={ROUTES.HOME} className="auctionDetails__breadcrumbLink">
         {viewAuctionsDetailsCopy.breadcrumbsLinks.home}
       </Link>
-      <FaGreaterThan className="auctionDetails__icon" />
-      <Link to={ROUTES.MY_AUCTIONS} className="auctionDetails__link">
+      <FaGreaterThan className="auctionDetails__breadcrumb-separator" />
+      <Link to={ROUTES.MY_AUCTIONS} className="auctionDetails__breadcrumbLink">
         {viewAuctionsDetailsCopy.breadcrumbsLinks.myAuctions}
       </Link>
-      <FaGreaterThan className="auctionDetails__icon" />
+      <FaGreaterThan className="auctionDetails__breadcrumb-separator" />
       <p className="auctionDetails__text">{auctionDetail.title}</p>
     </div>
   );
@@ -85,32 +88,36 @@ const ViewAuctionDetails = () => {
       !auctionEnded
     ) {
       return auctionBidders.map((bidder: any, index: number) => (
-        <div key={index} className="auctionDetails__bidder">
-          <div className="auctionDetails__bidderInfo">
+        <div key={index} className="auctionDetails__bidItem">
+          <div className="auctionDetails__bidUser">
             <img
               src={bidder.profileImage}
               alt={bidder.userName}
-              className="auctionDetails__bidderImage"
+              className="auctionDetails__bidAvatar"
             />
-            <p className="auctionDetails__bidderName">{bidder.userName}</p>
+            <Typography className="auctionDetails__bidName">
+              {bidder.userName}
+            </Typography>
           </div>
-          <p className="auctionDetails__bidAmount">{bidder.amount}</p>
+          <Typography className="auctionDetails__bidAmount">
+            {bidder.amount}
+          </Typography>
           {renderBidderRank(index)}
         </div>
       ));
     } else if (!auctionStarted) {
       return (
         <img
-          src="/notStarted.png"
-          alt="not-started"
+          src={auctionNotStarted}
+          alt="auction-not-started"
           className="auctionDetails__statusImage"
         />
       );
     } else {
       return (
         <img
-          src="/auctionEnded.png"
-          alt="ended"
+          src={auctionEndedImg}
+          alt="auction-ended"
           className="auctionDetails__statusImage"
         />
       );
@@ -124,54 +131,57 @@ const ViewAuctionDetails = () => {
         <CustomSpinner spinnerSize={30} />
       ) : (
         <div className="auctionDetails__content">
-          <div className="auctionDetails__left">
-            <div className="auctionDetails__itemSection">
-              <div className="auctionDetails__imageBox">
-                <img
-                  src={auctionDetail.image?.url}
-                  alt={auctionDetail.title}
-                  className="auctionDetails__image"
-                />
-              </div>
-              <div className="auctionDetails__itemInfo">
-                <h3 className="auctionDetails__title">{auctionDetail.title}</h3>
-                <p className="auctionDetails__detail">
+          <div className="auctionItem__detailsContainer">
+            <div className="auctionItem__detailsContainerTopSection">
+              <img
+                src={auctionDetail.image?.url}
+                alt={auctionDetail.title}
+                className="auctionDetails__image"
+              />
+              <div className="auctionDetails__info">
+                <Typography className="auctionDetails__title">
+                  {auctionDetail.title}
+                </Typography>
+                <Typography className="auctionDetails__condition">
                   {viewAuctionsDetailsCopy.condition}
-                  <span className="auctionDetails__highlight">
-                    {auctionDetail.condition}
-                  </span>
-                </p>
-                <p className="auctionDetails__detail">
+                  <span>{auctionDetail.condition}</span>
+                </Typography>
+                <Typography className="auctionDetails__minBid">
                   {viewAuctionsDetailsCopy.minimumBid}
-                  <span className="auctionDetails__highlight">
-                    Rs.{auctionDetail.startingBid}
+                  <span>
+                    {viewAuctionsDetailsCopy.rupees}
+                    {auctionDetail.startingBid}
                   </span>
-                </p>
+                </Typography>
               </div>
             </div>
 
-            <p className="auctionDetails__subheading">
-              {viewAuctionsDetailsCopy.subheading}
-            </p>
-            <hr className="auctionDetails__divider" />
-
-            {auctionDetail.description &&
-              auctionDetail.description
-                .split(". ")
-                .map((element: string, index: number) => (
-                  <li key={index} className="auctionDetails__descriptionItem">
-                    {element}
-                  </li>
-                ))}
+            <div className="auctionDetails__detailsContainerBottomSection">
+              <Typography className="auctionDetails__title">
+                {viewAuctionsDetailsCopy.subheading}
+              </Typography>
+              <hr className="auctionDetails__divider" />
+              <ul className="auctionDetails__description">
+                {auctionDetail.description &&
+                  auctionDetail.description
+                    .split(". ")
+                    .map((element: string, index: number) => (
+                      <li
+                        key={index}
+                        className="auctionDetails__descriptionItem"
+                      >
+                        {element}
+                      </li>
+                    ))}
+              </ul>
+            </div>
           </div>
 
-          <div className="auctionDetails__right">
+          <div className="auctionDetails__bids">
             <header className="auctionDetails__bidsHeader">
               {viewAuctionsDetailsCopy.bidsHeading}
             </header>
-            <div className="auctionDetails__bidsContainer">
-              {renderBidders()}
-            </div>
+            <div className="auctionDetails__bidsList">{renderBidders()}</div>
           </div>
         </div>
       )}
