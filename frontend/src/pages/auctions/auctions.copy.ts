@@ -1,4 +1,4 @@
 export default {
-  pageTitle: "Featured Auctions",
+  pageTitle: "Auctions",
   noDataAvailable: "No Auctions Available",
 };
