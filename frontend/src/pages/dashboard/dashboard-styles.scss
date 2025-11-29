@@ -14,21 +14,15 @@
   }
 
   &__title.MuiTypography-root {
-    text-transform: uppercase;
-    background-size: auto auto;
-    background-clip: border-box;
-    background-size: 200% auto;
-    color: $blueberry;
-    display: inline-block;
     font-size: $spacing-50;
+    color: $coral-red;
     font-weight: $font-weight-bold;
-    text-align: center;
   }
 
   &__subTitle.MuiTypography-root {
     color: $blueberry;
     font-size: $spacing-30;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-semi-bold;
   }
 
   &__tableImage {
@@ -36,11 +30,6 @@
     height: $spacing-40;
     object-fit: "cover";
     align-self: "center";
-  }
-}
-
-// Mobile View
-@include sm {
-  .dashboard {
+    border-radius: $spacing-10;
   }
 }

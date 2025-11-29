@@ -21,4 +21,16 @@ export default {
     userId: "User ID",
     status: "Status",
   },
+  paymentProofModal: {
+    title: "Update Payment Proof",
+    subtitle: "You can update payment status and amount",
+    userId: "User ID",
+    amount: "Amount",
+    status: "Status",
+    selectStatus: "Select Status",
+    comment: "Comment",
+    paymentProofLink: "Payment Proof (SS)",
+    updatingPayment: "Updating Payment Proof",
+    paymentSuccess: "Payment Proof Updated Successfully!",
+  },
 };

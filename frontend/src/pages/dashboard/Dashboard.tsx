@@ -18,6 +18,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/route-constants";
 import CustomSpinner from "../../components/spinner/CustomSpinner";
+import { ROLES } from "../../constants/common-constants";
 
 const Dashboard = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +35,7 @@ const Dashboard = () => {
     (state: RootState) => state.user
   );
   useEffect(() => {
-    if (user.role !== "Admin" || !isAuthenticated) {
+    if (user.role !== ROLES[2] || !isAuthenticated) {
       navigateTo(ROUTES.HOME);
     }
   }, [isAuthenticated]);

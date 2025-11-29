@@ -8,6 +8,7 @@ import dashboardCopy from "../../dashboard.copy";
 import { Typography } from "@mui/material";
 import CustomTable from "../../../../components/table/CustomTable";
 import "../../dashboard-styles.scss";
+import { ROUTES } from "../../../../constants/route-constants";
 
 const PaymentProofsTable = () => {
   const { paymentProofs, loading } = useSelector(
@@ -43,7 +44,7 @@ const PaymentProofsTable = () => {
         dispatch(deletePaymentProof(row.id));
         break;
       case "edit":
-        navigateTo(`/payment/details/${row.id}`);
+        navigateTo(ROUTES.PAYMENT_DETAILS(row.id));
         break;
       default:
         break;

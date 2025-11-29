@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { ExtendedColumn } from "../../../../types/table-types";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Typography } from "@mui/material";
 import { useAppDispatch } from "../../../../hooks/storeHooks";
@@ -8,6 +8,7 @@ import { deleteAuctionItem } from "../../../../store/slices/adminSlice";
 import CustomTable from "../../../../components/table/CustomTable";
 import dashboardCopy from "../../dashboard.copy";
 import "../../dashboard-styles.scss";
+import { ROUTES } from "../../../../constants/route-constants";
 
 const AuctionItemsTable = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ const AuctionItemsTable = () => {
 
   const DELETE_AUCTION_TABLE_FIELDS: ExtendedColumn[] = [
     {
-      field: "iconImage",
+      field: "image",
       headerName: dashboardCopy.tableFields.image,
       flex: 1,
       renderCell: (params) => (
@@ -46,7 +47,7 @@ const AuctionItemsTable = () => {
         dispatch(deleteAuctionItem(row.id));
         break;
       case "view":
-        navigateTo(`/auction/${row.id}/details`);
+        navigateTo(ROUTES.AUCTION_ITEM(row.id));
         break;
       default:
         break;
