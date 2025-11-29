@@ -9,10 +9,10 @@
         width: 100%;
         background-color: $chinese-white;
         color: $raisin-black;
+        height: 100%;
     }
 
     &__title.MuiTypography-root{
-        font-size: $spacing-30;
         font-family: $primary-font;
         font-weight: bold;
         text-align: center;
@@ -24,6 +24,18 @@
         flex-direction: column;
         gap: $spacing-10;
         justify-content: center;
+    }
+
+    &__inputLabels{
+        font-size: $spacing-16 !important;
+    }
+
+    &__proofTitle{
+        font-family: $primary-font !important;
+    }
+
+    &__buttonStyle{
+        background-color: $coral-red !important;
     }
 }
 
