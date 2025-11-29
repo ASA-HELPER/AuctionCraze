@@ -40,7 +40,7 @@ const SubmitCommission = () => {
 
   return (
     <div className="submitCommission__container">
-      <Typography className="submitCommission__title" variant="h2">
+      <Typography className="submitCommission__title" variant="h3">
         {submitCommissionCopy.uploadPaymentProof}
       </Typography>
       <div className="submitCommission__subcontainer">
@@ -68,10 +68,12 @@ const SubmitCommission = () => {
           preset={InputPresets.Text}
           variant={InputVariant.Outlined}
           hasBorder
+          inputLabelClass="submitCommission__inputLabels"
         />
         <CustomButton
           handleClick={handleSubmitCommission}
           title={submitCommissionCopy.uploadPaymentProof}
+          buttonClass="submitCommission__buttonStyle"
         />
       </div>
     </div>
