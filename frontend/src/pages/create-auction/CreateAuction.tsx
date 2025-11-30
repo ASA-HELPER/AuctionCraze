@@ -19,6 +19,7 @@ import { ROUTES } from "../../constants/route-constants";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { BiImageAdd } from "react-icons/bi";
 
 const CreateAuction = () => {
   const dispatch = useAppDispatch();
@@ -75,7 +76,9 @@ const CreateAuction = () => {
 
   return (
     <div className="createAuction__container">
-      <Typography variant="h2">{createAuctionCopy.createAuction}</Typography>
+      <Typography variant="h3" className="createAuction__title">
+        {createAuctionCopy.createAuction}
+      </Typography>
       <div className="createAuction__bodycontainer">
         <Typography variant="h6">{createAuctionCopy.auctionDetail}</Typography>
         <div className="createAuction__bodysubcontainer">
@@ -94,6 +97,7 @@ const CreateAuction = () => {
             placeholder={createAuctionCopy.selectCategory}
             value={category}
             label={createAuctionCopy.category}
+            containerClass="createAuction__inputLabels"
           />
         </div>
         <div className="createAuction__bodysubcontainer">
@@ -123,10 +127,15 @@ const CreateAuction = () => {
           hasBorder
           inputLabelClass="createAuction__inputLabels"
           isMultiline
+          containerClass="createAuction__inputContainer"
         />
         <div className="createAuction__bodysubcontainer">
           <div>
-            <InputLabel shrink htmlFor="start-time-picker">
+            <InputLabel
+              shrink
+              htmlFor="start-time-picker"
+              className="createAuction__inputLabels"
+            >
               {createAuctionCopy.auctionStartTime}
             </InputLabel>
             <DatePicker
@@ -136,10 +145,15 @@ const CreateAuction = () => {
               timeFormat="HH:mm"
               timeIntervals={15}
               dateFormat={"MMMM d, yyyy h,mm aa"}
+              className="createAuction__datePicker"
             />
           </div>
           <div>
-            <InputLabel shrink htmlFor="end-time-picker">
+            <InputLabel
+              shrink
+              htmlFor="end-time-picker"
+              className="createAuction__inputLabels"
+            >
               {createAuctionCopy.auctionEndTime}
             </InputLabel>
             <DatePicker
@@ -149,19 +163,24 @@ const CreateAuction = () => {
               timeFormat="HH:mm"
               timeIntervals={15}
               dateFormat={"MMMM d, yyyy h,mm aa"}
+              className="createAuction__datePicker"
             />
           </div>
         </div>
-        <div>
+        <div className="createAuction__imageContainer">
           <Typography variant="h4">
             {createAuctionCopy.auctionItemImage}
           </Typography>
           <div className="createAuction__uploadcontainer">
-            <img
-              src={image ? URL.createObjectURL(image) : FileUploadPreview}
-              alt="image"
-              className="createAuction__image"
-            />
+            {image ? (
+              <img
+                src={URL.createObjectURL(image)}
+                alt="image"
+                className="createAuction__image"
+              />
+            ) : (
+              <BiImageAdd className="createAuction__icon" />
+            )}
             <input
               type="file"
               accept="image/svg+xml, image/png, image/jpeg, image/gif"
@@ -177,6 +196,7 @@ const CreateAuction = () => {
                 : createAuctionCopy.buttonText
             }
             handleClick={handleCreateAuction}
+            className="createAuction__buttonStyle"
           />
         </div>
       </div>
