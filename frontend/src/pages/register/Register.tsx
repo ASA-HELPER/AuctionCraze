@@ -120,7 +120,7 @@ const Register = () => {
           inputLabelClass="register__inputLabels"
         />
         <CustomDropdown
-          data={ROLES}
+          data={ROLES.slice(0, 2)}
           placeholder={registerCopy.selectRole}
           setValue={(value) => setRole(value)}
           value={role}

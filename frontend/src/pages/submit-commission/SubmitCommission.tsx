@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import "./submitCommission-styles.scss";
 import { Typography } from "@mui/material";
 import CustomInput from "../../components/input/CustomInput";
-import {
-  InputPresets,
-  InputVariant,
-} from "../../constants/input-constants";
+import { InputPresets, InputVariant } from "../../constants/input-constants";
 import CustomButton from "../../components/button/CustomButton";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { commissionProof } from "../../store/slices/commissionSlice";
@@ -40,7 +37,7 @@ const SubmitCommission = () => {
 
   return (
     <div className="submitCommission__container">
-      <Typography className="submitCommission__title" variant="h3">
+      <Typography className="submitCommission__title">
         {submitCommissionCopy.uploadPaymentProof}
       </Typography>
       <div className="submitCommission__subcontainer">

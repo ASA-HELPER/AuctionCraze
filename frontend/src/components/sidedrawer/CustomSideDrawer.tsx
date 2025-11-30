@@ -5,6 +5,7 @@ import { SiGooglesearchconsole } from "react-icons/si";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { RxCross2 } from "react-icons/rx";
 import { IoMdCloseCircleOutline, IoIosCreate } from "react-icons/io";
 import { TiContacts } from "react-icons/ti";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
@@ -51,7 +52,7 @@ const CustomSideDrawer = () => {
   return (
     <>
       <div onClick={() => setShow(!show)} className="sideDrawer__hamburger">
-        <GiHamburgerMenu />
+        {!show ? <GiHamburgerMenu /> : <RxCross2 />}
       </div>
       <div
         className={`sideDrawer__container ${show ? "sideDrawer__open" : ""}`}

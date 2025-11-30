@@ -1,47 +1,56 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.submitCommission{
-    &__container{
-        display: flex;
-        flex-direction: column;
-        padding: $spacing-30;
-        gap: $spacing-10;
-        width: 100%;
-        background-color: $chinese-white;
-        color: $raisin-black;
-        height: 100%;
-    }
+.submitCommission {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-30;
+    gap: $spacing-10;
+    width: 100%;
+    background-color: $chinese-white;
+    color: $raisin-black;
+    height: 100%;
+    align-items: center;
+  }
 
-    &__title.MuiTypography-root{
-        font-family: $primary-font;
-        font-weight: bold;
-        text-align: center;
-        color: $coral-red;
-    }
+  &__title.MuiTypography-root {
+    font-size: $spacing-30;
+    font-family: $primary-font;
+    font-weight: bold;
+    text-align: center;
+    color: $coral-red;
+  }
 
-    &__subcontainer{
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-10;
-        justify-content: center;
-    }
+  &__subcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-10;
+    justify-content: center;
+    width: 80%;
+  }
 
-    &__inputLabels{
-        font-size: $spacing-16 !important;
-    }
+  &__inputLabels.MuiTypography-root {
+    font-size: $spacing-16 !important;
+  }
 
-    &__proofTitle{
-        font-family: $primary-font !important;
-    }
+  &__proofTitle.MuiTypography-root {
+    font-family: $primary-font !important;
+  }
 
-    &__buttonStyle{
-        background-color: $coral-red !important;
-    }
+  &__buttonStyle {
+    background-color: $coral-red !important;
+  }
 }
 
 // Mobile View
-@include sm{
-    .submitCommission{
-        
+@include sm {
+  .submitCommission {
+    &__subcontainer {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-10;
+      justify-content: center;
+      width: 100%;
     }
+  }
 }
