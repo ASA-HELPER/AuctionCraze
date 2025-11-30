@@ -1,8 +1,16 @@
-import React from "react";
 import "./notFound-styles.scss";
+import PageNotFound from "../../assets/pageNotFound.png";
 
 const NotFound = () => {
-  return <div className="notFound__container">Not Found</div>;
+  return (
+    <div className="notFound__container">
+      <img
+        src={PageNotFound}
+        alt="Page Not Found"
+        className="notFound__image"
+      />
+    </div>
+  );
 };
 
 export default NotFound;

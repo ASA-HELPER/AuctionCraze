@@ -1,14 +1,19 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.notFound{
-    &__container{
-        background-color: $raisin-black;
-    }
+.notFound {
+  &__container {
+    background-color: $chinese-white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-// Mobile View
-@include sm{
-    .notFound{
-        
+@include sm {
+  .notFound {
+    &__image {
+      width: 70%;
     }
+  }
 }
