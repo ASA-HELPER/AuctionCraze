@@ -18,7 +18,6 @@ import { ROUTES } from "../../constants/route-constants";
 import { navbarMenuItems, ROLES } from "../../constants/common-constants";
 import { RootState } from "../../store/store";
 import customSideDrawerCopy from "./customSideDrawer.copy";
-import { ADMIN } from "../../constants/api-constants";
 
 const CustomSideDrawer = () => {
   const [show, setShow] = useState(false);
@@ -116,7 +115,7 @@ const CustomSideDrawer = () => {
                 </li>
               </>
             )}
-            {isAuthenticated && user && user.role === ADMIN && (
+            {isAuthenticated && user && user.role === ROLES[2] && (
               <li>
                 <Link
                   to={navbarMenuItems[8].path}

@@ -2,12 +2,102 @@
 
 .updatePaymentProof {
   &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: $chinese-white;
+    padding: $spacing-20;
+    align-items: center;
+    gap: $spacing-20;
+  }
+
+  &__inputsContainer {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-20;
+  }
+
+  &__inputLabel.MuiInputLabel-root {
+    align-self: flex-start;
+    color: $raisin-black;
+    font-family: $primary-font;
+    font-size: $spacing-14;
+    font-weight: bold;
+    line-height: $spacing-22;
+  }
+
+  &__title.MuiTypography-root {
+    font-size: $spacing-30;
+    color: $coral-red;
+    font-weight: $font-weight-semi-bold;
+    font-family: $primary-font;
+    text-align: center;
+  }
+
+  &__subtitle.MuiTypography-root {
+    font-size: $spacing-14;
+    color: $raisin-black;
+    font-weight: $font-weight-semi-bold;
+    font-family: $primary-font;
+    text-align: center;
+  }
+
+  &__buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 70%;
+    gap: $spacing-20;
+  }
+
+  &__updateButton.MuiButtonBase-root {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-6 $spacing-20;
+    background-color: $coral-red;
+    color: $chinese-white;
+    width: 45%;
+  }
+
+  &__proofButton {
+    display: flex;
+    gap: $spacing-3;
+    padding: $spacing-6 $spacing-20;
+    background-color: $blueberry;
+    color: $chinese-white;
+    border-radius: $spacing-5;
+    width: 45%;
+    justify-content: center;
   }
 }
 
 // Mobile View
 @include sm {
   .updatePaymentProof {
+    &__inputsContainer {
+      width: 100%;
+    }
+
+    &__title.MuiTypography-root {
+      font-size: $spacing-22;
+    }
+
+    &__buttonsContainer {
+      flex-direction: column;
+      width: 100%;
+      gap: $spacing-20;
+      align-items: center;
+    }
+
+    &__updateButton.MuiButtonBase-root {
+      width: 100%;
+    }
+
+    &__proofButton {
+      width: 100%;
+    }
   }
 }

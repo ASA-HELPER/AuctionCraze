@@ -13,19 +13,19 @@ export enum VariantTypes {
 
 export const BANKNAMES = ["HDFC", "ICICI", "AXIS"];
 
-export const ROLES = ["Auctioneer", "Bidder"];
+export const ROLES = ["Auctioneer", "Bidder", "Admin"];
 
 export const AUCTIONCATEGORIES = [
-"Electronics",
-"Furniture",
-"Art & Antiques",
-"Jewelry & Watches",
-"Automobiles",
-"Real Estate",
-"Collectibles",
-"Fashion & Accessories",
-"Sports Memorabilia",
-"Books & Manuscripts",
+  "Electronics",
+  "Furniture",
+  "Art & Antiques",
+  "Jewelry & Watches",
+  "Automobiles",
+  "Real Estate",
+  "Collectibles",
+  "Fashion & Accessories",
+  "Sports Memorabilia",
+  "Books & Manuscripts",
 ];
 
 export const CONDITION = ["New", "Used"];
@@ -72,3 +72,5 @@ export const howItWorksList = [
     description: "Bidder pays; auctioneer pays 5% fee.",
   },
 ];
+
+export const statusOptions = ["Pending", "Approved", "Rejected", "Settled"];

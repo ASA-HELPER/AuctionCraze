@@ -32,11 +32,11 @@
 
   &__row.MuiDataGrid-row {
     &:nth-of-type(odd) {
-      background-color: $granite-gray !important;
+      background-color: $lavender !important;
     }
 
     &:nth-of-type(even) {
-      background-color: $davy-grey !important;
+      background-color: $lavender-blush !important;
     }
   }
 
@@ -46,11 +46,11 @@
     border-top: none !important;
     border-right: none !important;
     border-bottom: $spacing-1 solid $chinese-white !important;
-    color: $chinese-white;
+    color: $raisin-black;
     cursor: pointer;
     font-family: $primary-font;
     font-size: $spacing-16;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
     padding-left: $spacing-20 !important;
     padding-right: $spacing-20 !important;
   }
@@ -61,7 +61,7 @@
     font-family: $primary-font;
     padding-left: $spacing-20 !important;
     padding-right: $spacing-20 !important;
-    font-weight: $font-weight-extra-bold;
+    font-weight: $font-weight-bold;
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
