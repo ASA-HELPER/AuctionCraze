@@ -34,7 +34,7 @@ const AuctionItem = () => {
       toast.error(auctionItemCopy.bidErrorMessage);
       return;
     }
-    if (auctionDetail?.startingBid) {
+    if (amount < auctionDetail?.startingBid) {
       toast.error(
         `${auctionItemCopy.minimumBidAmountMessage} ${auctionDetail?.startingBid}`
       );

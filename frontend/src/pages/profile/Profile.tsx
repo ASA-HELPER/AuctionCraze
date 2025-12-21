@@ -62,16 +62,6 @@ const Profile = () => {
           disabled
         />
         <CustomInput
-          value={user && user.password}
-          handleChange={() => {}}
-          preset={InputPresets.Password}
-          variant={InputVariant.Outlined}
-          hasBorder
-          label={profileCopy.password}
-          inputLabelClass="profile__inputLabels"
-          disabled
-        />
-        <CustomInput
           value={user && user.role}
           handleChange={() => {}}
           preset={InputPresets.Text}
