@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaGreaterThan } from "react-icons/fa";
 import { RiAuctionFill } from "react-icons/ri";
 import auctionNotStarted from "../../assets/auctionNotStarted.png";
@@ -26,6 +26,7 @@ const AuctionItem = () => {
   const { isAuthenticated } = useSelector((state: any) => state.user);
 
   const dispatch = useAppDispatch();
+  const navigateTo = useNavigate();
 
   const [amount, setAmount] = useState(0);
 
@@ -48,10 +49,14 @@ const AuctionItem = () => {
   };
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      navigateTo(ROUTES.HOME);
+    }
+
     if (id) {
       dispatch(getAuctionDetail(id));
     }
-  }, [isAuthenticated, id]);
+  }, [isAuthenticated]);
 
   return (
     <div className="auctionItem__container">
@@ -120,6 +125,7 @@ const AuctionItem = () => {
             </header>
             <div className="auctionItem__bidsList">
               {auctionBidders &&
+              auctionBidders.length > 0 &&
               new Date(auctionDetail.startTime).getTime() < Date.now() &&
               new Date(auctionDetail.endTime).getTime() > Date.now() ? (
                 auctionBidders.length > 0 ? (
