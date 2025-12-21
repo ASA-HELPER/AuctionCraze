@@ -4,9 +4,18 @@ import { RootState } from "../../../../store/store";
 import { FeaturedAuctionCard } from "../../../../components";
 import { Typography } from "@mui/material";
 import homeCopy from "../../home.copy";
+import { ROLES } from "../../../../constants/common-constants";
+import { ROUTES } from "../../../../constants/route-constants";
 
 const FeaturedAuctions = () => {
   const { allAuctions } = useSelector((state: RootState) => state.auction);
+  const { user } = useSelector((state: any) => state.user);
+
+  const createLink = (id: string) => {
+    return user.role === ROLES[1]
+      ? ROUTES.AUCTION_ITEM(id)
+      : ROUTES.AUCTION_DETAILS(id);
+  };
 
   return (
     <div className="featuredAuctions__container">
@@ -32,6 +41,7 @@ const FeaturedAuctions = () => {
                 endTime={element.endTime}
                 startingBid={element.startingBid}
                 id={element._id}
+                redirectionLink={createLink(String(element._id))}
               />
             ))
         ) : (

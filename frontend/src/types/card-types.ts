@@ -5,6 +5,7 @@ export interface IFeatureAuctionCardProps {
   startTime: string;
   endTime: string;
   id: string | number;
+  redirectionLink: string;
 }
 
 export interface IDrawerProps {
