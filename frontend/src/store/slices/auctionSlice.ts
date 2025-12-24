@@ -8,18 +8,19 @@ import {
   AUCTION_ITEM,
   AUCTION_ROUTES,
 } from "../../constants/api-constants";
-import { NewAuctionPayload } from "../../types/api-types";
+import { IAuctionState } from "../../types/api-types";
+
+const initialState: IAuctionState = {
+  loading: false,
+  auctionDetail: null,
+  auctionBidders: [],
+  myAuctions: [],
+  allAuctions: [],
+};
 
 const auctionSlice = createSlice({
   name: "auction",
-  initialState: {
-    loading: false,
-    itemDetail: {},
-    auctionDetail: {},
-    auctionBidders: {},
-    myAuctions: [],
-    allAuctions: [],
-  },
+  initialState,
   reducers: {
     createAuctionRequest(state) {
       state.loading = true;
@@ -87,7 +88,6 @@ const auctionSlice = createSlice({
     resetSlice(state) {
       state.loading = false;
       state.auctionDetail = state.auctionDetail;
-      state.itemDetail = state.itemDetail;
       state.myAuctions = state.myAuctions;
       state.allAuctions = state.allAuctions;
     },
@@ -95,7 +95,7 @@ const auctionSlice = createSlice({
 });
 
 export const createAuction =
-  (data: NewAuctionPayload) => async (dispatch: AppDispatch) => {
+  (data: FormData) => async (dispatch: AppDispatch) => {
     dispatch(auctionSlice.actions.createAuctionRequest());
     try {
       const response = await axios.post(
@@ -118,7 +118,7 @@ export const createAuction =
   };
 
 export const republishAuction =
-  (data: NewAuctionPayload, id: Number) => async (dispatch: AppDispatch) => {
+  (data: FormData, id: String) => async (dispatch: AppDispatch) => {
     dispatch(auctionSlice.actions.republishItemRequest());
     try {
       const response = await axios.put(
@@ -141,7 +141,7 @@ export const republishAuction =
     }
   };
 
-export const deleteAuction = (id: Number) => async (dispatch: AppDispatch) => {
+export const deleteAuction = (id: String) => async (dispatch: AppDispatch) => {
   dispatch(auctionSlice.actions.deleteAuctionItemRequest());
   try {
     const response = await axios.delete(

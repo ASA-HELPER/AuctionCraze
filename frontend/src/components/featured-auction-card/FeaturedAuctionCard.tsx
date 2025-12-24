@@ -10,7 +10,6 @@ const FeatureAuctionCard = ({
   startingBid,
   startTime,
   endTime,
-  id,
   redirectionLink,
 }: IFeatureAuctionCardProps) => {
   const calculateTimeLeft = () => {

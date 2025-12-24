@@ -72,7 +72,7 @@ const MyAuctionCard = ({
 
   const handleViewAuction = () => {
     navigateTo(`/auction/details/${id}`);
-    navigateTo(ROUTES.AUCTION_DETAILS(id));
+    navigateTo(ROUTES.AUCTION_DETAILS(String(id)));
   };
 
   return (

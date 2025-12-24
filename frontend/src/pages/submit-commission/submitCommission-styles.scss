@@ -31,9 +31,11 @@
 
   &__inputLabels.MuiTypography-root {
     font-size: $spacing-16 !important;
+    font-family: $primary-font !important;
   }
 
   &__proofTitle.MuiTypography-root {
+    font-size: $spacing-16 !important;
     font-family: $primary-font !important;
   }
 

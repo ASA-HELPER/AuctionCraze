@@ -14,6 +14,7 @@ import getActions, { TABLE_ACTIONS } from "./CustomTableActions";
 import AMTableFooter from "./CustomTableFooter";
 import "./customTable-styles.scss";
 import CustomSpinner from "./../spinner/CustomSpinner";
+import { GridAlignment } from "@mui/x-data-grid";
 
 interface ICustomTableProps
   extends Omit<DataGridProps, "pagination" | "columns"> {
@@ -124,8 +125,9 @@ const CustomTable: FC<ICustomTableProps> = (props) => {
     actions && TABLE_ACTIONS.filter((action) => actions[action.key]);
   const isActionActive = filteredActions && filteredActions.length > 0;
 
-  let updatedColumns = sortedColumn?.map((column) => {
-    const headerAlign = column.type === "number" ? "right" : "left";
+  let updatedColumns: ExtendedColumn[] = sortedColumn?.map((column) => {
+    const headerAlign: GridAlignment =
+      column.type === "number" ? "right" : "left";
     return {
       ...commonColumnProps,
       ...column,

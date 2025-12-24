@@ -7,6 +7,7 @@ import { User } from "../models/userSchema.js";
 export const placeBid = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
   const { amount } = req.body;
+  amount = Number(amount);
 
   const auctionItem = await Auction.findById(id);
   if (!auctionItem) {

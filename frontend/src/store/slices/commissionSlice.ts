@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { AppDispatch } from "../store";
-import { ProofOfCommissionPayload } from "../../types/api-types";
 import {
   API_ROUTES_PREFIX,
   API_URL,
@@ -29,7 +28,7 @@ const commissionSlice = createSlice({
 });
 
 export const commissionProof =
-  (data: ProofOfCommissionPayload) => async (dispatch: AppDispatch) => {
+  (data: FormData) => async (dispatch: AppDispatch) => {
     dispatch(commissionSlice.actions.postCommissionProofRequest());
     try {
       const response = await axios.post(

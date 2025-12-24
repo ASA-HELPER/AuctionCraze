@@ -8,7 +8,6 @@ import CustomDropdown from "../../components/dropdown/CustomDropdown";
 import DatePicker from "react-datepicker";
 import CustomButton from "../../components/button/CustomButton";
 import { useAppDispatch } from "../../hooks/storeHooks";
-import FileUploadPreview from "../../assets/FileUploadPreview.jpg";
 import { createAuction } from "../../store/slices/auctionSlice";
 import {
   AUCTIONCATEGORIES,
@@ -69,7 +68,7 @@ const CreateAuction = () => {
   };
 
   useEffect(() => {
-    if (!isAuthenticated || user.role !== ROLES[0]) {
+    if (!isAuthenticated || user?.role !== ROLES[0]) {
       navigateTo(ROUTES.HOME);
     }
   }, [isAuthenticated]);

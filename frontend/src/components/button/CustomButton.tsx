@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { Button, ButtonProps } from '@mui/material';
+import { Button, ButtonProps } from "@mui/material";
 
-import './customButton-styles.scss';
-import { ButtonVariant } from '../../constants/common-constants';
-import CustomSpinner from '../../components/spinner/CustomSpinner';
+import "./customButton-styles.scss";
+import { ButtonVariant } from "../../constants/common-constants";
+import CustomSpinner from "../../components/spinner/CustomSpinner";
 
 interface IButtonProps extends ButtonProps {
   /** buttonClass: is an optional prop that provides a class to button for styling */
@@ -37,7 +37,7 @@ interface IButtonProps extends ButtonProps {
 
 const CustomButton = (props: IButtonProps) => {
   const {
-    buttonClass = '',
+    buttonClass = "",
     buttonVariant = ButtonVariant.Contained,
     handleClick,
     disabled = false,
@@ -47,7 +47,7 @@ const CustomButton = (props: IButtonProps) => {
     disabledRipple = false,
     disableFocusRipple = false,
     title,
-    titleClass = '',
+    titleClass = "",
     endIcon,
     ...rest
   } = props;
@@ -56,8 +56,8 @@ const CustomButton = (props: IButtonProps) => {
     <Button
       className={`customButton__container  ${buttonClass}`}
       classes={{
-        endIcon: 'customButton__endIcon',
-        startIcon: 'customButton__startIcon',
+        endIcon: "customButton__endIcon",
+        startIcon: "customButton__startIcon",
       }}
       disabled={disabled}
       disableFocusRipple={disableFocusRipple}
@@ -67,12 +67,9 @@ const CustomButton = (props: IButtonProps) => {
       variant={buttonVariant}
       color="primary"
       endIcon={endIcon}
-      {...rest}>
-      {loading ? (
-        <CustomSpinner spinnerSize={15} color="white" />
-      ) : (
-        title
-      )}
+      {...rest}
+    >
+      {loading ? <CustomSpinner spinnerSize={15} color="white" /> : title}
     </Button>
   );
 };
