@@ -8,17 +8,17 @@ import { RootState } from "../../store/store";
 import { fetchLeaderboard } from "../../store/slices/userSlice";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import leaderboardCopy from "./leaderboard.copy";
+import { GridRenderCellParams, GridTreeNodeWithRender } from "@mui/x-data-grid";
 
 const Leaderboard = () => {
-
   const dispatch = useAppDispatch();
   const { leaderboard, loading } = useSelector(
     (store: RootState) => store.user
   );
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(fetchLeaderboard());
-  }, [dispatch])
+  }, [dispatch]);
 
   const transformedLeaderboardData = leaderboard.map((item) => ({
     id: item._id,
@@ -33,7 +33,9 @@ const Leaderboard = () => {
       field: "iconImage",
       headerName: leaderboardCopy.profilePic,
       flex: 1,
-      renderCell: (params) => (
+      renderCell: (
+        params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>
+      ) => (
         <img
           src={params.value}
           alt="icon"

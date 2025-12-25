@@ -1,4 +1,3 @@
-import React from "react";
 import "./howItWorks-styles.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import GavelIcon from "@mui/icons-material/Gavel";
@@ -31,7 +30,9 @@ const HowItWorks = () => {
   return (
     <div className="howItWorks__container">
       <div className="howItWorks__header">
-        <Typography variant="h3" className="howItWorks__title">{howItWorksCopy.title}</Typography>
+        <Typography variant="h3" className="howItWorks__title">
+          {howItWorksCopy.title}
+        </Typography>
       </div>
       <div className="howItWorks__contentContainer">
         {howItWorksItem(

@@ -35,7 +35,7 @@ const Dashboard = () => {
     (state: RootState) => state.user
   );
   useEffect(() => {
-    if (user.role !== ROLES[2] || !isAuthenticated) {
+    if ((user && user?.role !== ROLES[2]) || !isAuthenticated) {
       navigateTo(ROUTES.HOME);
     }
   }, [isAuthenticated]);

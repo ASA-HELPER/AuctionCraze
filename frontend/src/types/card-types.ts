@@ -4,14 +4,13 @@ export interface IFeatureAuctionCardProps {
   startingBid?: string;
   startTime: string;
   endTime: string;
-  id: string | number;
   redirectionLink: string;
 }
 
 export interface IDrawerProps {
   openDrawer: boolean;
   setOpenDrawer: (val: boolean) => void;
-  id: string | number;
+  id: string;
   loading: boolean;
 }
 
@@ -21,5 +20,5 @@ export interface IMyAuctionCardProps {
   startingBid?: string;
   startTime: string;
   endTime: string;
-  id: string | number;
+  id: string;
 }

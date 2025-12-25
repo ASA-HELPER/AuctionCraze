@@ -20,7 +20,7 @@ const Register = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPasswrod] = useState("");
-  const [role, setRole] = useState<UserRole>();
+  const [role, setRole] = useState<UserRole | null>(null);
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [bankAccountNumber, setBankAccountNumber] = useState<string>("");
@@ -122,7 +122,13 @@ const Register = () => {
         <CustomDropdown
           data={ROLES.slice(0, 2)}
           placeholder={registerCopy.selectRole}
-          setValue={(value) => setRole(value)}
+          setValue={(value) => {
+            if (value) {
+              setRole(value as UserRole);
+            } else {
+              setRole(null);
+            }
+          }}
           value={role}
           label={registerCopy.role}
         />

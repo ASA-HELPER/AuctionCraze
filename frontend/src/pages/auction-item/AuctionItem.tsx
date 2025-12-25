@@ -35,7 +35,7 @@ const AuctionItem = () => {
       toast.error(auctionItemCopy.bidErrorMessage);
       return;
     }
-    if (amount < auctionDetail?.startingBid) {
+    if (auctionDetail && amount < auctionDetail?.startingBid) {
       toast.error(
         `${auctionItemCopy.minimumBidAmountMessage} ${auctionDetail?.startingBid}`
       );
@@ -43,9 +43,9 @@ const AuctionItem = () => {
     }
 
     const formData = new FormData();
-    formData.append("amount", amount);
-    dispatch(placeBid(formData, id));
-    dispatch(getAuctionDetail(id));
+    formData.append("amount", String(amount));
+    dispatch(placeBid(formData, String(id)));
+    dispatch(getAuctionDetail(String(id)));
   };
 
   useEffect(() => {
@@ -69,7 +69,9 @@ const AuctionItem = () => {
           {auctionItemCopy.breadcrumbsLinks.auctions}
         </Link>
         <FaGreaterThan className="auctionItem__breadcrumb-separator" />
-        <p className="auctionItem__breadcrumb-current">{auctionDetail.title}</p>
+        <p className="auctionItem__breadcrumb-current">
+          {auctionDetail?.title ?? ""}
+        </p>
       </div>
 
       {loading ? (
@@ -79,23 +81,23 @@ const AuctionItem = () => {
           <div className="auctionItem__detailsContainer">
             <div className="auctionItem__detailsContainerTopSection">
               <img
-                src={auctionDetail.image?.url}
-                alt={auctionDetail.title}
+                src={auctionDetail?.image?.url}
+                alt={auctionDetail?.title}
                 className="auctionItem__image"
               />
               <div className="auctionItem__info">
                 <Typography className="auctionItem__title">
-                  {auctionDetail.title}
+                  {auctionDetail?.title ?? ""}
                 </Typography>
                 <Typography className="auctionItem__condition">
                   {auctionItemCopy.condition}
-                  <span>{auctionDetail.condition}</span>
+                  <span>{auctionDetail?.condition}</span>
                 </Typography>
                 <Typography className="auctionItem__minBid">
                   {auctionItemCopy.minimumBid}
                   <span>
                     {auctionItemCopy.rupees}
-                    {auctionDetail.startingBid}
+                    {auctionDetail?.startingBid}
                   </span>
                 </Typography>
               </div>
@@ -107,7 +109,7 @@ const AuctionItem = () => {
               </Typography>
               <hr className="auctionItem__divider" />
               <ul className="auctionItem__description">
-                {auctionDetail.description &&
+                {auctionDetail?.description &&
                   auctionDetail.description
                     .split(". ")
                     .map((element: string, index: number) => (
@@ -126,8 +128,9 @@ const AuctionItem = () => {
             <div className="auctionItem__bidsList">
               {auctionBidders &&
               auctionBidders.length > 0 &&
-              new Date(auctionDetail.startTime).getTime() < Date.now() &&
-              new Date(auctionDetail.endTime).getTime() > Date.now() ? (
+              auctionDetail &&
+              new Date(auctionDetail?.startTime).getTime() < Date.now() &&
+              new Date(auctionDetail?.endTime).getTime() > Date.now() ? (
                 auctionBidders.length > 0 ? (
                   auctionBidders.map((bid: any, index: number) => (
                     <div key={index} className="auctionItem__bidItem">
@@ -157,7 +160,8 @@ const AuctionItem = () => {
                     {auctionItemCopy.noBidAvailable}
                   </Typography>
                 )
-              ) : Date.now() < new Date(auctionDetail.startTime).getTime() ? (
+              ) : auctionDetail &&
+                Date.now() < new Date(auctionDetail?.startTime).getTime() ? (
                 <img
                   src={auctionNotStarted}
                   alt="auction-not-started"
@@ -173,8 +177,9 @@ const AuctionItem = () => {
             </div>
 
             <div>
-              {Date.now() >= new Date(auctionDetail.startTime).getTime() &&
-              Date.now() <= new Date(auctionDetail.endTime).getTime() ? (
+              {auctionDetail &&
+              Date.now() >= new Date(auctionDetail?.startTime).getTime() &&
+              Date.now() <= new Date(auctionDetail?.endTime).getTime() ? (
                 <div className="auctionItem__bidAction">
                   <div className="auctionItem__bidInput">
                     <Typography className="auctionItem__bidInputFieldLabel">
@@ -192,7 +197,8 @@ const AuctionItem = () => {
                     className="auctionItem__bidIcon"
                   />
                 </div>
-              ) : new Date(auctionDetail.startTime).getTime() > Date.now() ? (
+              ) : auctionDetail &&
+                new Date(auctionDetail?.startTime).getTime() > Date.now() ? (
                 <Typography className="auctionItem__bidStartEndMessage">
                   {auctionItemCopy.auctionNotStarted}
                 </Typography>

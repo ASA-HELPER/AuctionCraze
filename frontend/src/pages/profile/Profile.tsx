@@ -25,24 +25,22 @@ const Profile = () => {
 
   return (
     <div className="profile__container">
-      <Typography variant="h3" className="profile__title">Profile</Typography>
+      <Typography variant="h3" className="profile__title">
+        {profileCopy.title}
+      </Typography>
       <div className="profile__subcontainer">
         <div className="profile__imageContainer">
-            <Typography className="profile__imgLabels">
-              Profile Image
-            </Typography>
-            <img
-              src={
-                user && user.profileImage
-                  ? user.profileImage.url
-                  : AvatarPreview
-              }
-              alt="avatar"
-              className="profile__image"
-            />
+          <Typography className="profile__imgLabels">Profile Image</Typography>
+          <img
+            src={
+              user && user.profileImage ? user.profileImage.url : AvatarPreview
+            }
+            alt="avatar"
+            className="profile__image"
+          />
         </div>
         <CustomInput
-          value={user && user.userName}
+          value={user?.userName ?? ""}
           handleChange={() => {}}
           preset={InputPresets.Text}
           variant={InputVariant.Outlined}
@@ -52,7 +50,7 @@ const Profile = () => {
           disabled
         />
         <CustomInput
-          value={user && user.email}
+          value={user?.email ?? ""}
           handleChange={() => {}}
           preset={InputPresets.Email}
           variant={InputVariant.Outlined}
@@ -62,7 +60,7 @@ const Profile = () => {
           disabled
         />
         <CustomInput
-          value={user && user.role}
+          value={user?.role ?? ""}
           handleChange={() => {}}
           preset={InputPresets.Text}
           variant={InputVariant.Outlined}
@@ -72,7 +70,7 @@ const Profile = () => {
           disabled
         />
         <CustomInput
-          value={user && user.phone}
+          value={user?.phone ?? ""}
           handleChange={() => {}}
           preset={InputPresets.Text}
           variant={InputVariant.Outlined}
@@ -82,7 +80,7 @@ const Profile = () => {
           disabled
         />
         <CustomInput
-          value={user && user.address}
+          value={user?.address ?? ""}
           handleChange={() => {}}
           preset={InputPresets.Text}
           variant={InputVariant.Outlined}
@@ -114,7 +112,7 @@ const Profile = () => {
               disabled
             />
             <CustomInput
-              value={user && user.bankAccountUserName}
+              value={user?.bankAccountName ?? ""}
               handleChange={() => {}}
               preset={InputPresets.Text}
               variant={InputVariant.Outlined}

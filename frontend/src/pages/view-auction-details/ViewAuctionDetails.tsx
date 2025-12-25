@@ -28,13 +28,13 @@ const ViewAuctionDetails = () => {
   );
 
   useEffect(() => {
-    if (!isAuthenticated || user.role === ROLES[1]) {
+    if (!isAuthenticated || user?.role === ROLES[1]) {
       navigateTo(ROUTES.HOME);
     }
     if (id) {
       dispatch(getAuctionDetail(id));
     }
-  }, [isAuthenticated, id, dispatch, navigateTo, user.role]);
+  }, [isAuthenticated, id, dispatch, navigateTo, user?.role]);
 
   const renderBreadcrumbs = () => (
     <div className="auctionDetails__breadcrumb">
@@ -46,7 +46,7 @@ const ViewAuctionDetails = () => {
         {viewAuctionsDetailsCopy.breadcrumbsLinks.myAuctions}
       </Link>
       <FaGreaterThan className="auctionDetails__breadcrumb-separator" />
-      <p className="auctionDetails__text">{auctionDetail.title}</p>
+      <p className="auctionDetails__text">{auctionDetail?.title}</p>
     </div>
   );
 
@@ -78,8 +78,9 @@ const ViewAuctionDetails = () => {
 
   const renderBidders = () => {
     const auctionStarted =
-      new Date(auctionDetail.startTime).getTime() < Date.now();
-    const auctionEnded = new Date(auctionDetail.endTime).getTime() < Date.now();
+      new Date(auctionDetail?.startTime).getTime() < Date.now();
+    const auctionEnded =
+      new Date(auctionDetail?.endTime).getTime() < Date.now();
 
     if (
       auctionBidders &&
@@ -134,23 +135,23 @@ const ViewAuctionDetails = () => {
           <div className="auctionItem__detailsContainer">
             <div className="auctionItem__detailsContainerTopSection">
               <img
-                src={auctionDetail.image?.url}
-                alt={auctionDetail.title}
+                src={auctionDetail?.image?.url}
+                alt={auctionDetail?.title}
                 className="auctionDetails__image"
               />
               <div className="auctionDetails__info">
                 <Typography className="auctionDetails__title">
-                  {auctionDetail.title}
+                  {auctionDetail?.title}
                 </Typography>
                 <Typography className="auctionDetails__condition">
                   {viewAuctionsDetailsCopy.condition}
-                  <span>{auctionDetail.condition}</span>
+                  <span>{auctionDetail?.condition}</span>
                 </Typography>
                 <Typography className="auctionDetails__minBid">
                   {viewAuctionsDetailsCopy.minimumBid}
                   <span>
                     {viewAuctionsDetailsCopy.rupees}
-                    {auctionDetail.startingBid}
+                    {auctionDetail?.startingBid}
                   </span>
                 </Typography>
               </div>
@@ -162,7 +163,7 @@ const ViewAuctionDetails = () => {
               </Typography>
               <hr className="auctionDetails__divider" />
               <ul className="auctionDetails__description">
-                {auctionDetail.description &&
+                {auctionDetail?.description &&
                   auctionDetail.description
                     .split(". ")
                     .map((element: string, index: number) => (

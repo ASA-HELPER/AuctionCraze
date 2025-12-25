@@ -9,6 +9,7 @@ import CustomTable from "../../../../components/table/CustomTable";
 import dashboardCopy from "../../dashboard.copy";
 import "../../dashboard-styles.scss";
 import { ROUTES } from "../../../../constants/route-constants";
+import { GridRenderCellParams, GridTreeNodeWithRender } from "@mui/x-data-grid";
 
 const AuctionItemsTable = () => {
   const dispatch = useAppDispatch();
@@ -29,7 +30,9 @@ const AuctionItemsTable = () => {
       field: "image",
       headerName: dashboardCopy.tableFields.image,
       flex: 1,
-      renderCell: (params) => (
+      renderCell: (
+        params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>
+      ) => (
         <img src={params.value} alt="icon" className="dashboard__tableImage" />
       ),
     },

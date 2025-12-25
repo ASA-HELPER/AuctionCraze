@@ -12,21 +12,23 @@ import {
   LEADERBOARD,
 } from "../../constants/api-constants";
 import { AppDispatch } from "../store";
-import { IRegisterPayload, ILoginPayload } from "../../types/api-types";
+import { IUserState } from "../../types/api-types";
+
+const initialState: IUserState = {
+  loading: false,
+  isAuthenticated: false,
+  user: null,
+  leaderboard: [],
+};
 
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    loading: false,
-    isAuthenticated: false,
-    user: {},
-    leaderboard: [],
-  },
+  initialState,
   reducers: {
     registerRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
-      state.user = {};
+      state.user = null;
     },
     registerSuccess(state, action) {
       state.loading = false;
@@ -36,12 +38,12 @@ const userSlice = createSlice({
     registerFailed(state) {
       state.loading = false;
       state.isAuthenticated = false;
-      state.user = {};
+      state.user = null;
     },
     loginRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
-      state.user = {};
+      state.user = null;
     },
     loginSuccess(state, action) {
       state.loading = false;
@@ -51,12 +53,12 @@ const userSlice = createSlice({
     loginFailed(state) {
       state.loading = false;
       state.isAuthenticated = false;
-      state.user = {};
+      state.user = null;
     },
     fetchUserRequest(state) {
       state.loading = true;
       state.isAuthenticated = false;
-      state.user = {};
+      state.user = null;
     },
     fetchUserSuccess(state, action) {
       state.loading = false;
@@ -66,12 +68,12 @@ const userSlice = createSlice({
     fetchUserFailed(state) {
       state.loading = false;
       state.isAuthenticated = false;
-      state.user = {};
+      state.user = null;
     },
     logoutSuccess(state) {
       state.loading = false;
       state.isAuthenticated = false;
-      state.user = {};
+      state.user = null;
     },
     logoutFailed(state) {
       state.loading = false;
@@ -98,30 +100,29 @@ const userSlice = createSlice({
   },
 });
 
-export const register =
-  (data: IRegisterPayload) => async (dispatch: AppDispatch) => {
-    dispatch(userSlice.actions.registerRequest());
-    try {
-      const response = await axios.post(
-        `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${REGISTER}`,
-        data,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-      dispatch(userSlice.actions.registerSuccess(response.data));
-      toast.success(response.data.message);
-      dispatch(userSlice.actions.clearAllErrors());
-      return true;
-    } catch (error: any) {
-      dispatch(userSlice.actions.registerFailed());
-      toast.error(error.response.data.message);
-      dispatch(userSlice.actions.clearAllErrors());
-    }
-  };
+export const register = (data: FormData) => async (dispatch: AppDispatch) => {
+  dispatch(userSlice.actions.registerRequest());
+  try {
+    const response = await axios.post(
+      `${API_URL}/${API_ROUTES_PREFIX}/${USER}/${REGISTER}`,
+      data,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+    dispatch(userSlice.actions.registerSuccess(response.data));
+    toast.success(response.data.message);
+    dispatch(userSlice.actions.clearAllErrors());
+    return true;
+  } catch (error: any) {
+    dispatch(userSlice.actions.registerFailed());
+    toast.error(error.response.data.message);
+    dispatch(userSlice.actions.clearAllErrors());
+  }
+};
 
-export const login = (data: ILoginPayload) => async (dispatch: AppDispatch) => {
+export const login = (data: FormData) => async (dispatch: AppDispatch) => {
   dispatch(userSlice.actions.loginRequest());
   try {
     const response = await axios.post(

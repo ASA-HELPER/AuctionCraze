@@ -27,6 +27,7 @@ export const proofOfCommission = catchAsyncErrors(async (req, res, next) => {
 
   const { proof } = req.files;
   const { amount, comment } = req.body;
+  amount = Number(amount);
 
   const user = await User.findById(req.user._id);
 

@@ -9,17 +9,20 @@ import {
 } from "../../constants/api-constants";
 import { AppDispatch } from "../store";
 import { getAllAuctionItems } from "./auctionSlice";
+import { IAdminState } from "../../types/api-types";
+
+const initialState: IAdminState = {
+  loading: false,
+  monthlyRevenue: [],
+  totalAuctioneers: [],
+  totalBidders: [],
+  paymentProofs: [],
+  singlePaymentProof: null,
+};
 
 const adminSlice = createSlice({
   name: "admin",
-  initialState: {
-    loading: false,
-    monthlyRevenue: [],
-    totalAuctioneers: [],
-    totalBidders: [],
-    paymentProofs: [],
-    singlePaymentProof: {},
-  },
+  initialState,
   reducers: {
     requestForMonthlyRevenue(state) {
       state.loading = true;
@@ -71,7 +74,7 @@ const adminSlice = createSlice({
     },
     requestForSinglePaymentProofDetail(state) {
       state.loading = true;
-      state.singlePaymentProof = {};
+      state.singlePaymentProof = null;
     },
     successForSinglePaymentProofDetail(state, action) {
       state.loading = false;
@@ -79,7 +82,7 @@ const adminSlice = createSlice({
     },
     failureForSinglePaymentProofDetail(state) {
       state.loading = false;
-      state.singlePaymentProof = {};
+      state.singlePaymentProof = null;
     },
     requestForUpdatePaymentProof(state) {
       state.loading = true;
@@ -105,7 +108,7 @@ const adminSlice = createSlice({
       state.paymentProofs = state.paymentProofs;
       state.totalAuctioneers = state.totalAuctioneers;
       state.totalBidders = state.totalBidders;
-      state.singlePaymentProof = {};
+      state.singlePaymentProof = null;
     },
   },
 });
@@ -159,7 +162,7 @@ export const getAllPaymentProofs = () => async (dispatch: AppDispatch) => {
 };
 
 export const getSinglePaymentProofDetail =
-  (id: number) => async (dispatch: AppDispatch) => {
+  (id: string) => async (dispatch: AppDispatch) => {
     dispatch(adminSlice.actions.requestForSinglePaymentProofDetail());
     try {
       const response = await axios.get(
@@ -214,7 +217,7 @@ export const deleteAuctionItem =
   };
 
 export const updatePaymentProof =
-  (id: number, status: boolean, amount: number) =>
+  (id: string, status: boolean, amount: number) =>
   async (dispatch: AppDispatch) => {
     dispatch(adminSlice.actions.requestForUpdatePaymentProof());
     try {

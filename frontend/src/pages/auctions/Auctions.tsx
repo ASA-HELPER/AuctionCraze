@@ -16,7 +16,7 @@ const Auctions = () => {
   const { user } = useSelector((state: any) => state.user);
 
   const createLink = (id: string) => {
-    return user.role === ROLES[1]
+    return user?.role === ROLES[1]
       ? ROUTES.AUCTION_ITEM(id)
       : ROUTES.AUCTION_DETAILS(id);
   };
@@ -48,7 +48,6 @@ const Auctions = () => {
                     startTime={element.startTime}
                     endTime={element.endTime}
                     startingBid={element.startingBid}
-                    id={element._id}
                     redirectionLink={createLink(String(element._id))}
                   />
                 ))

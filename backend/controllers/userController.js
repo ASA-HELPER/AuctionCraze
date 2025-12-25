@@ -137,10 +137,10 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const fetchLeaderboard = catchAsyncErrors(async (req, res, next) => {
-  const users = await User.find({ moneySpent: { $gt: 0 } });
-  const leaderboard = users.find({ moneySpent: { $gt: 0 } }).sort({
+  const leaderboard = await User.find({ moneySpent: { $gt: 0 } }).sort({
     moneySpent: -1,
   });
+
   res.status(200).json({
     success: true,
     leaderboard,

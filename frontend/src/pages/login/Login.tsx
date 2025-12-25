@@ -1,7 +1,7 @@
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store/store";
 import CustomInput from "../../components/input/CustomInput";
 import { InputPresets, InputVariant } from "../../constants/input-constants";

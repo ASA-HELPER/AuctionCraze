@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { PlaceBidPayload } from "../../types/api-types";
 import { AppDispatch } from "../store";
 import {
   API_URL,
@@ -29,7 +28,7 @@ const bidSlice = createSlice({
 });
 
 export const placeBid =
-  (data: PlaceBidPayload, id: number) => async (dispatch: AppDispatch) => {
+  (data: FormData, id: string) => async (dispatch: AppDispatch) => {
     dispatch(bidSlice.actions.bidRequest());
     try {
       const response = await axios.post(
