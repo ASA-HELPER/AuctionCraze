@@ -22,20 +22,26 @@ const UpdatePaymentProof = () => {
   const { singlePaymentProof, loading } = useSelector(
     (state: RootState) => state.admin
   );
-  const [amount, setAmount] = useState(singlePaymentProof.amount || "");
-  const [status, setStatus] = useState(singlePaymentProof.status || "");
+  const [amount, setAmount] = useState(singlePaymentProof?.amount || "");
+  const [status, setStatus] = useState(singlePaymentProof?.status || "");
 
   const dispatch = useAppDispatch();
   const navigateTo = useNavigate();
 
   const handlePaymentProofUpdate = () => {
-    dispatch(updatePaymentProof(singlePaymentProof._id, status, amount));
+    dispatch(
+      updatePaymentProof(
+        String(singlePaymentProof?._id),
+        Boolean(status),
+        Number(amount)
+      )
+    );
     toast.success(dashboardCopy.paymentProofModal.paymentSuccess);
     navigateTo(ROUTES.DASHBOARD);
   };
 
   useEffect(() => {
-    dispatch(getSinglePaymentProofDetail(id));
+    dispatch(getSinglePaymentProofDetail(String(id)));
   }, [id, dispatch]);
 
   return (
@@ -53,7 +59,7 @@ const UpdatePaymentProof = () => {
       <div className="updatePaymentProof__inputsContainer">
         <CustomInput
           handleChange={() => {}}
-          value={singlePaymentProof.userId || ""}
+          value={singlePaymentProof?.userId || ""}
           disabled
           label={dashboardCopy.paymentProofModal.userId}
           inputLabelClass="updatePaymentProof__inputLabel"
@@ -61,7 +67,7 @@ const UpdatePaymentProof = () => {
 
         <CustomInput
           handleChange={(e) => setAmount(e.target.value)}
-          value={amount}
+          value={String(amount)}
           label={dashboardCopy.paymentProofModal.amount}
           isRequired
           inputLabelClass="updatePaymentProof__inputLabel"
@@ -69,7 +75,7 @@ const UpdatePaymentProof = () => {
 
         <CustomDropdown
           data={statusOptions}
-          setValue={(value) => setStatus(value)}
+          setValue={(value) => setStatus(String(value))}
           placeholder={dashboardCopy.paymentProofModal.selectStatus}
           value={status}
           label={dashboardCopy.paymentProofModal.status}
@@ -78,7 +84,7 @@ const UpdatePaymentProof = () => {
 
         <CustomInput
           handleChange={() => {}}
-          value={singlePaymentProof.comment || ""}
+          value={singlePaymentProof?.comment || ""}
           label={dashboardCopy.paymentProofModal.comment}
           disabled
           isMultiline
@@ -87,7 +93,7 @@ const UpdatePaymentProof = () => {
       </div>
       <div className="updatePaymentProof__buttonsContainer">
         <Link
-          to={singlePaymentProof.proof?.url || ""}
+          to={singlePaymentProof?.proof?.url || ""}
           className="updatePaymentProof__proofButton"
           target="_blank"
         >

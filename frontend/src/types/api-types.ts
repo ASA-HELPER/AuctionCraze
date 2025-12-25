@@ -62,11 +62,19 @@ export type IMyAuctions = INewAuctionPayload & {
   highestBidder: string;
 };
 
+export interface ILeaderboardPayload {
+  _id: string;
+  name: string;
+  profileImage: ICloudImage;
+  moneySpent: number;
+  auctionsWon: number;
+}
+
 export interface IUserState {
   loading: boolean;
   isAuthenticated: boolean;
   user: IUserPayload | null;
-  leaderboard: IUserPayload[];
+  leaderboard: ILeaderboardPayload[];
 }
 
 export interface IAuctionState {
@@ -75,4 +83,30 @@ export interface IAuctionState {
   auctionBidders: IBid[];
   myAuctions: IMyAuctions[];
   allAuctions: INewAuctionPayload[];
+}
+
+export interface IPaymentProofFile {
+  url: string;
+  name?: string;
+  type?: string;
+}
+
+export interface ISinglePaymentProof {
+  _id: string;
+  userId: string;
+  amount: string | number;
+  status: string;
+  comment?: string;
+  proof?: IPaymentProofFile;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface IAdminState {
+  singlePaymentProof: ISinglePaymentProof | null;
+  loading: boolean;
+  monthlyRevenue: Object;
+  totalAuctioneers: Object;
+  totalBidders: Object;
+  paymentProofs: ISinglePaymentProof[];
 }

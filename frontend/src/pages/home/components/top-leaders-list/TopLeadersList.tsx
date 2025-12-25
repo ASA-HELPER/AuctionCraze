@@ -8,6 +8,7 @@ import { ExtendedColumn } from "../../../../types/table-types";
 import CustomTable from "./../../../../components/table/CustomTable";
 import homeCopy from "../../home.copy";
 import CustomButton from "../../../../components/button/CustomButton";
+import { GridRenderCellParams, GridTreeNodeWithRender } from "@mui/x-data-grid";
 
 const TopLeadersList = () => {
   const navigate = useNavigate();
@@ -28,7 +29,9 @@ const TopLeadersList = () => {
       field: "iconImage",
       headerName: homeCopy.section3.profilePic,
       flex: 1,
-      renderCell: (params) => (
+      renderCell: (
+        params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>
+      ) => (
         <img
           src={params.value}
           alt="icon"
