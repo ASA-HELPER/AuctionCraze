@@ -48,7 +48,6 @@ export const getPaymentProofDetail = catchAsyncErrors(
 export const updateProofStatus = catchAsyncErrors(async (req, res, next) => {
   const { id } = req.params;
   const { amount, status } = req.body;
-  amount = Number(amount);
 
   if (!User.isValidObjectId(id)) {
     return next(new ErrorHandler("Invalid ID format.", 400));
