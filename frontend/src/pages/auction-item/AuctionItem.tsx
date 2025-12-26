@@ -186,7 +186,6 @@ const AuctionItem = () => {
                       {auctionItemCopy.placeBid}
                     </Typography>
                     <input
-                      type="number"
                       value={amount}
                       onChange={(e) => setAmount(Number(e.target.value))}
                       className="auctionItem__bidInputField"
