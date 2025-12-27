@@ -48,6 +48,14 @@ const AuctionItem = () => {
     dispatch(getAuctionDetail(String(id)));
   };
 
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    if (/^\d*$/.test(value)) {
+      setAmount(Number(value));
+    }
+  };
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigateTo(ROUTES.HOME);
@@ -187,7 +195,7 @@ const AuctionItem = () => {
                     </Typography>
                     <input
                       value={amount}
-                      onChange={(e) => setAmount(Number(e.target.value))}
+                      onChange={handleAmountChange}
                       className="auctionItem__bidInputField"
                     />
                   </div>

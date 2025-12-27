@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema(
     address: String,
     phone: {
       type: String,
-      minLength: [11, "Phone Number must contain exact 11 digits."],
-      maxLength: [11, "Phone Number must contain exact 11 digits."],
+      minLength: [10, "Phone Number must contain minimum 10 digits."],
+      maxLength: [11, "Phone Number must contain maximum 11 digits."],
     },
     profileImage: {
       public_id: {
