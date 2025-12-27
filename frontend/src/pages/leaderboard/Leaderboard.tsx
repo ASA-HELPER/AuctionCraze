@@ -22,7 +22,7 @@ const Leaderboard = () => {
 
   const transformedLeaderboardData = leaderboard.map((item) => ({
     id: item._id,
-    name: item.name,
+    name: item.userName,
     iconImage: item.profileImage?.url,
     bidExpenditure: item.moneySpent,
     auctionsWon: item.auctionsWon,
