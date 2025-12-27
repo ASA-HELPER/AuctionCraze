@@ -151,6 +151,9 @@ const AuctionItem = () => {
                         <Typography className="auctionItem__bidName">
                           {bid.userName}
                         </Typography>
+                        <Typography className="auctionItem__bidAmount">
+                          {bid.amount}
+                        </Typography>
                       </div>
                       <Typography className="auctionItem__bidRank">
                         {index === 0

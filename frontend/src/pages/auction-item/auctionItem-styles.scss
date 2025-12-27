@@ -130,6 +130,13 @@
     font-style: $primary-font;
   }
 
+  &__bidAmount.MuiTypography-root {
+    color: $coral-red;
+    font-size: $spacing-14;
+    font-weight: $font-weight-semi-bold;
+    font-style: $primary-font;
+  }
+
   &__bidRank.MuiTypography-root {
     color: $coral-red;
     font-size: $spacing-10;
