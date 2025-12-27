@@ -194,6 +194,7 @@ const AuctionItem = () => {
                       {auctionItemCopy.placeBid}
                     </Typography>
                     <input
+                      type="text"
                       value={amount}
                       onChange={handleAmountChange}
                       className="auctionItem__bidInputField"
