@@ -64,7 +64,7 @@ export type IMyAuctions = INewAuctionPayload & {
 
 export interface ILeaderboardPayload {
   _id: string;
-  name: string;
+  userName: string;
   profileImage: ICloudImage;
   moneySpent: number;
   auctionsWon: number;

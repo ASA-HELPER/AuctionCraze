@@ -18,7 +18,7 @@ const TopLeadersList = () => {
 
   const transformedLeaderboardData = leaderboard.slice(0, 10).map((item) => ({
     id: item._id,
-    name: item.name,
+    name: item.userName,
     iconImage: item.profileImage?.url,
     bidExpenditure: item.moneySpent,
     auctionsWon: item.auctionsWon,
