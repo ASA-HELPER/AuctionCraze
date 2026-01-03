@@ -89,10 +89,34 @@ const Profile = () => {
           inputLabelClass="profile__inputLabels"
           disabled
         />
+        {user && user.role === ROLES[1] && (
+          <>
+            <CustomInput
+              value={user?.auctionsWon ?? ""}
+              handleChange={() => {}}
+              preset={InputPresets.Text}
+              variant={InputVariant.Outlined}
+              hasBorder
+              label={profileCopy.auctionsWon}
+              inputLabelClass="profile__inputLabels"
+              disabled
+            />
+            <CustomInput
+              value={user?.moneySpent ?? ""}
+              handleChange={() => {}}
+              preset={InputPresets.Text}
+              variant={InputVariant.Outlined}
+              hasBorder
+              label={profileCopy.moneySpent}
+              inputLabelClass="profile__inputLabels"
+              disabled
+            />
+          </>
+        )}
         {user && user.role === ROLES[0] && (
           <>
             <CustomInput
-              value={user && user.bankName}
+              value={user && user?.paymentMethods?.bankTransfer.bankName}
               handleChange={() => {}}
               preset={InputPresets.Text}
               variant={InputVariant.Outlined}
@@ -102,7 +126,7 @@ const Profile = () => {
               disabled
             />
             <CustomInput
-              value={user && user.bankAccountNumber}
+              value={user && user?.paymentMethods?.bankTransfer.bankAccountNumber}
               handleChange={() => {}}
               preset={InputPresets.Text}
               variant={InputVariant.Outlined}
@@ -112,7 +136,7 @@ const Profile = () => {
               disabled
             />
             <CustomInput
-              value={user?.bankAccountName ?? ""}
+              value={user?.paymentMethods?.bankTransfer.bankAccountName ?? ""}
               handleChange={() => {}}
               preset={InputPresets.Text}
               variant={InputVariant.Outlined}
@@ -122,7 +146,7 @@ const Profile = () => {
               disabled
             />
             <CustomInput
-              value={user && user.easypaisaAccountNumber}
+              value={user && user.paymentMethods?.easypaisa.easypaisaAccountNumber}
               handleChange={() => {}}
               preset={InputPresets.Text}
               variant={InputVariant.Outlined}
@@ -132,12 +156,22 @@ const Profile = () => {
               disabled
             />
             <CustomInput
-              value={user && user.paypalEmail}
+              value={user && user.paymentMethods?.paypal.paypalEmail}
               handleChange={() => {}}
               preset={InputPresets.Email}
               variant={InputVariant.Outlined}
               hasBorder
               label={profileCopy.paypalEmail}
+              inputLabelClass="profile__inputLabels"
+              disabled
+            />
+            <CustomInput
+              value={user?.unpaidCommission ?? ""}
+              handleChange={() => {}}
+              preset={InputPresets.Text}
+              variant={InputVariant.Outlined}
+              hasBorder
+              label={profileCopy.unpaidCommissions}
               inputLabelClass="profile__inputLabels"
               disabled
             />
