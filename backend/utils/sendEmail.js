@@ -6,6 +6,6 @@ export const sendEmail = async ({ email, subject, message }) => {
     from: process.env.RESEND_MAIL,
     to: [process.env.RESEND_RECEIVE_MAIL],
     subject,
-    html: `<p>${message}</p>`,
+    html: `<pre>${message}</pre>`,
   });
 };
