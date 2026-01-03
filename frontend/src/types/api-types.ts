@@ -5,6 +5,26 @@ export interface ICloudImage {
   url: string;
 }
 
+export interface IBankTransfer {
+  bankAccountName: string;
+  bankAccountNumber: string;
+  bankName: string;
+}
+
+export interface IEasypaisa {
+  easypaisaAccountNumber: string;
+}
+
+export interface IPaypal {
+  paypalEmail: string;
+}
+
+export interface IPaymentMethods {
+  bankTransfer: IBankTransfer;
+  easypaisa: IEasypaisa;
+  paypal: IPaypal;
+}
+
 export interface IUserPayload {
   userName: string;
   email: string;
@@ -14,12 +34,18 @@ export interface IUserPayload {
   role: UserRole;
   profileImage: ICloudImage;
 
+  // bidder-specific fields
+  auctionsWon?: string;
+  moneySpent?: string;
+
   // auctioneer-specific fields
   bankAccountNumber?: string;
   bankAccountName?: string;
   bankName?: string;
   easypaisaAccountNumber?: string;
   paypalEmail?: string;
+  unpaidCommission?: string;
+  paymentMethods?: IPaymentMethods;
 }
 
 export interface IBid {

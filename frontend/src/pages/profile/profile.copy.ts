@@ -13,4 +13,7 @@ export default {
   selectRole: "Select Role",
   selectBankName: "Select Bank Name",
   title: "Profile",
+  auctionsWon: "Auctions Won",
+  moneySpent: "Money Spent",
+  unpaidCommissions: "Unpaid Commissions",
 };
