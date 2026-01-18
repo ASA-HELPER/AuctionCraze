@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./submitCommission-styles.scss";
 import { Typography } from "@mui/material";
 import CustomInput from "../../components/input/CustomInput";
@@ -7,12 +7,28 @@ import CustomButton from "../../components/button/CustomButton";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import { commissionProof } from "../../store/slices/commissionSlice";
 import submitCommissionCopy from "./submitCommission.copy";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { ROLES } from "../../constants/common-constants";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/route-constants";
 
 const SubmitCommission = () => {
   const dispatch = useAppDispatch();
   const [amount, setAmount] = useState("");
   const [comment, setComment] = useState("");
   const [proofImage, setProofImage] = useState<File | null>(null);
+
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.user
+  );
+  const navigateTo = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated || user?.role !== ROLES[0]) {
+      navigateTo(ROUTES.HOME);
+    }
+  }, [isAuthenticated]);
 
   const proofHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {

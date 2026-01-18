@@ -145,7 +145,7 @@ const CreateAuction = () => {
               timeIntervals={15}
               dateFormat={"MMMM d, yyyy h,mm aa"}
               className="createAuction__datePicker"
-            />
+              />
           </div>
           <div>
             <InputLabel
@@ -163,11 +163,11 @@ const CreateAuction = () => {
               timeIntervals={15}
               dateFormat={"MMMM d, yyyy h,mm aa"}
               className="createAuction__datePicker"
-            />
+              />
           </div>
         </div>
         <div className="createAuction__imageContainer">
-          <Typography variant="h4">
+          <Typography variant="h6">
             {createAuctionCopy.auctionItemImage}
           </Typography>
           <div className="createAuction__uploadcontainer">

@@ -30,6 +30,7 @@ const ViewAuctionDetails = () => {
   useEffect(() => {
     if (!isAuthenticated || user?.role === ROLES[1]) {
       navigateTo(ROUTES.HOME);
+      return;
     }
     if (id) {
       dispatch(getAuctionDetail(id));

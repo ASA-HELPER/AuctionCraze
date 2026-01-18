@@ -15,7 +15,7 @@
     &__bodysubcontainer{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         gap: $spacing-10;
     }
     &__uploadcontainer{
@@ -50,12 +50,19 @@
         gap: $spacing-10;
     }
     &__datePicker{
-        width: $spacing-400;
+        width: 440px;
         height: $spacing-35;
         padding: $spacing-10;
         color: $raisin-black;
         background-color: map-get($map: $neutral, $key: 100);
         border: none;
+        border-radius: $spacing-5;
+        border: 1px solid lightgrey;
+    }
+    &__inputContainer {
+        textarea {
+            height: 60px !important;
+        }
     }
     &__icon{
         height: $spacing-150;
