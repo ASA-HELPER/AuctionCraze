@@ -21,7 +21,7 @@ const AuctionItem = () => {
   const { id } = useParams();
 
   const { loading, auctionDetail, auctionBidders } = useSelector(
-    (state: RootState) => state.auction
+    (state: RootState) => state.auction,
   );
   const { isAuthenticated } = useSelector((state: any) => state.user);
 
@@ -37,7 +37,7 @@ const AuctionItem = () => {
     }
     if (auctionDetail && amount < auctionDetail?.startingBid) {
       toast.error(
-        `${auctionItemCopy.minimumBidAmountMessage} ${auctionDetail?.startingBid}`
+        `${auctionItemCopy.minimumBidAmountMessage} ${auctionDetail?.startingBid}`,
       );
       return;
     }
@@ -45,7 +45,6 @@ const AuctionItem = () => {
     const formData = new FormData();
     formData.append("amount", String(amount));
     dispatch(placeBid(formData, String(id)));
-    dispatch(getAuctionDetail(String(id)));
   };
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -160,10 +159,10 @@ const AuctionItem = () => {
                         {index === 0
                           ? "1st"
                           : index === 1
-                          ? "2nd"
-                          : index === 2
-                          ? "3rd"
-                          : `${index + 1}th`}
+                            ? "2nd"
+                            : index === 2
+                              ? "3rd"
+                              : `${index + 1}th`}
                       </Typography>
                     </div>
                   ))

@@ -9,31 +9,40 @@ import { ROUTES } from "../../constants/route-constants";
 import CustomButton from "../../components/button/CustomButton";
 import homeCopy from "./home.copy";
 import { Typography } from "@mui/material";
+import CustomSpinner from "../../components/spinner/CustomSpinner";
+import { useGlobalLoading } from "../../hooks/storeHooks";
 
 const Home = () => {
   const { isAuthenticated } = useSelector((state: RootState) => state.user);
   const navigate = useNavigate();
+  const isLoading = useGlobalLoading();
 
   return (
     <div className="home__container">
-      <Typography className="home__title">{homeCopy.pageTitle}</Typography>
-      <div className="home__subContainer">
-        {!isAuthenticated && (
-          <div className="home__buttons">
-            <CustomButton
-              title={homeCopy.buttonTitles.signup}
-              onClick={() => navigate(ROUTES.SIGN_UP)}
-            />
-            <CustomButton
-              title={homeCopy.buttonTitles.login}
-              onClick={() => navigate(ROUTES.LOGIN)}
-            />
+      {isLoading ? (
+        <CustomSpinner spinnerSize={100} color="red" />
+      ) : (
+        <>
+          <Typography className="home__title">{homeCopy.pageTitle}</Typography>
+          <div className="home__subContainer">
+            {!isAuthenticated && (
+              <div className="home__buttons">
+                <CustomButton
+                  title={homeCopy.buttonTitles.signup}
+                  onClick={() => navigate(ROUTES.SIGN_UP)}
+                />
+                <CustomButton
+                  title={homeCopy.buttonTitles.login}
+                  onClick={() => navigate(ROUTES.LOGIN)}
+                />
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <HowItWorksList />
-      <FeaturedAuctions />
-      <TopLeadersList />
+          <HowItWorksList />
+          <FeaturedAuctions />
+          <TopLeadersList />
+        </>
+      )}
     </div>
   );
 };

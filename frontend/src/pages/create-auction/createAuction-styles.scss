@@ -1,78 +1,101 @@
-@use '../../theme' as *;
+@use "../../theme" as *;
 
-.createAuction{
-    &__container{
-        background-color: $chinese-white;
-        padding: $spacing-30;
-        color: $raisin-black;
-        height: 100%;
+.createAuction {
+  &__container {
+    background-color: $chinese-white;
+    padding: $spacing-30;
+    color: $raisin-black;
+    height: 100%;
+  }
+  &__bodycontainer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-10;
+  }
+  &__bodysubcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: $spacing-10;
+  }
+  &__uploadcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dashed #ccc;
+    text-align: center;
+  }
+  &__image {
+    width: $spacing-500;
+    height: $spacing-500;
+  }
+  &__title {
+    color: $coral-red;
+  }
+  &__inputLabels {
+    color: $raisin-black !important;
+    font-weight: bold !important;
+  }
+  &__datePicker {
+    background-color: $chinese-white;
+  }
+  &__buttonStyle {
+    background-color: $coral-red !important;
+    max-width: 60%;
+    align-self: center;
+  }
+  &__imageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-10;
+  }
+  &__datePicker {
+    width: 100%;
+    height: $spacing-35;
+    padding: $spacing-10;
+    color: $raisin-black;
+    background-color: map-get($map: $neutral, $key: 100);
+    border: none;
+    border-radius: $spacing-5;
+    border: 1px solid lightgrey;
+    box-sizing: border-box;
+  }
+  &__datePickerContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+  &__inputContainer {
+    textarea {
+      height: 60px !important;
     }
-    &__bodycontainer{
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-10;
-    }
-    &__bodysubcontainer{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        gap: $spacing-10;
-    }
-    &__uploadcontainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 2px dashed #ccc;
-        text-align: center;
-    }
-    &__image{
-        width: $spacing-500;
-        height: $spacing-500;
-    }
-    &__title {
-        color: $coral-red;
-    }
-    &__inputLabels{
-        color: $raisin-black !important;
-        font-weight: bold !important;
-    }
-    &__datePicker{
-        background-color: $chinese-white;
-    }
-    &__buttonStyle{
-        background-color: $coral-red !important;
-        max-width: 60%;
-        align-self: center;
-    }
-    &__imageContainer{
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-10;
-    }
-    &__datePicker{
-        width: 440px;
-        height: $spacing-35;
-        padding: $spacing-10;
-        color: $raisin-black;
-        background-color: map-get($map: $neutral, $key: 100);
-        border: none;
-        border-radius: $spacing-5;
-        border: 1px solid lightgrey;
-    }
-    &__inputContainer {
-        textarea {
-            height: 60px !important;
-        }
-    }
-    &__icon{
-        height: $spacing-150;
-        width: $spacing-150;
-    }
+  }
+  &__imageWrapper {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__imageInput {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__image,
+  &__icon {
+    pointer-events: none;
+    height: $spacing-150;
+    width: $spacing-150;
+  }
 }
 
 // Mobile View
-@include sm{
-    .createAuction{
-        
-    }
+@include sm {
+  .createAuction {
+  }
 }

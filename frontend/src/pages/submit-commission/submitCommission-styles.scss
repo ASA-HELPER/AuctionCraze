@@ -29,14 +29,18 @@
     width: 80%;
   }
 
-  &__inputLabels.MuiTypography-root {
-    font-size: $spacing-16 !important;
+  &__inputLabels {
+    font-size: $spacing-14 !important;
     font-family: $primary-font !important;
+    color: $raisin-black !important;
+    font-weight: bold !important;
   }
 
   &__proofTitle.MuiTypography-root {
-    font-size: $spacing-16 !important;
+    font-size: $spacing-14 !important;
     font-family: $primary-font !important;
+    color: $raisin-black !important;
+    font-weight: bold !important;
   }
 
   &__buttonStyle {

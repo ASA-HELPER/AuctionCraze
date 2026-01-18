@@ -8,6 +8,7 @@ import {
   BID,
   BID_ROUTES,
 } from "../../constants/api-constants";
+import { getAuctionDetail } from "./auctionSlice";
 
 const bidSlice = createSlice({
   name: "bid",
@@ -37,9 +38,10 @@ export const placeBid =
         {
           withCredentials: true,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
       dispatch(bidSlice.actions.bidSuccess());
+      dispatch(getAuctionDetail(id));
       toast.success(response.data.message);
     } catch (error: any) {
       dispatch(bidSlice.actions.bidFailed());
