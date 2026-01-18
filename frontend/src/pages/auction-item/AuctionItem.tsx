@@ -59,6 +59,7 @@ const AuctionItem = () => {
   useEffect(() => {
     if (!isAuthenticated) {
       navigateTo(ROUTES.HOME);
+      return;
     }
 
     if (id) {

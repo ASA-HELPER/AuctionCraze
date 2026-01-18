@@ -26,6 +26,7 @@ const ViewMyAuctions = () => {
   useEffect(() => {
     if (!isAuthenticated || user?.role !== ROLES[0]) {
       navigateTo(ROUTES.HOME);
+      return;
     }
     dispatch(getMyAuctionItems());
   }, [dispatch, isAuthenticated]);
