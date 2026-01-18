@@ -9,11 +9,12 @@ import { fetchLeaderboard } from "../../store/slices/userSlice";
 import { useAppDispatch } from "../../hooks/storeHooks";
 import leaderboardCopy from "./leaderboard.copy";
 import { GridRenderCellParams, GridTreeNodeWithRender } from "@mui/x-data-grid";
+import CustomSpinner from "../../components/spinner/CustomSpinner";
 
 const Leaderboard = () => {
   const dispatch = useAppDispatch();
   const { leaderboard, loading } = useSelector(
-    (store: RootState) => store.user
+    (store: RootState) => store.user,
   );
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const Leaderboard = () => {
       headerName: leaderboardCopy.profilePic,
       flex: 1,
       renderCell: (
-        params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>
+        params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>,
       ) => (
         <img
           src={params.value}
@@ -68,16 +69,22 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboard__container">
-      <div className="leaderboard__headerContainer">
-        <Typography className="leaderboard__headerTitle" variant="h3">
-          {leaderboardCopy.biddersLeaderboard}
-        </Typography>
-      </div>
-      <CustomTable
-        columns={BIDDER_LEADERBOARD_TABLE_FIELDS}
-        rows={transformedLeaderboardData}
-        loading={loading}
-      />
+      {loading ? (
+        <CustomSpinner spinnerSize={100} color="red" />
+      ) : (
+        <>
+          <div className="leaderboard__headerContainer">
+            <Typography className="leaderboard__headerTitle" variant="h3">
+              {leaderboardCopy.biddersLeaderboard}
+            </Typography>
+          </div>
+          <CustomTable
+            columns={BIDDER_LEADERBOARD_TABLE_FIELDS}
+            rows={transformedLeaderboardData}
+            loading={loading}
+          />
+        </>
+      )}
     </div>
   );
 };

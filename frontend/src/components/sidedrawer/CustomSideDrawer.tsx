@@ -24,7 +24,7 @@ const CustomSideDrawer = () => {
   const [show, setShow] = useState(false);
 
   const { isAuthenticated, user } = useSelector(
-    (state: RootState) => state.user
+    (state: RootState) => state.user,
   );
 
   const dispatch = useAppDispatch();

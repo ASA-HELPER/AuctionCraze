@@ -21,16 +21,15 @@ const ViewAuctionDetails = () => {
   const navigateTo = useNavigate();
 
   const { loading, auctionDetail, auctionBidders } = useSelector(
-    (state: any) => state.auction
+    (state: any) => state.auction,
   );
   const { isAuthenticated, user } = useSelector(
-    (state: RootState) => state.user
+    (state: RootState) => state.user,
   );
 
   useEffect(() => {
     if (!isAuthenticated || user?.role === ROLES[1]) {
       navigateTo(ROUTES.HOME);
-      return;
     }
     if (id) {
       dispatch(getAuctionDetail(id));
@@ -130,7 +129,7 @@ const ViewAuctionDetails = () => {
     <div className="auctionDetails__container">
       {renderBreadcrumbs()}
       {loading ? (
-        <CustomSpinner spinnerSize={30} />
+        <CustomSpinner spinnerSize={100} color="red" />
       ) : (
         <div className="auctionDetails__content">
           <div className="auctionItem__detailsContainer">

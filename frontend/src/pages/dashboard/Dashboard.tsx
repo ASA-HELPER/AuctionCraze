@@ -32,7 +32,7 @@ const Dashboard = () => {
   }, []);
 
   const { user, isAuthenticated } = useSelector(
-    (state: RootState) => state.user
+    (state: RootState) => state.user,
   );
   useEffect(() => {
     if ((user && user?.role !== ROLES[2]) || !isAuthenticated) {
@@ -46,7 +46,7 @@ const Dashboard = () => {
         {dashboardCopy.pageTitle}
       </Typography>
       {loading ? (
-        <CustomSpinner spinnerSize={50} />
+        <CustomSpinner spinnerSize={100} color="red" />
       ) : (
         <>
           <BiddersAuctioneersGraph />

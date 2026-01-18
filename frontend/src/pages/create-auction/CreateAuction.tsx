@@ -35,7 +35,7 @@ const CreateAuction = () => {
   const { loading } = useSelector((state: RootState) => state.auction);
 
   const { isAuthenticated, user } = useSelector(
-    (state: RootState) => state.user
+    (state: RootState) => state.user,
   );
   const navigateTo = useNavigate();
 
@@ -117,19 +117,21 @@ const CreateAuction = () => {
             inputLabelClass="createAuction__inputLabels"
           />
         </div>
-        <CustomInput
-          value={description}
-          handleChange={(e) => setDescription(e.target.value)}
-          preset={InputPresets.Text}
-          variant={InputVariant.Outlined}
-          label={createAuctionCopy.description}
-          hasBorder
-          inputLabelClass="createAuction__inputLabels"
-          isMultiline
-          containerClass="createAuction__inputContainer"
-        />
         <div className="createAuction__bodysubcontainer">
-          <div>
+          <CustomInput
+            value={description}
+            handleChange={(e) => setDescription(e.target.value)}
+            preset={InputPresets.Text}
+            variant={InputVariant.Outlined}
+            label={createAuctionCopy.description}
+            hasBorder
+            inputLabelClass="createAuction__inputLabels"
+            isMultiline
+            containerClass="createAuction__inputContainer"
+          />
+        </div>
+        <div className="createAuction__bodysubcontainer">
+          <div className="createAuction__datePickerContainer">
             <InputLabel
               shrink
               htmlFor="start-time-picker"
@@ -145,9 +147,9 @@ const CreateAuction = () => {
               timeIntervals={15}
               dateFormat={"MMMM d, yyyy h,mm aa"}
               className="createAuction__datePicker"
-              />
+            />
           </div>
-          <div>
+          <div className="createAuction__datePickerContainer">
             <InputLabel
               shrink
               htmlFor="end-time-picker"
@@ -163,7 +165,7 @@ const CreateAuction = () => {
               timeIntervals={15}
               dateFormat={"MMMM d, yyyy h,mm aa"}
               className="createAuction__datePicker"
-              />
+            />
           </div>
         </div>
         <div className="createAuction__imageContainer">
@@ -171,23 +173,29 @@ const CreateAuction = () => {
             {createAuctionCopy.auctionItemImage}
           </Typography>
           <div className="createAuction__uploadcontainer">
-            {image ? (
-              <img
-                src={URL.createObjectURL(image)}
-                alt="image"
-                className="createAuction__image"
+            <label className="createAuction__imageWrapper">
+              {image ? (
+                <img
+                  src={URL.createObjectURL(image)}
+                  alt="image"
+                  className="createAuction__image"
+                />
+              ) : (
+                <BiImageAdd className="createAuction__icon" />
+              )}
+
+              <input
+                type="file"
+                accept="image/svg+xml, image/png, image/jpeg, image/gif"
+                onChange={imageHandler}
+                className="createAuction__imageInput"
               />
-            ) : (
-              <BiImageAdd className="createAuction__icon" />
-            )}
-            <input
-              type="file"
-              accept="image/svg+xml, image/png, image/jpeg, image/gif"
-              onChange={imageHandler}
-            />
+            </label>
+
             <Typography>{createAuctionCopy.clickUpload}</Typography>
             <Typography>{createAuctionCopy.imageFormat}</Typography>
           </div>
+
           <CustomButton
             title={
               loading
