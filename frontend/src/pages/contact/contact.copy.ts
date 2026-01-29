@@ -8,5 +8,8 @@ export default {
   buttonText: "SEND MESSAGE",
   successMessage: "Thank You! Your message has been sent successfully.",
   failureMessage: "Failed to send message.",
-  loadingButtonText: "Sending Message..."
+  loadingButtonText: "Sending Message...",
+  errorMessage: "Please fill all the fields",
+  emailValidationMessage: "Please enter a valid email address",
+  phoneValidationMessage: "Please enter a valid phone number",
 };

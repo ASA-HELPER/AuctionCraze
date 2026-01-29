@@ -74,3 +74,6 @@ export const howItWorksList = [
 ];
 
 export const statusOptions = ["Pending", "Approved", "Rejected", "Settled"];
+
+export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const phoneRegex = /^[0-9]{10}$/;

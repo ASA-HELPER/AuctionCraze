@@ -9,6 +9,7 @@ import { sendEmail } from "../../utils/sendEmail";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/route-constants";
 import { toast } from "react-toastify";
+import { emailRegex, phoneRegex } from "../../constants/common-constants";
 
 const Contact = () => {
   const [senderName, setSenderName] = useState("");
@@ -21,6 +22,28 @@ const Contact = () => {
 
   const handleMessage = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (
+      !senderName.trim() ||
+      !email.trim() ||
+      !phone.trim() ||
+      !subject.trim() ||
+      !message.trim()
+    ) {
+      toast.error(contactCopy.errorMessage);
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      toast.error(contactCopy.emailValidationMessage);
+      return;
+    }
+
+    if (!phoneRegex.test(phone)) {
+      toast.error(contactCopy.phoneValidationMessage);
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -54,7 +77,9 @@ const Contact = () => {
   return (
     <div className="contact__container">
       <div className="contact__header">
-        <Typography variant="h3" className="contact__title">{contactCopy.title}</Typography>
+        <Typography variant="h3" className="contact__title">
+          {contactCopy.title}
+        </Typography>
       </div>
 
       <form onSubmit={handleMessage} className="contact__form">
